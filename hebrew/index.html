@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hebrew Verb Tenses</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="../shared/reading.css">
+  <link rel="stylesheet" href="hebrew.css">
+</head>
+<body>
+  <main>
+    <h1>Hebrew Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb to see its Hebrew translation and how to say it in every tense.</p>
+    <p class="hint">Hebrew is written right to left and without most vowels, so every form comes with a transliteration underneath (kh is the sound of <bdi lang="he" dir="rtl">ח</bdi>, ts of <bdi lang="he" dir="rtl">צ</bdi>); an apostrophe marks <bdi lang="he" dir="rtl">א</bdi> or <bdi lang="he" dir="rtl">ע</bdi> between vowels (sho'el); the transliteration marks no stress. Hebrew verbs change for gender as well as person, which is why there are ten buttons, not six: <bdi lang="he" dir="rtl">אתה</bdi> (you, masc.) and <bdi lang="he" dir="rtl">את</bdi> (you, fem.) differ, and so do <bdi lang="he" dir="rtl">אתם</bdi> / <bdi lang="he" dir="rtl">אתן</bdi> and <bdi lang="he" dir="rtl">הם</bdi> / <bdi lang="he" dir="rtl">הן</bdi>. The present tense has only four forms (the participle, which agrees in gender and number), so several buttons show the same word; for <bdi lang="he" dir="rtl">אני</bdi> and <bdi lang="he" dir="rtl">אנחנו</bdi> the present tense shows the masculine form, and a woman speaking uses the feminine one (<bdi lang="he" dir="rtl">כותבת</bdi>, <bdi lang="he" dir="rtl">כותבות</bdi>). The imperative only exists for you (<bdi lang="he" dir="rtl">אתה</bdi> / <bdi lang="he" dir="rtl">את</bdi> / <bdi lang="he" dir="rtl">אתם</bdi> / <bdi lang="he" dir="rtl">אתן</bdi>); the other buttons show —. The infinitive is the same for every person.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show forms for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span><bdi lang="he" dir="rtl">אני</bdi> ani</span></label>
+        <label><input type="radio" name="person" value="1"><span><bdi lang="he" dir="rtl">אתה</bdi> ata</span></label>
+        <label><input type="radio" name="person" value="2"><span><bdi lang="he" dir="rtl">את</bdi> at</span></label>
+        <label><input type="radio" name="person" value="3"><span><bdi lang="he" dir="rtl">הוא</bdi> hu</span></label>
+        <label><input type="radio" name="person" value="4"><span><bdi lang="he" dir="rtl">היא</bdi> hi</span></label>
+        <label><input type="radio" name="person" value="5"><span><bdi lang="he" dir="rtl">אנחנו</bdi> anakhnu</span></label>
+        <label><input type="radio" name="person" value="6"><span><bdi lang="he" dir="rtl">אתם</bdi> atem</span></label>
+        <label><input type="radio" name="person" value="7"><span><bdi lang="he" dir="rtl">אתן</bdi> aten</span></label>
+        <label><input type="radio" name="person" value="8"><span><bdi lang="he" dir="rtl">הם</bdi> hem</span></label>
+        <label><input type="radio" name="person" value="9"><span><bdi lang="he" dir="rtl">הן</bdi> hen</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense (English / Hebrew)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (⁧לדבר⁩ ledaber)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Indicative -->
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (<bdi lang="he" dir="rtl">הווה</bdi>)</td>
+            <td>Participle: agrees in gender and number, no person (four forms)</td>
+            <td class="example" data-tense="pres"><span class="word"><bdi lang="he" dir="rtl">מדבר</bdi></span><span class="reading">medaber</span></td>
+            <td>Actions happening now, habits, general truths (both "speaks" and "is speaking")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past (<bdi lang="he" dir="rtl">עבר</bdi>)</td>
+            <td>Past stem + person suffix (-ti, -ta, -t, -nu, -tem, -ten; she: -a, they: -u; he: none)</td>
+            <td class="example" data-tense="past"><span class="word"><bdi lang="he" dir="rtl">דיברתי</bdi></span><span class="reading">dibarti</span></td>
+            <td>Completed past actions ("spoke", "has spoken")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (<bdi lang="he" dir="rtl">עתיד</bdi>)</td>
+            <td>Person prefix (<bdi lang="he" dir="rtl">א</bdi> / <bdi lang="he" dir="rtl">ת</bdi> / <bdi lang="he" dir="rtl">י</bdi> / <bdi lang="he" dir="rtl">נ</bdi>) + stem; ending -i (you, fem.) or -u (plural)</td>
+            <td class="example" data-tense="fut"><span class="word"><bdi lang="he" dir="rtl">אדבר</bdi></span><span class="reading">adaber</span></td>
+            <td>Actions that will happen later ("will speak")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Continuous (<bdi lang="he" dir="rtl">עבר מתמשך</bdi>)</td>
+            <td>Past of <bdi lang="he" dir="rtl">היה</bdi> (to be) + present participle</td>
+            <td class="example" data-tense="pastCont"><span class="word"><bdi lang="he" dir="rtl">הייתי מדבר</bdi></span><span class="reading">hayiti medaber</span></td>
+            <td>Habits and ongoing actions in the past ("used to speak", "was speaking")</td>
+          </tr>
+          <!-- Imperative -->
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Imperative (<bdi lang="he" dir="rtl">ציווי</bdi>)</td>
+            <td>Future stem of you without its prefix (<bdi lang="he" dir="rtl">תדבר</bdi> → <bdi lang="he" dir="rtl">דבר</bdi>); some verbs start with <bdi lang="he" dir="rtl">ה</bdi> instead (<bdi lang="he" dir="rtl">תסביר</bdi> → <bdi lang="he" dir="rtl">הסבר</bdi>); ending -i (<bdi lang="he" dir="rtl">את</bdi>) or -u (plural)</td>
+            <td class="example na" data-tense="imp" title="This verb has no such form for this person."><span>—</span></td>
+            <td>Telling someone to do something; only for <bdi lang="he" dir="rtl">אתה</bdi> / <bdi lang="he" dir="rtl">את</bdi> / <bdi lang="he" dir="rtl">אתם</bdi> / <bdi lang="he" dir="rtl">אתן</bdi></td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Negative Imperative (<bdi lang="he" dir="rtl">ציווי שלילי</bdi>)</td>
+            <td><bdi lang="he" dir="rtl">אל</bdi> (al) + future of you</td>
+            <td class="example na" data-tense="impNeg" title="This verb has no such form for this person."><span>—</span></td>
+            <td>Telling someone not to do something</td>
+          </tr>
+          <!-- Infinitive -->
+          <tr class="subjunctive">
+            <td class="mood">Infinitive</td>
+            <td>Infinitive (<bdi lang="he" dir="rtl">שם הפועל</bdi>)</td>
+            <td>Usually <bdi lang="he" dir="rtl">ל</bdi> (le-) + infinitive stem; the same for every person</td>
+            <td class="example" data-tense="inf"><span class="word"><bdi lang="he" dir="rtl">לדבר</bdi></span><span class="reading">ledaber</span></td>
+            <td>The dictionary form; after verbs like "want", "can", "must"; as a subject ("to speak is hard")</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show 4 more tenses</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="patterns.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+/* Persian script. Everything marked lang="fa" (the translation, its buttons, the table cells'
+   <bdi> runs) gets a Persian-capable font; system-ui comes before the Arabic-script fonts so the
+   transliteration next to the script keeps the page's usual Latin letters. */
+:lang(fa) {
+  font-family: "Vazirmatn", system-ui, "Geeza Pro", "Noto Naskh Arabic", Tahoma, sans-serif;
+}
+
+/* Persian looks small next to Latin at the same size */
+bdi[lang="fa"] { font-size: 1.15em; }

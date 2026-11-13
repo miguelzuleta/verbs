@@ -1,0 +1,4 @@
+/* Devanagari in the system's Hindi fonts: Kohinoor on macOS, then the usual Devanagari fonts elsewhere */
+.word, td.example, .chip, .persons span, .translation strong {
+  font-family: "Kohinoor Devanagari", "Devanagari Sangam MN", "Noto Sans Devanagari", "Mangal", system-ui, sans-serif;
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Persian (Farsi) Verb Tenses</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="../shared/reading.css">
+  <link rel="stylesheet" href="farsi.css">
+</head>
+<body>
+  <main>
+    <h1>Persian (Farsi) Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb to see its Persian translation and how to say it in every tense.</p>
+    <p class="hint">Persian is written right to left and leaves out most short vowels, so every form comes with a transliteration underneath. Verbs do not change for gender: the six buttons only change the person. Many verbs are a word plus a light verb, such as <bdi lang="fa" dir="rtl">قبول کردن</bdi> (to accept): only the last word is conjugated. A few verbs start with a prefix that stays in front of <bdi lang="fa" dir="rtl">می‌</bdi> and <bdi lang="fa" dir="rtl">ن</bdi> (<bdi lang="fa" dir="rtl">برمی‌دارم</bdi>). This page uses the formal written style (<bdi lang="fa" dir="rtl">می‌روم</bdi>), not everyday speech (<bdi lang="fa" dir="rtl">میرم</bdi>). The imperative has only <bdi lang="fa" dir="rtl">تو</bdi>, <bdi lang="fa" dir="rtl">ما</bdi> ("let's") and <bdi lang="fa" dir="rtl">شما</bdi>; the other buttons show the nearest one.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show forms for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span><bdi lang="fa" dir="rtl">من</bdi> man</span></label>
+        <label><input type="radio" name="person" value="1"><span><bdi lang="fa" dir="rtl">تو</bdi> to</span></label>
+        <label><input type="radio" name="person" value="2"><span><bdi lang="fa" dir="rtl">او</bdi> u</span></label>
+        <label><input type="radio" name="person" value="3"><span><bdi lang="fa" dir="rtl">ما</bdi> mâ</span></label>
+        <label><input type="radio" name="person" value="4"><span><bdi lang="fa" dir="rtl">شما</bdi> shomâ</span></label>
+        <label><input type="radio" name="person" value="5"><span><bdi lang="fa" dir="rtl">آنها</bdi> ânhâ</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense (English / Persian)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (⁧صحبت کردن⁩ sohbat kardan)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Indicative -->
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (<bdi lang="fa" dir="rtl">حال ساده</bdi>)</td>
+            <td><bdi lang="fa" dir="rtl">می‌</bdi> + present stem + ending</td>
+            <td class="example" data-tense="pres"><span class="word"><bdi lang="fa" dir="rtl">صحبت می‌کنم</bdi></span><span class="reading">sohbat mikonam</span></td>
+            <td>Current actions, habits, general truths</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present Progressive (<bdi lang="fa" dir="rtl">حال استمراری</bdi>)</td>
+            <td><bdi lang="fa" dir="rtl">دارم</bdi> (to have, pres.) + present</td>
+            <td class="example" data-tense="presProg"><span class="word"><bdi lang="fa" dir="rtl">دارم صحبت می‌کنم</bdi></span><span class="reading">dâram sohbat mikonam</span></td>
+            <td>Actions happening right now</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Simple Past (<bdi lang="fa" dir="rtl">ماضی ساده</bdi>)</td>
+            <td>Past stem + ending</td>
+            <td class="example" data-tense="past"><span class="word"><bdi lang="fa" dir="rtl">صحبت کردم</bdi></span><span class="reading">sohbat kardam</span></td>
+            <td>Completed past actions</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Continuous (<bdi lang="fa" dir="rtl">ماضی استمراری</bdi>)</td>
+            <td><bdi lang="fa" dir="rtl">می‌</bdi> + past stem + ending</td>
+            <td class="example" data-tense="pastCont"><span class="word"><bdi lang="fa" dir="rtl">صحبت می‌کردم</bdi></span><span class="reading">sohbat mikardam</span></td>
+            <td>Habitual or ongoing past actions</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Progressive (<bdi lang="fa" dir="rtl">ماضی مستمر</bdi>)</td>
+            <td><bdi lang="fa" dir="rtl">داشتم</bdi> (to have, past) + past continuous</td>
+            <td class="example" data-tense="pastProg"><span class="word"><bdi lang="fa" dir="rtl">داشتم صحبت می‌کردم</bdi></span><span class="reading">dâshtam sohbat mikardam</span></td>
+            <td>An action that was in progress at a past moment</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present Perfect (<bdi lang="fa" dir="rtl">ماضی نقلی</bdi>)</td>
+            <td>Past participle (<bdi lang="fa" dir="rtl">-ه</bdi>) + <bdi lang="fa" dir="rtl">ام / ای / است</bdi></td>
+            <td class="example" data-tense="presPerf"><span class="word"><bdi lang="fa" dir="rtl">صحبت کرده‌ام</bdi></span><span class="reading">sohbat kardeam</span></td>
+            <td>Past actions connected to the present, or experiences</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Perfect (<bdi lang="fa" dir="rtl">ماضی بعید</bdi>)</td>
+            <td>Past participle + <bdi lang="fa" dir="rtl">بودم</bdi> (to be, past)</td>
+            <td class="example" data-tense="pastPerf"><span class="word"><bdi lang="fa" dir="rtl">صحبت کرده بودم</bdi></span><span class="reading">sohbat karde budam</span></td>
+            <td>An action completed before another past action</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (<bdi lang="fa" dir="rtl">آینده</bdi>)</td>
+            <td><bdi lang="fa" dir="rtl">خواهم</bdi> (to want) + past stem</td>
+            <td class="example" data-tense="fut"><span class="word"><bdi lang="fa" dir="rtl">صحبت خواهم کرد</bdi></span><span class="reading">sohbat khâham kard</span></td>
+            <td>Actions that will happen later; mostly written (speech uses the present)</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Negative Present (<bdi lang="fa" dir="rtl">مضارع منفی</bdi>)</td>
+            <td><bdi lang="fa" dir="rtl">نمی‌</bdi> + present stem + ending</td>
+            <td class="example" data-tense="negPres"><span class="word"><bdi lang="fa" dir="rtl">صحبت نمی‌کنم</bdi></span><span class="reading">sohbat nemikonam</span></td>
+            <td>Saying that something does not happen</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Negative Past (<bdi lang="fa" dir="rtl">ماضی منفی</bdi>)</td>
+            <td><bdi lang="fa" dir="rtl">ن</bdi> + past stem + ending</td>
+            <td class="example" data-tense="negPast"><span class="word"><bdi lang="fa" dir="rtl">صحبت نکردم</bdi></span><span class="reading">sohbat nakardam</span></td>
+            <td>Saying that something did not happen</td>
+          </tr>
+          <!-- Subjunctive -->
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Present Subjunctive (<bdi lang="fa" dir="rtl">مضارع التزامی</bdi>)</td>
+            <td><bdi lang="fa" dir="rtl">ب</bdi> + present stem + ending</td>
+            <td class="example" data-tense="subj"><span class="word"><bdi lang="fa" dir="rtl">صحبت کنم</bdi></span><span class="reading">sohbat konam</span></td>
+            <td>Wishes, necessity, purpose, what one should do (after words like "that", "so that")</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Perfect Subjunctive (<bdi lang="fa" dir="rtl">ماضی التزامی</bdi>)</td>
+            <td>Past participle + <bdi lang="fa" dir="rtl">باشم</bdi> (to be, subj.)</td>
+            <td class="example" data-tense="subjPerf"><span class="word"><bdi lang="fa" dir="rtl">صحبت کرده باشم</bdi></span><span class="reading">sohbat karde bâsham</span></td>
+            <td>Doubt or possibility about a completed action</td>
+          </tr>
+          <!-- Imperative -->
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Imperative (<bdi lang="fa" dir="rtl">امر</bdi>)</td>
+            <td><bdi lang="fa" dir="rtl">ب</bdi> + present stem (+ <bdi lang="fa" dir="rtl">ید</bdi> for <bdi lang="fa" dir="rtl">شما</bdi>)</td>
+            <td class="example" data-tense="impAff"><span class="word"><bdi lang="fa" dir="rtl">صحبت کن</bdi></span><span class="reading">sohbat kon (you)</span></td>
+            <td>Telling someone to do something (<bdi lang="fa" dir="rtl">تو</bdi>, <bdi lang="fa" dir="rtl">شما</bdi>); <bdi lang="fa" dir="rtl">ما</bdi> gives "let's"</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Negative Imperative (<bdi lang="fa" dir="rtl">نهی</bdi>)</td>
+            <td><bdi lang="fa" dir="rtl">ن</bdi> + present stem (+ <bdi lang="fa" dir="rtl">ید</bdi> for <bdi lang="fa" dir="rtl">شما</bdi>)</td>
+            <td class="example" data-tense="impNeg"><span class="word"><bdi lang="fa" dir="rtl">صحبت نکن</bdi></span><span class="reading">sohbat nakon (you)</span></td>
+            <td>Telling someone not to do something</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show more tenses</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="patterns.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

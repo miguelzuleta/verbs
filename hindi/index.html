@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hindi Verb Tenses</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="../shared/reading.css">
+  <link rel="stylesheet" href="hindi.css">
+</head>
+<body>
+  <main>
+    <h1>Hindi Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb to see its Hindi translation and how to say it in every tense.</p>
+    <p class="hint">Hindi verb forms agree with the gender of the subject, so each cell shows the masculine form, a slash, then the feminine form (a single form when gender makes no difference, as in the subjunctive). Every cell shows the Devanagari with its romanization underneath; in the romanization ṁ marks a nasal vowel and ā ī ū are long vowels. The stem is the infinitive without <span lang="hi">ना</span> (<span lang="hi">बोल</span> in <span lang="hi">बोलना</span>). <span lang="hi">तू</span> is intimate (used with children and very close friends, rude to others), <span lang="hi">तुम</span> is familiar and <span lang="hi">आप</span> is respectful; <span lang="hi">हम</span>, <span lang="hi">तुम</span>, <span lang="hi">आप</span> and <span lang="hi">वे</span> take the plural forms. In the simple past of a verb that takes <span lang="hi">ने</span>, the subject gets <span lang="hi">ने</span> and the verb agrees with the object, not the subject, so the table shows <span lang="hi">ने</span> plus the masculine singular form (<span lang="hi">ने बोला</span>) for every person; the two perfect tenses work the same way. When the object noun in the entry is feminine, the feminine form is shown (<span lang="hi">ने बात की</span>); when it is plural, the plural form (<span lang="hi">ने पैसे दिए</span>, <span lang="hi">ने आहें भरीं</span>). Compound verbs (noun + <span lang="hi">करना</span>, such as <span lang="hi">बात करना</span>) are conjugated on the last word only. Nouns in compound verbs keep their full spelling in the romanization (yojanā), and only verb stems drop the schwa as spoken (samjhā). A compound with <span lang="hi">होना</span> that names a state is shown with the copula (<span lang="hi">मैं हकदार हूँ</span>), so the tenses that would mean "become" show a dash; verbs where the noun is the subject (<span lang="hi">मुझे ज़रूरत है</span>, <span lang="hi">मुझे डर लगता है</span>) only have the third-person forms (<span lang="hi">वह</span> and <span lang="hi">वे</span>), and the other pills show a dash. The imperative exists only for <span lang="hi">तू</span>, <span lang="hi">तुम</span>, <span lang="hi">आप</span> and (as "let us") <span lang="hi">हम</span>; the other buttons show a dash.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show forms for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span><bdi lang="hi">मैं</bdi> maiṁ</span></label>
+        <label><input type="radio" name="person" value="1"><span><bdi lang="hi">तू</bdi> tū</span></label>
+        <label><input type="radio" name="person" value="2"><span><bdi lang="hi">वह</bdi> vah</span></label>
+        <label><input type="radio" name="person" value="3"><span><bdi lang="hi">हम</bdi> ham</span></label>
+        <label><input type="radio" name="person" value="4"><span><bdi lang="hi">तुम</bdi> tum</span></label>
+        <label><input type="radio" name="person" value="5"><span><bdi lang="hi">आप</bdi> āp</span></label>
+        <label><input type="radio" name="person" value="6"><span><bdi lang="hi">वे</bdi> ve</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense (English / Hindi)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (बोलना bolnā)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present Habitual (<span lang="hi">सामान्य वर्तमान</span>)</td>
+            <td>Stem + <span lang="hi">ता / ते / ती</span> (tā / te / tī) + the present of <span lang="hi">होना</span>: <span lang="hi">हूँ</span> (<span lang="hi">मैं</span>), <span lang="hi">है</span> (<span lang="hi">तू</span>, <span lang="hi">वह</span>), <span lang="hi">हैं</span> (<span lang="hi">हम</span>, <span lang="hi">आप</span>, <span lang="hi">वे</span>), <span lang="hi">हो</span> (<span lang="hi">तुम</span>)</td>
+            <td class="example" lang="hi" data-tense="pres"><span class="word">बोलता हूँ / बोलती हूँ</span><span class="reading">boltā hūṁ / boltī hūṁ</span></td>
+            <td>Habits, routines and general facts ("I speak Hindi every day"); also states such as <span lang="hi">जानता हूँ</span> "I know". For what is happening right now, the continuous is more usual.</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present Continuous (<span lang="hi">अपूर्ण वर्तमान</span>)</td>
+            <td>Stem + <span lang="hi">रहा / रहे / रही</span> (rahā / rahe / rahī) + the present of <span lang="hi">होना</span> (<span lang="hi">हूँ / है / हैं / हो</span>)</td>
+            <td class="example" lang="hi" data-tense="presCont"><span class="word">बोल रहा हूँ / बोल रही हूँ</span><span class="reading">bol rahā hūṁ / bol rahī hūṁ</span></td>
+            <td>Actions in progress now ("I am speaking"); also something about to happen ("I'm coming")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Simple Past (<span lang="hi">सामान्य भूतकाल</span>)</td>
+            <td>Stem + ā / e / ī / īṁ, agreeing with the subject: <span lang="hi">बोला</span>, <span lang="hi">बोले</span>, <span lang="hi">बोली</span>, <span lang="hi">बोलीं</span> (masculine singular, masculine plural, feminine singular, feminine plural); after a vowel ā becomes yā (<span lang="hi">खाया</span>). Irregular: <span lang="hi">किया</span>, <span lang="hi">गया</span>, <span lang="hi">हुआ</span>, <span lang="hi">दिया</span>, <span lang="hi">लिया</span><br>With <span lang="hi">ने</span>: subject + <span lang="hi">ने</span> + the participle agreeing with the object (shown masculine singular, or feminine or plural when the object noun in the entry is)</td>
+            <td class="example" lang="hi" data-tense="past"><span class="word">ने बोला</span><span class="reading">ne bolā</span></td>
+            <td>Completed actions in the past ("I spoke", "he went")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Habitual (<span lang="hi">आभ्यासिक भूत</span>)</td>
+            <td>Stem + <span lang="hi">ता / ते / ती</span> + <span lang="hi">था / थे / थी / थीं</span> (thā / the / thī / thīṁ)</td>
+            <td class="example" lang="hi" data-tense="pastHab"><span class="word">बोलता था / बोलती थी</span><span class="reading">boltā thā / boltī thī</span></td>
+            <td>Habits and repeated actions in the past ("used to speak"); also states that lasted for a time</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Continuous (<span lang="hi">अपूर्ण भूत</span>)</td>
+            <td>Stem + <span lang="hi">रहा / रहे / रही</span> + <span lang="hi">था / थे / थी / थीं</span></td>
+            <td class="example" lang="hi" data-tense="pastCont"><span class="word">बोल रहा था / बोल रही थी</span><span class="reading">bol rahā thā / bol rahī thī</span></td>
+            <td>An action in progress at a moment in the past ("I was speaking")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present Perfect (<span lang="hi">आसन्न भूत</span>)</td>
+            <td>Past participle (as in the simple past) + <span lang="hi">हूँ / है / हैं / हो</span><br>With <span lang="hi">ने</span>: subject + <span lang="hi">ने</span> + participle + <span lang="hi">है</span></td>
+            <td class="example" lang="hi" data-tense="presPerf"><span class="word">ने बोला है</span><span class="reading">ne bolā hai</span></td>
+            <td>A past action that has just happened or whose result still holds ("I have spoken")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Perfect (<span lang="hi">पूर्ण भूत</span>)</td>
+            <td>Past participle + <span lang="hi">था / थे / थी / थीं</span><br>With <span lang="hi">ने</span>: subject + <span lang="hi">ने</span> + participle + <span lang="hi">था</span> (<span lang="hi">थी</span> with a feminine object)</td>
+            <td class="example" lang="hi" data-tense="pastPerf"><span class="word">ने बोला था</span><span class="reading">ne bolā thā</span></td>
+            <td>An action completed before another moment in the past, or long ago ("I had spoken")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (<span lang="hi">सामान्य भविष्यत्</span>)</td>
+            <td>Present subjunctive + <span lang="hi">गा / गे / गी</span> (gā / ge / gī): masculine singular, masculine plural, feminine</td>
+            <td class="example" lang="hi" data-tense="fut"><span class="word">बोलूँगा / बोलूँगी</span><span class="reading">bolūṁgā / bolūṁgī</span></td>
+            <td>Plans, predictions and promises ("I will speak"); also a guess about the present (<span lang="hi">वह घर पर होगा</span> "he must be at home")</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Subjunctive (<span lang="hi">संभावनार्थ</span>)</td>
+            <td>Stem + ūṁ (<span lang="hi">मैं</span>), e (<span lang="hi">तू</span>, <span lang="hi">वह</span>), eṁ (<span lang="hi">हम</span>, <span lang="hi">आप</span>, <span lang="hi">वे</span>), o (<span lang="hi">तुम</span>): <span lang="hi">बोलूँ</span>, <span lang="hi">बोले</span>, <span lang="hi">बोलें</span>, <span lang="hi">बोलो</span>; no gender</td>
+            <td class="example" lang="hi" data-tense="subj"><span class="word">बोलूँ</span><span class="reading">bolūṁ</span></td>
+            <td>Wishes, suggestions, possibility and purpose; offers and questions such as "Shall I speak?"</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Imperative (<span lang="hi">आज्ञा</span>)</td>
+            <td><span lang="hi">तू</span>: the stem (<span lang="hi">बोल</span>). <span lang="hi">तुम</span>: stem + o (<span lang="hi">बोलो</span>). <span lang="hi">आप</span>: stem + iye (<span lang="hi">बोलिए</span>; irregular <span lang="hi">कीजिए</span>, <span lang="hi">दीजिए</span>, <span lang="hi">लीजिए</span>, <span lang="hi">पीजिए</span>). <span lang="hi">हम</span>: the subjunctive, "let us" (<span lang="hi">बोलें</span>)</td>
+            <td class="example na" lang="hi" title="This verb has no such form for this person." data-tense="imp"><span>—</span></td>
+            <td>Commands, requests and invitations: <span lang="hi">तू</span> is blunt or intimate, <span lang="hi">तुम</span> familiar, <span lang="hi">आप</span> polite; <span lang="hi">हम</span> means "let us"</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Negative Imperative (<span lang="hi">निषेध</span>)</td>
+            <td><span lang="hi">मत</span> (mat) + the imperative of <span lang="hi">तू</span>, <span lang="hi">तुम</span> or <span lang="hi">आप</span>; no <span lang="hi">हम</span> form. In a compound verb <span lang="hi">मत</span> stands before the last word</td>
+            <td class="example na" lang="hi" title="This verb has no such form for this person." data-tense="impNeg"><span>—</span></td>
+            <td>Telling someone not to do something ("Don't speak"); the negative of the imperative is <span lang="hi">मत</span>, not <span lang="hi">नहीं</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show 8 more tenses</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="patterns.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

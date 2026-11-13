@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portuguese Verb Tenses</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="portuguese.css">
+</head>
+<body>
+  <main>
+    <h1>Portuguese Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb to see its Portuguese translation and every conjugation in the table.</p>
+    <p class="hint">This page shows Brazilian Portuguese with the 1990 spelling. The <span lang="pt">tu</span> and <span lang="pt">vós</span> forms are shown for completeness, but in everyday Brazilian speech <span lang="pt">você</span> replaces <span lang="pt">tu</span> (with the same verb form as <span lang="pt">ele</span> and <span lang="pt">ela</span>) and <span lang="pt">vós</span> is archaic. A dash (—) marks a form that does not exist: weather verbs such as <span lang="pt">chover</span> only have the <span lang="pt">ele / ela / você</span> form, and defective verbs such as <span lang="pt">abolir</span>, <span lang="pt">banir</span>, <span lang="pt">colorir</span>, <span lang="pt">demolir</span> and <span lang="pt">falir</span> lack the forms that traditional grammar leaves out (in speech many people do use some of them, for example <span lang="pt">eu coloro</span>).</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show conjugation for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span lang="pt">eu</span></label>
+        <label><input type="radio" name="person" value="1"><span lang="pt">tu</span></label>
+        <label><input type="radio" name="person" value="2"><span lang="pt">ele / ela / você</span></label>
+        <label><input type="radio" name="person" value="3"><span lang="pt">nós</span></label>
+        <label><input type="radio" name="person" value="4"><span lang="pt">vós</span></label>
+        <label><input type="radio" name="person" value="5"><span lang="pt">eles / elas / vocês</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense (English / Portuguese)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (Falar)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Indicative -->
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (Presente)</td>
+            <td>Simple</td>
+            <td class="example" lang="pt" data-tense="pres">falo</td>
+            <td>Current actions, habits, general truths</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Simple Past (Pretérito Perfeito)</td>
+            <td>Simple</td>
+            <td class="example" lang="pt" data-tense="pret">falei</td>
+            <td>Completed past actions with a clear start/end</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Imperfect (Pretérito Imperfeito)</td>
+            <td>Simple</td>
+            <td class="example" lang="pt" data-tense="imperf">falava</td>
+            <td>Habits and descriptions in the past; ongoing past actions</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Pluperfect (Pretérito Mais-que-perfeito)</td>
+            <td>Simple</td>
+            <td class="example" lang="pt" data-tense="mqp">falara</td>
+            <td>Literary; an action completed before another past action (the compound form, <span lang="pt">tinha falado</span>, is the everyday one)</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (Futuro do Presente)</td>
+            <td>Simple</td>
+            <td class="example" lang="pt" data-tense="fut">falarei</td>
+            <td>Actions that will happen later (in speech, <span lang="pt">ir</span> + infinitive is more common: <span lang="pt">vou falar</span>)</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Conditional (Futuro do Pretérito)</td>
+            <td>Simple</td>
+            <td class="example" lang="pt" data-tense="cond">falaria</td>
+            <td>Hypothetical actions ("would" do something), polite requests</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present Perfect (Pretérito Perfeito Composto)</td>
+            <td><span lang="pt">ter</span> (pres.) + participle</td>
+            <td class="example" lang="pt" data-tense="perfComp">tenho falado</td>
+            <td>Actions that repeat or continue up to now (<span lang="pt">tenho falado</span> is "I have been speaking"), not one finished event</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Perfect (Pretérito Mais-que-perfeito Composto)</td>
+            <td><span lang="pt">ter</span> (imp.) + participle</td>
+            <td class="example" lang="pt" data-tense="mqpComp">tinha falado</td>
+            <td>The everyday way to say an action was completed before another past action</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future Perfect (Futuro do Presente Composto)</td>
+            <td><span lang="pt">ter</span> (fut.) + participle</td>
+            <td class="example" lang="pt" data-tense="futComp">terei falado</td>
+            <td>Actions that will be finished by a future point</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Conditional Perfect (Futuro do Pretérito Composto)</td>
+            <td><span lang="pt">ter</span> (cond.) + participle</td>
+            <td class="example" lang="pt" data-tense="condComp">teria falado</td>
+            <td>Hypothetical past actions ("would have" done)</td>
+          </tr>
+
+          <!-- Subjunctive -->
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Present Subjunctive (Presente do Subjuntivo)</td>
+            <td>Simple</td>
+            <td class="example" lang="pt" data-tense="subjPres">fale</td>
+            <td>Wishes, doubts or emotions about the present or future (often after <span lang="pt">que</span>)</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Imperfect Subjunctive (Pretérito Imperfeito do Subjuntivo)</td>
+            <td>Simple</td>
+            <td class="example" lang="pt" data-tense="subjImperf">falasse</td>
+            <td>Past wishes and doubts, unlikely hypotheticals ("If I were...")</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Future Subjunctive (Futuro do Subjuntivo)</td>
+            <td>Simple</td>
+            <td class="example" lang="pt" data-tense="subjFut">falar</td>
+            <td>Future events after <span lang="pt">se</span>, <span lang="pt">quando</span>, <span lang="pt">assim que</span> ("if you speak", "when you speak")</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Perfect Subjunctive (Pretérito Perfeito do Subjuntivo)</td>
+            <td><span lang="pt">ter</span> (pres. subj.) + participle</td>
+            <td class="example" lang="pt" data-tense="subjPerf">tenha falado</td>
+            <td>Doubt or emotion about a completed action ("I hope you have...")</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Pluperfect Subjunctive (Pretérito Mais-que-perfeito do Subjuntivo)</td>
+            <td><span lang="pt">ter</span> (imp. subj.) + participle</td>
+            <td class="example" lang="pt" data-tense="subjMqp">tivesse falado</td>
+            <td>Past regrets or impossible past conditions ("If I had...")</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Future Perfect Subjunctive (Futuro Composto do Subjuntivo)</td>
+            <td><span lang="pt">ter</span> (fut. subj.) + participle</td>
+            <td class="example" lang="pt" data-tense="subjFutComp">tiver falado</td>
+            <td>An action that will be finished before another future point, after <span lang="pt">se</span>, <span lang="pt">quando</span>, <span lang="pt">assim que</span></td>
+          </tr>
+
+          <!-- Imperative -->
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Imperative (Imperativo Afirmativo)</td>
+            <td>Simple (<span lang="pt">você</span>, <span lang="pt">nós</span> and <span lang="pt">vocês</span> use subj. forms)</td>
+            <td class="example" lang="pt" data-tense="impAff">fala (tu)</td>
+            <td>Telling someone to do something</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Negative Imperative (Imperativo Negativo)</td>
+            <td><span lang="pt">não</span> + present subjunctive</td>
+            <td class="example" lang="pt" data-tense="impNeg">não fales (tu)</td>
+            <td>Telling someone not to do something</td>
+          </tr>
+
+          <!-- Infinitive -->
+          <tr class="subjunctive">
+            <td class="mood">Infinitive</td>
+            <td>Personal Infinitive (Infinitivo Pessoal)</td>
+            <td>Simple (infinitive + <span lang="pt">-es</span>, <span lang="pt">-mos</span>, <span lang="pt">-des</span>, <span lang="pt">-em</span>)</td>
+            <td class="example" lang="pt" data-tense="infPess">falar</td>
+            <td>An infinitive that agrees with its subject, e.g. <span lang="pt">para falares</span> ("for you to speak")</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show 16 more tenses</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="conjugate.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

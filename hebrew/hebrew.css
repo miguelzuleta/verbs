@@ -1,0 +1,8 @@
+/* Hebrew script. Everything marked lang="he" (the translation, its buttons, the table cells'
+   <bdi> runs) gets a Hebrew-capable font. */
+:lang(he) {
+  font-family: "Arial Hebrew", "Noto Sans Hebrew", "Arial", system-ui, sans-serif;
+}
+
+/* Hebrew looks small next to Latin at the same size */
+bdi[lang="he"] { font-size: 1.1em; }

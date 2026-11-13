@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Russian Verb Tenses</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="../shared/reading.css">
+</head>
+<body>
+  <main>
+    <h1>Russian Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb to see its Russian translation and every conjugation in the table.</p>
+    <p class="hint">Every Russian verb has an aspect: imperfective (the process of an action, or its repetition) or perfective (a completed result). Most English verbs have one of each, so look at the translation buttons, each marked (impf.) or (pf.). A perfective verb has no present tense (its cells show —) and its simple future uses the present endings. The past tense changes with gender (masculine / feminine / neuter) and number, so those forms are shown together. The stress mark appears on the headword only. Negative imperatives are normally imperfective.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show conjugation for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span lang="ru">я</span></label>
+        <label><input type="radio" name="person" value="1"><span lang="ru">ты</span></label>
+        <label><input type="radio" name="person" value="2"><span lang="ru">он / она / оно</span></label>
+        <label><input type="radio" name="person" value="3"><span lang="ru">мы</span></label>
+        <label><input type="radio" name="person" value="4"><span lang="ru">вы</span></label>
+        <label><input type="radio" name="person" value="5"><span lang="ru">они</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense (English / Russian)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (говори́ть, impf.)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (<span lang="ru">Настоящее время</span>)</td>
+            <td>Present stem + personal endings (<span lang="ru">-у/-ю, -ешь/-ёшь/-ишь, -ет/-ёт/-ит, -ем/-ём/-им, -ете/-ёте/-ите, -ут/-ют/-ат/-ят</span>). Imperfective verbs only</td>
+            <td class="example" lang="ru" data-tense="pres">говорю</td>
+            <td>Actions happening now, habits, general truths. A perfective verb has no present tense</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past (<span lang="ru">Прошедшее время</span>)</td>
+            <td>Infinitive stem + <span lang="ru">-л</span> (masculine), <span lang="ru">-ла</span> (feminine), <span lang="ru">-ло</span> (neuter), <span lang="ru">-ли</span> (plural)</td>
+            <td class="example" lang="ru" data-tense="past">говорил / говорила</td>
+            <td>Past actions; imperfective: the process or a repeated action, perfective: a completed result. The verb agrees with the subject in gender and number</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (<span lang="ru">Будущее время</span>)</td>
+            <td>Imperfective: <span lang="ru">буду, будешь, будет, будем, будете, будут</span> + infinitive. Perfective: the present endings on the perfective verb</td>
+            <td class="example" lang="ru" data-tense="fut">буду говорить</td>
+            <td>Actions that will happen; imperfective: ongoing or repeated, perfective: a single completed action</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Conditional (<span lang="ru">Условное наклонение</span>)</td>
+            <td>Past tense + <span lang="ru">бы</span></td>
+            <td class="example" lang="ru" data-tense="cond">говорил бы / говорила бы</td>
+            <td>Hypothetical actions ("would do"), wishes, polite requests</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Imperative (<span lang="ru">Повелительное наклонение</span>)</td>
+            <td><span lang="ru">ты</span>: stem + <span lang="ru">-и</span>, <span lang="ru">-й</span> or <span lang="ru">-ь</span>; <span lang="ru">вы</span>: <span lang="ru">ты</span> form + <span lang="ru">-те</span>; <span lang="ru">мы</span>: <span lang="ru">давайте</span> + infinitive (imperfective) or the <span lang="ru">мы</span> form (perfective)</td>
+            <td class="example" lang="ru" data-tense="imp">говори (ты)</td>
+            <td>Telling someone to do something; <span lang="ru">давайте</span> means "let's". Only <span lang="ru">ты</span>, <span lang="ru">мы</span> and <span lang="ru">вы</span> have an imperative, so the other pills show the <span lang="ru">ты</span> or <span lang="ru">вы</span> form</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Negative Imperative (<span lang="ru">Отрицательное повелительное</span>)</td>
+            <td><span lang="ru">не</span> + imperative; <span lang="ru">мы</span>: <span lang="ru">давайте не</span> + infinitive. Imperfective verbs only</td>
+            <td class="example" lang="ru" data-tense="impNeg">не говори (ты)</td>
+            <td>Telling someone not to do something. Normally imperfective, so a perfective verb shows —</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Verbal forms</td>
+            <td>Gerund (<span lang="ru">Деепричастие</span>)</td>
+            <td>Imperfective: present stem + <span lang="ru">-я</span> (<span lang="ru">-а</span> after <span lang="ru">ж, ч, ш, щ</span>). Perfective: past stem + <span lang="ru">-в</span> (<span lang="ru">-вшись</span> for <span lang="ru">-ся</span> verbs); some verbs take <span lang="ru">-я</span></td>
+            <td class="example" lang="ru" data-tense="ger">говоря</td>
+            <td>An action that accompanies the main verb ("while speaking", "having spoken"). Does not change for person, number or gender</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Verbal forms</td>
+            <td>Active Participle (<span lang="ru">Причастие</span>)</td>
+            <td>Imperfective: 3rd person plural without <span lang="ru">-т</span> + <span lang="ru">-щий</span>. Perfective: past stem + <span lang="ru">-вший</span> (<span lang="ru">-ший</span> after a consonant). <span lang="ru">-ся</span> verbs end in <span lang="ru">-щийся</span> / <span lang="ru">-вшийся</span></td>
+            <td class="example" lang="ru" data-tense="part">говорящий</td>
+            <td>Describes a noun by what it does ("the person who is speaking", "who has spoken"). Agrees with the noun like an adjective; the masculine singular is shown</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show 5 more tenses</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="conjugate.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
