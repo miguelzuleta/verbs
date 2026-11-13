@@ -1,0 +1,14 @@
+/* extra row groups */
+tr.negation { background: #fbeaea; }
+tr.modality { background: #f0eafa; }
+tr.question { background: #e3f4f4; }
+
+/* Chinese text: characters on top, pinyin underneath */
+.zh, td.example, .chip, .persons span, .translation strong {
+  font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+}
+td.example .zh { display: block; font-size: 1.1rem; }
+td.example .py { display: block; font-size: 0.8rem; font-weight: 400; color: var(--muted); }
+td.example.na { color: var(--muted); font-weight: 400; }
+.translation .pinyin { margin-left: 0.6rem; font-size: 0.95rem; color: var(--muted); }
+.hint { margin: 0 0 1rem; font-size: 0.9rem; color: var(--muted); }

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Traditional Chinese Verb Patterns</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="chinese.css">
+</head>
+<body>
+  <main>
+    <h1>Traditional Chinese Verb Patterns</h1>
+    <p class="subtitle">Look up an English verb to see its Traditional Chinese translation (Mandarin, Taiwan) and how to express each tense, aspect and mood with it.</p>
+    <p class="hint">Chinese verbs never change form. The person only changes the pronoun, and tense comes from words like <span lang="zh-Hant">了</span>, <span lang="zh-Hant">過</span> and <span lang="zh-Hant">會</span> placed around the verb.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show sentences for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span lang="zh-Hant">我 wǒ</span></label>
+        <label><input type="radio" name="person" value="1"><span lang="zh-Hant">你 nǐ</span></label>
+        <label><input type="radio" name="person" value="2"><span lang="zh-Hant">他 / 她 tā</span></label>
+        <label><input type="radio" name="person" value="3"><span lang="zh-Hant">我們 wǒmen</span></label>
+        <label><input type="radio" name="person" value="4"><span lang="zh-Hant">你們 nǐmen</span></label>
+        <label><input type="radio" name="person" value="5"><span lang="zh-Hant">他們 / 她們 tāmen</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Pattern (English / Chinese)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (說 shuō)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Indicative -->
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present / Habitual (現在)</td>
+            <td lang="zh-Hant">Subject + verb</td>
+            <td class="example" lang="zh-Hant" data-tense="pres"><span class="zh">我說</span><span class="py" lang="zh-Latn-pinyin">wǒ shuō</span></td>
+            <td>Current actions, habits, general truths</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present Progressive (正在)</td>
+            <td lang="zh-Hant">正在 + verb</td>
+            <td class="example" lang="zh-Hant" data-tense="prog"><span class="zh">我正在說</span><span class="py" lang="zh-Latn-pinyin">wǒ zhèngzài shuō</span></td>
+            <td>Actions happening right now</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Completed (了)</td>
+            <td lang="zh-Hant">verb + 了</td>
+            <td class="example" lang="zh-Hant" data-tense="completed"><span class="zh">我說了</span><span class="py" lang="zh-Latn-pinyin">wǒ shuōle</span></td>
+            <td>Completed actions; also a new situation</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Experiential (過)</td>
+            <td lang="zh-Hant">verb + 過</td>
+            <td class="example" lang="zh-Hant" data-tense="exper"><span class="zh">我說過</span><span class="py" lang="zh-Latn-pinyin">wǒ shuōguo</span></td>
+            <td>Having done something at least once in life</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Already Done (已經…了)</td>
+            <td lang="zh-Hant">已經 + verb + 了</td>
+            <td class="example" lang="zh-Hant" data-tense="perfect"><span class="zh">我已經說了</span><span class="py" lang="zh-Latn-pinyin">wǒ yǐjīng shuōle</span></td>
+            <td>Already finished by now</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Just Now (剛才)</td>
+            <td lang="zh-Hant">剛才 + verb + 了</td>
+            <td class="example" lang="zh-Hant" data-tense="recent"><span class="zh">我剛才說了</span><span class="py" lang="zh-Latn-pinyin">wǒ gāngcái shuōle</span></td>
+            <td>Something that happened a moment ago</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Progressive (當時正在)</td>
+            <td lang="zh-Hant">當時 + 正在 + verb</td>
+            <td class="example" lang="zh-Hant" data-tense="pastprog"><span class="zh">我當時正在說</span><span class="py" lang="zh-Latn-pinyin">wǒ dāngshí zhèngzài shuō</span></td>
+            <td>An action in progress at a past moment</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Perfect (之前已經…過了)</td>
+            <td lang="zh-Hant">之前已經 + verb + 過了</td>
+            <td class="example" lang="zh-Hant" data-tense="pluperf"><span class="zh">我之前已經說過了</span><span class="py" lang="zh-Latn-pinyin">wǒ zhīqián yǐjīng shuōguo le</span></td>
+            <td>An action completed before another past point</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (會)</td>
+            <td lang="zh-Hant">會 + verb</td>
+            <td class="example" lang="zh-Hant" data-tense="fut"><span class="zh">我會說</span><span class="py" lang="zh-Latn-pinyin">wǒ huì shuō</span></td>
+            <td>Actions that will happen later</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Near Future (快要…了)</td>
+            <td lang="zh-Hant">快要 + verb + 了</td>
+            <td class="example" lang="zh-Hant" data-tense="nearfut"><span class="zh">我快要說了</span><span class="py" lang="zh-Latn-pinyin">wǒ kuàiyào shuōle</span></td>
+            <td>About to happen</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future Perfect (到時候已經…了)</td>
+            <td lang="zh-Hant">到時候 + 已經 + verb + 了</td>
+            <td class="example" lang="zh-Hant" data-tense="futperf"><span class="zh">到時候我已經說了</span><span class="py" lang="zh-Latn-pinyin">dào shíhòu wǒ yǐjīng shuōle</span></td>
+            <td>Actions finished by a future point</td>
+          </tr>
+          <!-- Hypothetical -->
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Conditional (如果…就會)</td>
+            <td lang="zh-Hant">如果…，就會 + verb</td>
+            <td class="example" lang="zh-Hant" data-tense="cond"><span class="zh">如果……，我就會說</span><span class="py" lang="zh-Latn-pinyin">rúguǒ…, wǒ jiù huì shuō</span></td>
+            <td>What "would" happen if a condition held</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Conditional Perfect (如果當時…就會…了)</td>
+            <td lang="zh-Hant">如果當時…，就會 + verb + 了</td>
+            <td class="example" lang="zh-Hant" data-tense="condperf"><span class="zh">如果當時……，我就會說了</span><span class="py" lang="zh-Latn-pinyin">rúguǒ dāngshí…, wǒ jiù huì shuōle</span></td>
+            <td>What "would have" happened</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Hypothetical (如果…的話)</td>
+            <td lang="zh-Hant">如果 + subject + verb + 的話</td>
+            <td class="example" lang="zh-Hant" data-tense="hyp"><span class="zh">如果我說的話</span><span class="py" lang="zh-Latn-pinyin">rúguǒ wǒ shuō dehuà</span></td>
+            <td>"If I say / If I said..."</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Counterfactual Past (要是當時…了)</td>
+            <td lang="zh-Hant">要是 + subject + 當時 + verb + 了</td>
+            <td class="example" lang="zh-Hant" data-tense="hypperf"><span class="zh">要是我當時說了</span><span class="py" lang="zh-Latn-pinyin">yàoshi wǒ dāngshí shuōle</span></td>
+            <td>Past regrets or impossible conditions ("If I had...")</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Wish / Hope (希望)</td>
+            <td lang="zh-Hant">希望 + subject + verb</td>
+            <td class="example" lang="zh-Hant" data-tense="wish"><span class="zh">希望我說</span><span class="py" lang="zh-Latn-pinyin">xīwàng wǒ shuō</span></td>
+            <td>Wishes and hopes</td>
+          </tr>
+          <!-- Imperative -->
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Affirmative Imperative (祈使)</td>
+            <td lang="zh-Hant">verb！ / 讓 + subject + verb</td>
+            <td class="example" lang="zh-Hant" data-tense="impAff"><span class="zh">讓我說</span><span class="py" lang="zh-Latn-pinyin">ràng wǒ shuō</span></td>
+            <td>Telling someone to do something</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Negative Imperative (別)</td>
+            <td lang="zh-Hant">別 + verb！</td>
+            <td class="example" lang="zh-Hant" data-tense="impNeg"><span class="zh">別讓我說</span><span class="py" lang="zh-Latn-pinyin">bié ràng wǒ shuō</span></td>
+            <td>Telling someone not to do something</td>
+          </tr>
+          <!-- Negation -->
+          <tr class="negation">
+            <td class="mood">Negation</td>
+            <td>Not (不)</td>
+            <td lang="zh-Hant">不 + verb</td>
+            <td class="example" lang="zh-Hant" data-tense="negPres"><span class="zh">我不說</span><span class="py" lang="zh-Latn-pinyin">wǒ bù shuō</span></td>
+            <td>Habitual, present or future negation</td>
+          </tr>
+          <tr class="negation">
+            <td class="mood">Negation</td>
+            <td>Did Not (沒)</td>
+            <td lang="zh-Hant">沒 + verb</td>
+            <td class="example" lang="zh-Hant" data-tense="negPast"><span class="zh">我沒說</span><span class="py" lang="zh-Latn-pinyin">wǒ méi shuō</span></td>
+            <td>Past or completed negation</td>
+          </tr>
+          <tr class="negation">
+            <td class="mood">Negation</td>
+            <td>Never (沒…過)</td>
+            <td lang="zh-Hant">沒 + verb + 過</td>
+            <td class="example" lang="zh-Hant" data-tense="negExper"><span class="zh">我沒說過</span><span class="py" lang="zh-Latn-pinyin">wǒ méi shuōguo</span></td>
+            <td>Have never done something</td>
+          </tr>
+          <!-- Modality -->
+          <tr class="modality">
+            <td class="mood">Modality</td>
+            <td>Can / Able To (能)</td>
+            <td lang="zh-Hant">能 + verb</td>
+            <td class="example" lang="zh-Hant" data-tense="can"><span class="zh">我能說</span><span class="py" lang="zh-Latn-pinyin">wǒ néng shuō</span></td>
+            <td>Ability or possibility</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Modality</td>
+            <td>Should (應該)</td>
+            <td lang="zh-Hant">應該 + verb</td>
+            <td class="example" lang="zh-Hant" data-tense="should"><span class="zh">我應該說</span><span class="py" lang="zh-Latn-pinyin">wǒ yīnggāi shuō</span></td>
+            <td>Obligation or advice</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Modality</td>
+            <td>Want To (想)</td>
+            <td lang="zh-Hant">想 + verb</td>
+            <td class="example" lang="zh-Hant" data-tense="want"><span class="zh">我想說</span><span class="py" lang="zh-Latn-pinyin">wǒ xiǎng shuō</span></td>
+            <td>Desire or intention</td>
+          </tr>
+          <!-- Question -->
+          <tr class="question">
+            <td class="mood">Question</td>
+            <td>Yes/No Question (嗎)</td>
+            <td lang="zh-Hant">subject + verb + 嗎？</td>
+            <td class="example" lang="zh-Hant" data-tense="qMa"><span class="zh">我說嗎？</span><span class="py" lang="zh-Latn-pinyin">wǒ shuō ma?</span></td>
+            <td>Asking a yes/no question</td>
+          </tr>
+          <tr class="question">
+            <td class="mood">Question</td>
+            <td>A-not-A Question (V不V)</td>
+            <td lang="zh-Hant">verb + 不 + verb</td>
+            <td class="example" lang="zh-Hant" data-tense="qAnotA"><span class="zh">我說不說？</span><span class="py" lang="zh-Latn-pinyin">wǒ shuō bu shuō?</span></td>
+            <td>Asking whether someone does or not</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show more patterns</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="patterns.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

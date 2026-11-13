@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spanish Verb Tenses</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+  <main>
+    <h1>Spanish Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb to see its Spanish translation and every conjugation in the table.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show conjugation for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span lang="es">yo</span></label>
+        <label><input type="radio" name="person" value="1"><span lang="es">tú</span></label>
+        <label><input type="radio" name="person" value="2"><span lang="es">él / ella / usted</span></label>
+        <label><input type="radio" name="person" value="3"><span lang="es">nosotros</span></label>
+        <!-- vosotros is hidden for now; remove the hidden attribute to bring it back -->
+        <label hidden><input type="radio" name="person" value="4"><span lang="es">vosotros</span></label>
+        <label><input type="radio" name="person" value="5"><span lang="es">ellos / ellas / ustedes</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense (English / Spanish)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (Hablar)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Indicative -->
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (Presente)</td>
+            <td>Simple</td>
+            <td class="example" lang="es" data-tense="pres">hablo</td>
+            <td>Current actions, habits, general truths</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Preterite (Pretérito indefinido)</td>
+            <td>Simple</td>
+            <td class="example" lang="es" data-tense="pret">hablé</td>
+            <td>Completed past actions with a clear start/end</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Imperfect (Pretérito imperfecto)</td>
+            <td>Simple</td>
+            <td class="example" lang="es" data-tense="imperf">hablaba</td>
+            <td>Ongoing/habitual past actions, descriptions</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (Futuro simple)</td>
+            <td>Simple</td>
+            <td class="example" lang="es" data-tense="fut">hablaré</td>
+            <td>Actions that will happen later</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Conditional (Condicional simple)</td>
+            <td>Simple</td>
+            <td class="example" lang="es" data-tense="cond">hablaría</td>
+            <td>Hypothetical actions ("would" do something)</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present Perfect (Pretérito perfecto)</td>
+            <td><span lang="es">haber</span> (pres.) + participle</td>
+            <td class="example" lang="es" data-tense="presPerf">he hablado</td>
+            <td>Past actions connected to the present</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Perfect (Pluscuamperfecto)</td>
+            <td><span lang="es">haber</span> (imp.) + participle</td>
+            <td class="example" lang="es" data-tense="pastPerf">había hablado</td>
+            <td>An action completed before another past action</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Preterite Anterior (Pretérito anterior)</td>
+            <td><span lang="es">haber</span> (pret.) + participle</td>
+            <td class="example" lang="es" data-tense="pretAnt">hube hablado</td>
+            <td>Archaic/literary; actions immediately before another past event</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future Perfect (Futuro compuesto)</td>
+            <td><span lang="es">haber</span> (fut.) + participle</td>
+            <td class="example" lang="es" data-tense="futPerf">habré hablado</td>
+            <td>Actions that will be finished by a future point</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Conditional Perfect (Condicional compuesto)</td>
+            <td><span lang="es">haber</span> (cond.) + participle</td>
+            <td class="example" lang="es" data-tense="condPerf">habría hablado</td>
+            <td>Hypothetical past actions ("would have" done)</td>
+          </tr>
+
+          <!-- Subjunctive -->
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Present Subjunctive (Presente)</td>
+            <td>Simple</td>
+            <td class="example" lang="es" data-tense="subjPres">hable</td>
+            <td>Current or future wishes, doubts, or emotions</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Imperfect Subjunctive (Imperfecto)</td>
+            <td>Simple</td>
+            <td class="example" lang="es" data-tense="subjImperf">hablara / hablase</td>
+            <td>Past doubts/wishes, unlikely hypotheticals ("If I were...")</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Future Subjunctive (Futuro)</td>
+            <td>Simple</td>
+            <td class="example" lang="es" data-tense="subjFut">hablare</td>
+            <td>Obsolete; found only in old literature and legal texts</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Present Perfect Subjunctive (Pretérito perfecto)</td>
+            <td><span lang="es">haber</span> (pres. subj.) + participle</td>
+            <td class="example" lang="es" data-tense="subjPresPerf">haya hablado</td>
+            <td>Doubt or emotion about a recently completed action</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Pluperfect Subjunctive (Pluscuamperfecto)</td>
+            <td><span lang="es">haber</span> (imp. subj.) + participle</td>
+            <td class="example" lang="es" data-tense="subjPluperf">hubiera hablado</td>
+            <td>Past regrets or impossible past conditions ("If I had...")</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Future Perfect Subjunctive (Futuro compuesto)</td>
+            <td><span lang="es">haber</span> (fut. subj.) + participle</td>
+            <td class="example" lang="es" data-tense="subjFutPerf">hubiere hablado</td>
+            <td>Obsolete; found only in archaic legal contexts</td>
+          </tr>
+
+          <!-- Imperative -->
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Affirmative Imperative (Imperativo afirmativo)</td>
+            <td>Simple</td>
+            <td class="example" lang="es" data-tense="impAff">habla (tú)</td>
+            <td>Telling someone to do something</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Negative Imperative (Imperativo negativo)</td>
+            <td>Simple (uses subj. forms)</td>
+            <td class="example" lang="es" data-tense="impNeg">no hables (tú)</td>
+            <td>Telling someone not to do something</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show more tenses</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="conjugate.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

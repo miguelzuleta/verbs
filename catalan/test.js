@@ -1,0 +1,432 @@
+// Run with: node test.js
+// Checks the conjugation engine against known paradigms, then runs every
+// Catalan verb in verbs.js through it to catch crashes and malformed output.
+const { conjugate } = require('./conjugate.js');
+const { VERBS } = require('./verbs.js');
+const { createReport, checkParadigms, checkInflectedDatabase } = require('../shared/test-kit.js');
+
+// verb -> { tense: 'jo, tu, ell, nosaltres, vosaltres, ells' }  (gerund / participle as plain strings)
+const EXPECTED = {
+  parlar: {
+    pres: 'parlo, parles, parla, parlem, parleu, parlen',
+    periphPast: 'vaig parlar, vas parlar, va parlar, vam parlar, vau parlar, van parlar',
+    presPerf: 'he parlat, has parlat, ha parlat, hem parlat, heu parlat, han parlat',
+    imperf: 'parlava, parlaves, parlava, parlàvem, parlàveu, parlaven',
+    pluperf: 'havia parlat, havies parlat, havia parlat, havíem parlat, havíeu parlat, havien parlat',
+    simple: 'parlí, parlares, parlà, parlàrem, parlàreu, parlaren',
+    pretAnt: 'haguí parlat, hagueres parlat, hagué parlat, haguérem parlat, haguéreu parlat, hagueren parlat',
+    pretAntPeriph: 'vaig haver parlat, vas haver parlat, va haver parlat, vam haver parlat, vau haver parlat, van haver parlat',
+    fut: 'parlaré, parlaràs, parlarà, parlarem, parlareu, parlaran',
+    futPerf: 'hauré parlat, hauràs parlat, haurà parlat, haurem parlat, haureu parlat, hauran parlat',
+    cond: 'parlaria, parlaries, parlaria, parlaríem, parlaríeu, parlarien',
+    condPerf: 'hauria parlat, hauries parlat, hauria parlat, hauríem parlat, hauríeu parlat, haurien parlat',
+    subjPres: 'parli, parlis, parli, parlem, parleu, parlin',
+    subjPresPerf: 'hagi parlat, hagis parlat, hagi parlat, hàgim parlat, hàgiu parlat, hagin parlat',
+    subjImperf: 'parlés, parlessis, parlés, parléssim, parléssiu, parlessin',
+    subjPluperf: 'hagués parlat, haguessis parlat, hagués parlat, haguéssim parlat, haguéssiu parlat, haguessin parlat',
+    impAff: 'parla, parla, parli, parlem, parleu, parlin',
+    impNeg: 'no parlis, no parlis, no parli, no parlem, no parleu, no parlin',
+    gerund: 'parlant', participle: 'parlat',
+  },
+  perdre: {
+    pres: 'perdo, perds, perd, perdem, perdeu, perden',
+    imperf: 'perdia, perdies, perdia, perdíem, perdíeu, perdien',
+    simple: 'perdí, perderes, perdé, perdérem, perdéreu, perderen',
+    fut: 'perdré, perdràs, perdrà, perdrem, perdreu, perdran',
+    cond: 'perdria, perdries, perdria, perdríem, perdríeu, perdrien',
+    subjPres: 'perdi, perdis, perdi, perdem, perdeu, perdin',
+    subjImperf: 'perdés, perdessis, perdés, perdéssim, perdéssiu, perdessin',
+    impAff: 'perd, perd, perdi, perdem, perdeu, perdin',
+    gerund: 'perdent', participle: 'perdut',
+  },
+  servir: {
+    pres: 'serveixo, serveixes, serveix, servim, serviu, serveixen',
+    imperf: 'servia, servies, servia, servíem, servíeu, servien',
+    simple: 'serví, servires, serví, servírem, servíreu, serviren',
+    fut: 'serviré, serviràs, servirà, servirem, servireu, serviran',
+    subjPres: 'serveixi, serveixis, serveixi, servim, serviu, serveixin',
+    subjImperf: 'servís, servissis, servís, servíssim, servíssiu, servissin',
+    impAff: 'serveix, serveix, serveixi, servim, serviu, serveixin',
+    gerund: 'servint', participle: 'servit',
+  },
+  dormir: {
+    pres: 'dormo, dorms, dorm, dormim, dormiu, dormen',
+    subjPres: 'dormi, dormis, dormi, dormim, dormiu, dormin',
+    impAff: 'dorm, dorm, dormi, dormim, dormiu, dormin',
+    participle: 'dormit',
+  },
+  ser: {
+    pres: 'sóc, ets, és, som, sou, són',
+    periphPast: 'vaig ser, vas ser, va ser, vam ser, vau ser, van ser',
+    presPerf: 'he estat, has estat, ha estat, hem estat, heu estat, han estat',
+    imperf: 'era, eres, era, érem, éreu, eren',
+    simple: 'fui, fores, fou, fórem, fóreu, foren',
+    fut: 'seré, seràs, serà, serem, sereu, seran',
+    subjPres: 'sigui, siguis, sigui, siguem, sigueu, siguin',
+    subjImperf: 'fos, fossis, fos, fóssim, fóssiu, fossin',
+    impAff: 'sigues, sigues, sigui, siguem, sigueu, siguin',
+    impNeg: 'no siguis, no siguis, no sigui, no siguem, no sigueu, no siguin',
+    gerund: 'sent', participle: 'estat',
+  },
+  estar: {
+    pres: 'estic, estàs, està, estem, esteu, estan',
+    imperf: 'estava, estaves, estava, estàvem, estàveu, estaven',
+    simple: 'estiguí, estigueres, estigué, estiguérem, estiguéreu, estigueren',
+    fut: 'estaré, estaràs, estarà, estarem, estareu, estaran',
+    subjPres: 'estigui, estiguis, estigui, estiguem, estigueu, estiguin',
+    subjImperf: 'estigués, estiguessis, estigués, estiguéssim, estiguéssiu, estiguessin',
+    impAff: 'estigues, estigues, estigui, estiguem, estigueu, estiguin',
+    gerund: 'estant', participle: 'estat',
+  },
+  anar: {
+    pres: 'vaig, vas, va, anem, aneu, van',
+    imperf: 'anava, anaves, anava, anàvem, anàveu, anaven',
+    fut: 'aniré, aniràs, anirà, anirem, anireu, aniran',
+    cond: 'aniria, aniries, aniria, aniríem, aniríeu, anirien',
+    subjPres: 'vagi, vagis, vagi, anem, aneu, vagin',
+    subjImperf: 'anés, anessis, anés, anéssim, anéssiu, anessin',
+    impAff: 'vés, vés, vagi, anem, aneu, vagin',
+    impNeg: 'no vagis, no vagis, no vagi, no anem, no aneu, no vagin',
+    gerund: 'anant', participle: 'anat',
+  },
+  haver: {
+    pres: 'he, has, ha, hem, heu, han',
+    imperf: 'havia, havies, havia, havíem, havíeu, havien',
+    simple: 'haguí, hagueres, hagué, haguérem, haguéreu, hagueren',
+    fut: 'hauré, hauràs, haurà, haurem, haureu, hauran',
+    cond: 'hauria, hauries, hauria, hauríem, hauríeu, haurien',
+    subjPres: 'hagi, hagis, hagi, hàgim, hàgiu, hagin',
+    subjImperf: 'hagués, haguessis, hagués, haguéssim, haguéssiu, haguessin',
+    gerund: 'havent', participle: 'hagut',
+  },
+  fer: {
+    pres: 'faig, fas, fa, fem, feu, fan',
+    imperf: 'feia, feies, feia, fèiem, fèieu, feien',
+    fut: 'faré, faràs, farà, farem, fareu, faran',
+    cond: 'faria, faries, faria, faríem, faríeu, farien',
+    subjPres: 'faci, facis, faci, fem, feu, facin',
+    subjImperf: 'fes, fessis, fes, féssim, féssiu, fessin',
+    impAff: 'fes, fes, faci, fem, feu, facin',
+    gerund: 'fent', participle: 'fet',
+  },
+  desfer: {
+    pres: 'desfaig, desfàs, desfà, desfem, desfeu, desfan',
+    impAff: 'desfés, desfés, desfaci, desfem, desfeu, desfacin',
+    participle: 'desfet',
+  },
+  satisfer: {
+    pres: 'satisfaig, satisfàs, satisfà, satisfem, satisfeu, satisfan',
+    participle: 'satisfet',
+  },
+  dir: {
+    pres: 'dic, dius, diu, diem, dieu, diuen',
+    imperf: 'deia, deies, deia, dèiem, dèieu, deien',
+    simple: 'diguí, digueres, digué, diguérem, diguéreu, digueren',
+    fut: 'diré, diràs, dirà, direm, direu, diran',
+    subjPres: 'digui, diguis, digui, diguem, digueu, diguin',
+    subjImperf: 'digués, diguessis, digués, diguéssim, diguéssiu, diguessin',
+    impAff: 'digues, digues, digui, diguem, digueu, diguin',
+    gerund: 'dient', participle: 'dit',
+  },
+  predir: {
+    pres: 'predic, predius, prediu, prediem, predieu, prediuen',
+    participle: 'predit',
+  },
+  tenir: {
+    pres: 'tinc, tens, té, tenim, teniu, tenen',
+    imperf: 'tenia, tenies, tenia, teníem, teníeu, tenien',
+    simple: 'tinguí, tingueres, tingué, tinguérem, tinguéreu, tingueren',
+    fut: 'tindré, tindràs, tindrà, tindrem, tindreu, tindran',
+    cond: 'tindria, tindries, tindria, tindríem, tindríeu, tindrien',
+    subjPres: 'tingui, tinguis, tingui, tinguem, tingueu, tinguin',
+    subjImperf: 'tingués, tinguessis, tingués, tinguéssim, tinguéssiu, tinguessin',
+    gerund: 'tenint', participle: 'tingut',
+  },
+  mantenir: {
+    pres: 'mantinc, mantens, manté, mantenim, manteniu, mantenen',
+    fut: 'mantindré, mantindràs, mantindrà, mantindrem, mantindreu, mantindran',
+    participle: 'mantingut',
+  },
+  venir: {
+    pres: 'vinc, véns, ve, venim, veniu, vénen',
+    fut: 'vindré, vindràs, vindrà, vindrem, vindreu, vindran',
+    subjPres: 'vingui, vinguis, vingui, vinguem, vingueu, vinguin',
+    impAff: 'vine, vine, vingui, vinguem, veniu, vinguin',
+    gerund: 'venint', participle: 'vingut',
+  },
+  convenir: {
+    pres: 'convinc, convens, convé, convenim, conveniu, convenen',
+    participle: 'convingut',
+  },
+  poder: {
+    pres: 'puc, pots, pot, podem, podeu, poden',
+    imperf: 'podia, podies, podia, podíem, podíeu, podien',
+    simple: 'poguí, pogueres, pogué, poguérem, poguéreu, pogueren',
+    fut: 'podré, podràs, podrà, podrem, podreu, podran',
+    subjPres: 'pugui, puguis, pugui, puguem, pugueu, puguin',
+    subjImperf: 'pogués, poguessis, pogués, poguéssim, poguéssiu, poguessin',
+    gerund: 'podent', participle: 'pogut',
+  },
+  voler: {
+    pres: 'vull, vols, vol, volem, voleu, volen',
+    simple: 'volguí, volgueres, volgué, volguérem, volguéreu, volgueren',
+    fut: 'voldré, voldràs, voldrà, voldrem, voldreu, voldran',
+    subjPres: 'vulgui, vulguis, vulgui, vulguem, vulgueu, vulguin',
+    gerund: 'volent', participle: 'volgut',
+  },
+  saber: {
+    pres: 'sé, saps, sap, sabem, sabeu, saben',
+    imperf: 'sabia, sabies, sabia, sabíem, sabíeu, sabien',
+    fut: 'sabré, sabràs, sabrà, sabrem, sabreu, sabran',
+    subjPres: 'sàpiga, sàpigues, sàpiga, sapiguem, sapigueu, sàpiguen',
+    gerund: 'sabent', participle: 'sabut',
+  },
+  veure: {
+    pres: 'veig, veus, veu, veiem, veieu, veuen',
+    imperf: 'veia, veies, veia, vèiem, vèieu, veien',
+    fut: 'veuré, veuràs, veurà, veurem, veureu, veuran',
+    subjPres: 'vegi, vegis, vegi, vegem, vegeu, vegin',
+    gerund: 'veient', participle: 'vist',
+  },
+  beure: {
+    pres: 'bec, beus, beu, bevem, beveu, beuen',
+    imperf: 'bevia, bevies, bevia, bevíem, bevíeu, bevien',
+    fut: 'beuré, beuràs, beurà, beurem, beureu, beuran',
+    subjPres: 'begui, beguis, begui, beguem, begueu, beguin',
+    subjImperf: 'begués, beguessis, begués, beguéssim, beguéssiu, beguessin',
+    gerund: 'bevent', participle: 'begut',
+  },
+  creure: {
+    pres: 'crec, creus, creu, creiem, creieu, creuen',
+    imperf: 'creia, creies, creia, crèiem, crèieu, creien',
+    subjPres: 'cregui, creguis, cregui, creguem, cregueu, creguin',
+    gerund: 'creient', participle: 'cregut',
+  },
+  viure: {
+    pres: 'visc, vius, viu, vivim, viviu, viuen',
+    imperf: 'vivia, vivies, vivia, vivíem, vivíeu, vivien',
+    fut: 'viuré, viuràs, viurà, viurem, viureu, viuran',
+    subjPres: 'visqui, visquis, visqui, visquem, visqueu, visquin',
+    gerund: 'vivint', participle: 'viscut',
+  },
+  escriure: {
+    pres: 'escric, escrius, escriu, escrivim, escriviu, escriuen',
+    imperf: 'escrivia, escrivies, escrivia, escrivíem, escrivíeu, escrivien',
+    fut: 'escriuré, escriuràs, escriurà, escriurem, escriureu, escriuran',
+    subjPres: 'escrigui, escriguis, escrigui, escriguem, escrigueu, escriguin',
+    gerund: 'escrivint', participle: 'escrit',
+  },
+  descriure: {
+    pres: 'descric, descrius, descriu, descrivim, descriviu, descriuen',
+    participle: 'descrit',
+  },
+  treure: {
+    pres: 'trec, treus, treu, traiem, traieu, treuen',
+    imperf: 'treia, treies, treia, trèiem, trèieu, treien',
+    subjPres: 'tregui, treguis, tregui, traguem, tragueu, treguin',
+    gerund: 'traient', participle: 'tret',
+  },
+  caure: {
+    pres: 'caic, caus, cau, caiem, caieu, cauen',
+    imperf: 'queia, queies, queia, quèiem, quèieu, queien',
+    subjPres: 'caigui, caiguis, caigui, caiguem, caigueu, caiguin',
+    participle: 'caigut',
+  },
+  moure: {
+    pres: 'moc, mous, mou, movem, moveu, mouen',
+    imperf: 'movia, movies, movia, movíem, movíeu, movien',
+    subjPres: 'mogui, moguis, mogui, moguem, mogueu, moguin',
+    participle: 'mogut',
+  },
+  riure: {
+    pres: 'ric, rius, riu, riem, rieu, riuen',
+    imperf: 'reia, reies, reia, rèiem, rèieu, reien',
+    subjPres: 'rigui, riguis, rigui, riguem, rigueu, riguin',
+    participle: 'rigut',
+  },
+  somriure: {
+    pres: 'somric, somrius, somriu, somriem, somrieu, somriuen',
+    imperf: 'somreia, somreies, somreia, somrèiem, somrèieu, somreien',
+    participle: 'somrigut',
+  },
+  conèixer: {
+    pres: 'conec, coneixes, coneix, coneixem, coneixeu, coneixen',
+    imperf: 'coneixia, coneixies, coneixia, coneixíem, coneixíeu, coneixien',
+    fut: 'coneixeré, coneixeràs, coneixerà, coneixerem, coneixereu, coneixeran',
+    subjPres: 'conegui, coneguis, conegui, coneguem, conegueu, coneguin',
+    gerund: 'coneixent', participle: 'conegut',
+  },
+  reconèixer: {
+    pres: 'reconec, reconeixes, reconeix, reconeixem, reconeixeu, reconeixen',
+    participle: 'reconegut',
+  },
+  aparèixer: {
+    pres: 'aparec, apareixes, apareix, apareixem, apareixeu, apareixen',
+    participle: 'aparegut',
+  },
+  créixer: {
+    pres: 'creixo, creixes, creix, creixem, creixeu, creixen',
+    participle: 'crescut',
+  },
+  néixer: {
+    pres: 'neixo, neixes, neix, neixem, neixeu, neixen',
+    participle: 'nascut',
+  },
+  córrer: {
+    pres: 'corro, corres, corre, correm, correu, corren',
+    fut: 'correré, correràs, correrà, correrem, correreu, correran',
+    subjPres: 'corri, corris, corri, correm, correu, corrin',
+    participle: 'corregut',
+  },
+  rebre: {
+    pres: 'rebo, reps, rep, rebem, rebeu, reben',
+    fut: 'rebré, rebràs, rebrà, rebrem, rebreu, rebran',
+    participle: 'rebut',
+  },
+  vendre: {
+    pres: 'venc, vens, ven, venem, veneu, venen',
+    imperf: 'venia, venies, venia, veníem, veníeu, venien',
+    fut: 'vendré, vendràs, vendrà, vendrem, vendreu, vendran',
+    subjPres: 'vengui, venguis, vengui, venguem, vengueu, venguin',
+    gerund: 'venent', participle: 'venut',
+  },
+  prendre: {
+    pres: 'prenc, prens, pren, prenem, preneu, prenen',
+    participle: 'pres',
+  },
+  aprendre: {
+    pres: 'aprenc, aprens, aprèn, aprenem, apreneu, aprenen',
+    participle: 'après',
+  },
+  entendre: {
+    pres: 'entenc, entens, entén, entenem, enteneu, entenen',
+    participle: 'entès',
+  },
+  permetre: {
+    pres: 'permeto, permets, permet, permetem, permeteu, permeten',
+    fut: 'permetré, permetràs, permetrà, permetrem, permetreu, permetran',
+    participle: 'permès',
+  },
+  obrir: {
+    pres: 'obro, obres, obre, obrim, obriu, obren',
+    imperf: 'obria, obries, obria, obríem, obríeu, obrien',
+    subjPres: 'obri, obris, obri, obrim, obriu, obrin',
+    impAff: 'obre, obre, obri, obrim, obriu, obrin',
+    participle: 'obert',
+  },
+  omplir: {
+    pres: 'omplo, omples, omple, omplim, ompliu, omplen',
+    participle: 'omplert',
+  },
+  collir: {
+    pres: 'cullo, culls, cull, collim, colliu, cullen',
+    subjPres: 'culli, cullis, culli, collim, colliu, cullin',
+    participle: 'collit',
+  },
+  escollir: {
+    pres: 'escullo, esculls, escull, escollim, escolliu, escullen',
+  },
+  sortir: {
+    pres: 'surto, surts, surt, sortim, sortiu, surten',
+    subjPres: 'surti, surtis, surti, sortim, sortiu, surtin',
+    participle: 'sortit',
+  },
+  cosir: { pres: 'cuso, cuses, cus, cosim, cosiu, cusen' },
+  tossir: { pres: 'tusso, tusses, tus, tossim, tossiu, tussen' },
+  fugir: {
+    pres: 'fujo, fuges, fuig, fugim, fugiu, fugen',
+    subjPres: 'fugi, fugis, fugi, fugim, fugiu, fugin',
+    participle: 'fugit',
+  },
+  bullir: { pres: 'bullo, bulls, bull, bullim, bulliu, bullen' },
+  morir: {
+    pres: 'moro, mors, mor, morim, moriu, moren',
+    participle: 'mort',
+  },
+  construir: {
+    pres: 'construeixo, construeixes, construeix, construïm, construïu, construeixen',
+    imperf: 'construïa, construïes, construïa, construíem, construíeu, construïen',
+    simple: 'construí, construïres, construí, construírem, construíreu, construïren',
+    fut: 'construiré, construiràs, construirà, construirem, construireu, construiran',
+    subjPres: 'construeixi, construeixis, construeixi, construïm, construïu, construeixin',
+    subjImperf: 'construís, construïssis, construís, construíssim, construíssiu, construïssin',
+    gerund: 'construint', participle: 'construït',
+  },
+  obeir: {
+    pres: 'obeeixo, obeeixes, obeeix, obeïm, obeïu, obeeixen',
+    participle: 'obeït', gerund: 'obeint',
+  },
+  agrair: {
+    pres: 'agraeixo, agraeixes, agraeix, agraïm, agraïu, agraeixen',
+    participle: 'agraït',
+  },
+  traduir: {
+    pres: 'tradueixo, tradueixes, tradueix, traduïm, traduïu, tradueixen',
+    participle: 'traduït',
+  },
+  seguir: {
+    pres: 'segueixo, segueixes, segueix, seguim, seguiu, segueixen',
+    subjPres: 'segueixi, segueixis, segueixi, seguim, seguiu, segueixin',
+    participle: 'seguit',
+  },
+  dirigir: {
+    pres: 'dirigeixo, dirigeixes, dirigeix, dirigim, dirigiu, dirigeixen',
+  },
+  tocar: {
+    pres: 'toco, toques, toca, toquem, toqueu, toquen',
+    simple: 'toquí, tocares, tocà, tocàrem, tocàreu, tocaren',
+    subjPres: 'toqui, toquis, toqui, toquem, toqueu, toquin',
+    subjImperf: 'toqués, toquessis, toqués, toquéssim, toquéssiu, toquessin',
+    impNeg: 'no toquis, no toquis, no toqui, no toquem, no toqueu, no toquin',
+  },
+  pagar: {
+    pres: 'pago, pagues, paga, paguem, pagueu, paguen',
+    simple: 'paguí, pagares, pagà, pagàrem, pagàreu, pagaren',
+    subjPres: 'pagui, paguis, pagui, paguem, pagueu, paguin',
+  },
+  abraçar: {
+    pres: 'abraço, abraces, abraça, abracem, abraceu, abracen',
+    simple: 'abrací, abraçares, abraçà, abraçàrem, abraçàreu, abraçaren',
+    subjPres: 'abraci, abracis, abraci, abracem, abraceu, abracin',
+  },
+  menjar: {
+    pres: 'menjo, menges, menja, mengem, mengeu, mengen',
+    simple: 'mengí, menjares, menjà, menjàrem, menjàreu, menjaren',
+    subjPres: 'mengi, mengis, mengi, mengem, mengeu, mengin',
+  },
+  començar: {
+    pres: 'començo, comences, comença, comencem, comenceu, comencen',
+  },
+  canviar: {
+    pres: 'canvio, canvies, canvia, canviem, canvieu, canvien',
+    subjPres: 'canviï, canviïs, canviï, canviem, canvieu, canviïn',
+  },
+  actuar: {
+    pres: 'actuo, actues, actua, actuem, actueu, actuen',
+    subjPres: 'actuï, actuïs, actuï, actuem, actueu, actuïn',
+  },
+  vèncer: {
+    pres: 'venço, vences, venç, vencem, venceu, vencen',
+    participle: 'vençut',
+  },
+};
+
+const report = createReport();
+checkParadigms(report, EXPECTED, conjugate);
+
+// Every verb in the database must conjugate into well-formed output.
+const FORM_KEYS = [
+  'pres', 'periphPast', 'presPerf', 'imperf', 'pluperf', 'simple', 'pretAnt', 'pretAntPeriph',
+  'fut', 'futPerf', 'cond', 'condPerf', 'subjPres', 'subjPresPerf', 'subjImperf', 'subjPluperf',
+  'impAff', 'impNeg',
+];
+const catalanCount = checkInflectedDatabase(report, {
+  verbs: VERBS,
+  conjugate,
+  lang: 'ca',
+  formKeys: FORM_KEYS,
+  gerund: /(ant|ent|int)$/,
+  participle: /(at|ut|it|ït|és|ès|ert|ist|et|ot|rt|st|ós|òs|os|ús)$/,
+});
+
+report.finish(`${report.checks} paradigm checks, ${Object.keys(VERBS).length} English verbs, ${catalanCount} Catalan translations`);

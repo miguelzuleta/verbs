@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verb Tenses</title>
+  <link rel="stylesheet" href="shared/styles.css">
+  <style>
+    /* Language list (this page only; everything else comes from shared/styles.css) */
+    .languages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .languages a {
+      display: block;
+      height: 100%;
+      padding: 1rem 1.25rem;
+      color: inherit;
+      text-decoration: none;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .languages a:hover { border-color: var(--accent); background: #eef4fb; }
+    .languages a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    .languages .name { display: block; font-size: 1.25rem; font-weight: 600; color: var(--header); }
+    .languages .native { display: block; margin-bottom: 0.5rem; font-size: 1rem; color: var(--accent); }
+    .languages .native[lang="zh-Hant"] { font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; }
+    .languages .about { display: block; font-size: 0.9rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb and see its translation and every tense in the language you pick.</p>
+
+    <ul class="languages">
+      <li>
+        <a href="spanish/index.html">
+          <span class="name">Spanish</span>
+          <span class="native" lang="es">Español</span>
+          <span class="about">Every conjugation across 18 tenses and moods.</span>
+        </a>
+      </li>
+      <li>
+        <a href="catalan/index.html">
+          <span class="name">Catalan</span>
+          <span class="native" lang="ca">Català</span>
+          <span class="about">Central Catalan (IEC norm), 18 tenses and moods.</span>
+        </a>
+      </li>
+      <li>
+        <a href="french/index.html">
+          <span class="name">French</span>
+          <span class="native" lang="fr">Français</span>
+          <span class="about">Standard French (France), 18 tenses and moods.</span>
+        </a>
+      </li>
+      <li>
+        <a href="chinese/index.html">
+          <span class="name">Traditional Chinese</span>
+          <span class="native" lang="zh-Hant">繁體中文</span>
+          <span class="about">Mandarin (Taiwan) with pinyin. Verbs never change, so it shows 26 tense, aspect and mood patterns.</span>
+        </a>
+      </li>
+    </ul>
+  </main>
+</body>
+</html>

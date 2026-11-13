@@ -1,0 +1,225 @@
+:root {
+  --indicative: #e8f1fb;
+  --subjunctive: #fdf1e3;
+  --imperative: #eaf6ec;
+  --border: #d5d9e0;
+  --text: #1f2933;
+  --muted: #52606d;
+  --header: #1f3a5f;
+  --accent: #2f6fbd;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 2rem 1rem;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+  background: #f7f8fa;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.75rem;
+}
+
+.subtitle {
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+}
+
+/* Verb lookup */
+.lookup {
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.lookup label,
+.persons legend {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+#verb-input {
+  width: 100%;
+  max-width: 22rem;
+  padding: 0.55rem 0.75rem;
+  font: inherit;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  /* Our own dropdown caret, centered by the background position. */
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%2352606d' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 0.875rem center / 0.75rem 0.5rem;
+}
+
+/* The browser's own caret is hidden but keeps a fixed 1rem box on the right
+   of the field, so clicking there still opens the list and our caret sits on it. */
+#verb-input::-webkit-calendar-picker-indicator {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+#verb-input::-webkit-list-button { opacity: 0; } /* Safari */
+
+#verb-input:focus-visible,
+.chip:focus-visible,
+.persons input:focus-visible + span {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+#result { margin-top: 0.9rem; }
+
+.translation {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.translation .arrow { margin: 0 0.4rem; color: var(--muted); }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.chip {
+  padding: 0.3rem 0.85rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent);
+  background: #fff;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.chip[aria-pressed="true"] {
+  color: #fff;
+  background: var(--accent);
+}
+
+.note, .message {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Person selector */
+.persons {
+  margin: 0 0 1rem;
+  padding: 0;
+  border: none;
+}
+
+.persons .options { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.persons label { position: relative; margin: 0; cursor: pointer; }
+
+.persons input {
+  position: absolute;
+  opacity: 0;
+}
+
+.persons span {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.persons input:checked + span {
+  color: #fff;
+  background: var(--header);
+  border-color: var(--header);
+}
+
+/* Table */
+.table-wrap {
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+th, td {
+  padding: 0.65rem 0.9rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+td { border-top: 1px solid var(--border); }
+tbody tr:first-child td { border-top: none; }
+
+thead th {
+  position: sticky;
+  top: 0;
+  background: var(--header);
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+tr.indicative  { background: var(--indicative); }
+tr.subjunctive { background: var(--subjunctive); }
+tr.imperative  { background: var(--imperative); }
+
+tbody tr:hover { filter: brightness(0.96); }
+
+td.mood { font-weight: 600; }
+td.example { font-weight: 600; white-space: nowrap; }
+
+.toggle {
+  display: block;
+  margin: 0.9rem auto 0;
+  padding: 0.45rem 1.25rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent);
+  background: #fff;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.toggle:hover { background: #eef4fb; }
+.toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* The table and its button stay out of the page until page.js has filled and
+   collapsed the table and marked <body> as ready, so it never shows half-built. */
+body:not(.ready) .table-wrap,
+body:not(.ready) .toggle { display: none; }
+
+@media (max-width: 700px) {
+  body { padding: 1rem 0.5rem; }
+  table { font-size: 0.85rem; }
+  th, td { padding: 0.5rem 0.6rem; }
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>French Verb Tenses</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+  <main>
+    <h1>French Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb to see its French translation and every conjugation in the table.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show conjugation for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span lang="fr">je</span></label>
+        <label><input type="radio" name="person" value="1"><span lang="fr">tu</span></label>
+        <label><input type="radio" name="person" value="2"><span lang="fr">il / elle / on</span></label>
+        <label><input type="radio" name="person" value="3"><span lang="fr">nous</span></label>
+        <label><input type="radio" name="person" value="4"><span lang="fr">vous</span></label>
+        <label><input type="radio" name="person" value="5"><span lang="fr">ils / elles</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense (English / French)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (Parler)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Indicative -->
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (Présent)</td>
+            <td>Simple</td>
+            <td class="example" lang="fr" data-tense="pres">parle</td>
+            <td>Current actions, habits, general truths</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Compound Past (Passé composé)</td>
+            <td><span lang="fr">avoir</span> or <span lang="fr">être</span> (pres.) + participle</td>
+            <td class="example" lang="fr" data-tense="passeComp">ai parlé</td>
+            <td>The everyday past: completed actions and past events connected to the present</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Recent Past (Passé récent)</td>
+            <td><span lang="fr">venir</span> (pres.) + <span lang="fr">de</span> + infinitive</td>
+            <td class="example" lang="fr" data-tense="passeRecent">viens de parler</td>
+            <td>Something that has just happened</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Imperfect (Imparfait)</td>
+            <td>Simple</td>
+            <td class="example" lang="fr" data-tense="imperf">parlais</td>
+            <td>Ongoing/habitual past actions, descriptions</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Pluperfect (Plus-que-parfait)</td>
+            <td><span lang="fr">avoir</span> or <span lang="fr">être</span> (imp.) + participle</td>
+            <td class="example" lang="fr" data-tense="pluperf">avais parlé</td>
+            <td>An action completed before another past action</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Simple Past (Passé simple)</td>
+            <td>Simple</td>
+            <td class="example" lang="fr" data-tense="passeSimple">parlai</td>
+            <td>Literary; completed past actions in written narrative</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Anterior (Passé antérieur)</td>
+            <td><span lang="fr">avoir</span> or <span lang="fr">être</span> (simple past) + participle</td>
+            <td class="example" lang="fr" data-tense="passeAnt">eus parlé</td>
+            <td>Literary; an action finished just before another in the simple past</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Simple Future (Futur simple)</td>
+            <td>Simple</td>
+            <td class="example" lang="fr" data-tense="fut">parlerai</td>
+            <td>Actions that will happen later</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Near Future (Futur proche)</td>
+            <td><span lang="fr">aller</span> (pres.) + infinitive</td>
+            <td class="example" lang="fr" data-tense="futProche">vais parler</td>
+            <td>The everyday future: what is about to happen or is planned</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future Perfect (Futur antérieur)</td>
+            <td><span lang="fr">avoir</span> or <span lang="fr">être</span> (fut.) + participle</td>
+            <td class="example" lang="fr" data-tense="futAnt">aurai parlé</td>
+            <td>An action that will be finished before another point in the future</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Conditional (Conditionnel présent)</td>
+            <td>Simple</td>
+            <td class="example" lang="fr" data-tense="cond">parlerais</td>
+            <td>Hypothetical actions ("would" do something), polite requests</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Conditional Perfect (Conditionnel passé)</td>
+            <td><span lang="fr">avoir</span> or <span lang="fr">être</span> (cond.) + participle</td>
+            <td class="example" lang="fr" data-tense="condPast">aurais parlé</td>
+            <td>Hypothetical past actions ("would have"), regrets</td>
+          </tr>
+          <!-- Subjunctive -->
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Present Subjunctive (Subjonctif présent)</td>
+            <td>Simple</td>
+            <td class="example" lang="fr" data-tense="subjPres">parle</td>
+            <td>Doubt, wishes, emotions or necessity (after <span lang="fr">que</span>)</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Past Subjunctive (Subjonctif passé)</td>
+            <td><span lang="fr">avoir</span> or <span lang="fr">être</span> (pres. subj.) + participle</td>
+            <td class="example" lang="fr" data-tense="subjPast">aie parlé</td>
+            <td>Doubt or emotion about a completed action</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Imperfect Subjunctive (Subjonctif imparfait)</td>
+            <td>Simple</td>
+            <td class="example" lang="fr" data-tense="subjImperf">parlasse</td>
+            <td>Literary; found only in formal writing</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Pluperfect Subjunctive (Subjonctif plus-que-parfait)</td>
+            <td><span lang="fr">avoir</span> or <span lang="fr">être</span> (imp. subj.) + participle</td>
+            <td class="example" lang="fr" data-tense="subjPluperf">eusse parlé</td>
+            <td>Literary; past regrets or impossible past conditions</td>
+          </tr>
+          <!-- Imperative -->
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Present Imperative (Impératif présent)</td>
+            <td>Simple</td>
+            <td class="example" lang="fr" data-tense="impPres">parle</td>
+            <td>Telling someone to do something (only <span lang="fr">tu</span>, <span lang="fr">nous</span> and <span lang="fr">vous</span>)</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Past Imperative (Impératif passé)</td>
+            <td><span lang="fr">avoir</span> or <span lang="fr">être</span> (imp.) + participle</td>
+            <td class="example" lang="fr" data-tense="impPast">aie parlé</td>
+            <td>Rare; something that must be done by a future moment</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show more tenses</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="conjugate.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

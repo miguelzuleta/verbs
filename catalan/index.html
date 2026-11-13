@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catalan Verb Tenses</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+  <main>
+    <h1>Catalan Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb to see its Catalan translation and every conjugation in the table.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show conjugation for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span lang="ca">jo</span></label>
+        <label><input type="radio" name="person" value="1"><span lang="ca">tu</span></label>
+        <label><input type="radio" name="person" value="2"><span lang="ca">ell / ella / vostè</span></label>
+        <label><input type="radio" name="person" value="3"><span lang="ca">nosaltres</span></label>
+        <label><input type="radio" name="person" value="4"><span lang="ca">vosaltres</span></label>
+        <label><input type="radio" name="person" value="5"><span lang="ca">ells / elles / vostès</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense (English / Catalan)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (Parlar)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Indicative -->
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (Present)</td>
+            <td>Simple</td>
+            <td class="example" lang="ca" data-tense="pres">parlo</td>
+            <td>Current actions, habits, general truths</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Periphrastic Past (Passat perifràstic)</td>
+            <td><span lang="ca">vaig</span> (<span lang="ca">anar</span>, pres.) + infinitive</td>
+            <td class="example" lang="ca" data-tense="periphPast">vaig parlar</td>
+            <td>The everyday past: completed actions with a clear start/end</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present Perfect (Pretèrit perfet)</td>
+            <td><span lang="ca">haver</span> (pres.) + participle</td>
+            <td class="example" lang="ca" data-tense="presPerf">he parlat</td>
+            <td>Past actions connected to the present, or experiences</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Imperfect (Pretèrit imperfet)</td>
+            <td>Simple</td>
+            <td class="example" lang="ca" data-tense="imperf">parlava</td>
+            <td>Ongoing/habitual past actions, descriptions</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Perfect (Pretèrit plusquamperfet)</td>
+            <td><span lang="ca">haver</span> (imp.) + participle</td>
+            <td class="example" lang="ca" data-tense="pluperf">havia parlat</td>
+            <td>An action completed before another past action</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Simple Past (Passat simple)</td>
+            <td>Simple</td>
+            <td class="example" lang="ca" data-tense="simple">parlí</td>
+            <td>Literary; completed past actions</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Preterite Anterior (Pretèrit anterior)</td>
+            <td><span lang="ca">haver</span> (simple past) + participle</td>
+            <td class="example" lang="ca" data-tense="pretAnt">haguí parlat</td>
+            <td>Literary; actions immediately before another past event</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Periphrastic Preterite Anterior (Pretèrit anterior perifràstic)</td>
+            <td><span lang="ca">vaig haver</span> + participle</td>
+            <td class="example" lang="ca" data-tense="pretAntPeriph">vaig haver parlat</td>
+            <td>Modern form of the above: an action finished just before another past event</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (Futur)</td>
+            <td>Simple</td>
+            <td class="example" lang="ca" data-tense="fut">parlaré</td>
+            <td>Actions that will happen later</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future Perfect (Futur perfet)</td>
+            <td><span lang="ca">haver</span> (fut.) + participle</td>
+            <td class="example" lang="ca" data-tense="futPerf">hauré parlat</td>
+            <td>Actions that will be finished by a future point</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Conditional (Condicional)</td>
+            <td>Simple</td>
+            <td class="example" lang="ca" data-tense="cond">parlaria</td>
+            <td>Hypothetical actions ("would" do something)</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Conditional Perfect (Condicional perfet)</td>
+            <td><span lang="ca">haver</span> (cond.) + participle</td>
+            <td class="example" lang="ca" data-tense="condPerf">hauria parlat</td>
+            <td>Hypothetical past actions ("would have" done)</td>
+          </tr>
+          <!-- Subjunctive -->
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Present Subjunctive (Present)</td>
+            <td>Simple</td>
+            <td class="example" lang="ca" data-tense="subjPres">parli</td>
+            <td>Current or future wishes, doubts, or emotions</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Perfect Subjunctive (Perfet)</td>
+            <td><span lang="ca">haver</span> (pres. subj.) + participle</td>
+            <td class="example" lang="ca" data-tense="subjPresPerf">hagi parlat</td>
+            <td>Doubt or emotion about a completed action</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Imperfect Subjunctive (Imperfet)</td>
+            <td>Simple</td>
+            <td class="example" lang="ca" data-tense="subjImperf">parlés</td>
+            <td>Past doubts/wishes, unlikely hypotheticals ("If I spoke...")</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Pluperfect Subjunctive (Plusquamperfet)</td>
+            <td><span lang="ca">haver</span> (imp. subj.) + participle</td>
+            <td class="example" lang="ca" data-tense="subjPluperf">hagués parlat</td>
+            <td>Past regrets or impossible past conditions ("If I had...")</td>
+          </tr>
+          <!-- Imperative -->
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Affirmative Imperative (Imperatiu afirmatiu)</td>
+            <td>Simple</td>
+            <td class="example" lang="ca" data-tense="impAff">parla (tu)</td>
+            <td>Telling someone to do something</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Negative Imperative (Imperatiu negatiu)</td>
+            <td>Simple (uses subj. forms)</td>
+            <td class="example" lang="ca" data-tense="impNeg">no parlis (tu)</td>
+            <td>Telling someone not to do something</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show more tenses</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="conjugate.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
