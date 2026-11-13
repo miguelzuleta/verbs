@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Japanese Verb Forms</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="../shared/reading.css">
+  <link rel="stylesheet" href="japanese.css">
+</head>
+<body>
+  <main>
+    <h1>Japanese Verb Forms</h1>
+    <p class="subtitle">Look up an English verb to see its Japanese translation and how to say it in each form.</p>
+    <p class="hint">Japanese verbs have no grammatical person: the same form is used for I, you, he, we and they. The two buttons pick the politeness style, polite (<span lang="ja">ます</span> style) or plain (dictionary style). Every cell shows the form with its hiragana reading underneath. In the Structure column, "stem" is the part before <span lang="ja">ます</span> (<span lang="ja">話し</span> in <span lang="ja">話します</span>). Verbs are of two kinds: ichidan (<span lang="ja">一段</span>) verbs end in an <span lang="ja">い</span>- or <span lang="ja">え</span>-row sound plus <span lang="ja">る</span> and simply drop the <span lang="ja">る</span> (<span lang="ja">食べる</span>, <span lang="ja">見る</span>), while godan (<span lang="ja">五段</span>) verbs change their last kana (<span lang="ja">話す</span>, <span lang="ja">買う</span>). A few godan verbs also end in -iru or -eru (<span lang="ja">帰る</span>, <span lang="ja">切る</span>, <span lang="ja">入る</span>), so the example row is the safest guide. <span lang="ja">する</span> and <span lang="ja">来る</span> are irregular, and so are a few others (<span lang="ja">ある</span> has the negative <span lang="ja">ない</span>; <span lang="ja">行く</span> has the te-form <span lang="ja">行って</span>).</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show forms in</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span>Polite (<bdi lang="ja">丁寧体</bdi>)</span></label>
+        <label><input type="radio" name="person" value="1"><span>Plain (<bdi lang="ja">普通体</bdi>)</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Form (English / Japanese)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (話す はなす)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present / Future (<span lang="ja">非過去</span>)</td>
+            <td>Polite: stem + <span lang="ja">ます</span><br>Plain: dictionary form</td>
+            <td class="example" lang="ja" data-tense="pres"><span class="word">話します</span><span class="reading">はなします</span></td>
+            <td>Habits, facts and current states; also the future (Japanese has no separate future tense)</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past (<span lang="ja">過去</span>)</td>
+            <td>Polite: stem + <span lang="ja">ました</span><br>Plain: te-form with <span lang="ja">て→た</span> (<span lang="ja">で→だ</span>)</td>
+            <td class="example" lang="ja" data-tense="past"><span class="word">話しました</span><span class="reading">はなしました</span></td>
+            <td>Completed actions and past states</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Negative (<span lang="ja">否定</span>)</td>
+            <td>Polite: stem + <span lang="ja">ません</span><br>Plain: last kana changes to its <span lang="ja">あ</span>-row sound (<span lang="ja">う→わ</span>), then <span lang="ja">ない</span> (<span lang="ja">話さない</span>); ichidan: drop <span lang="ja">る</span> + <span lang="ja">ない</span> (<span lang="ja">食べない</span>)</td>
+            <td class="example" lang="ja" data-tense="neg"><span class="word">話しません</span><span class="reading">はなしません</span></td>
+            <td>Saying that something is not or will not be done</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Negative (<span lang="ja">過去否定</span>)</td>
+            <td>Polite: stem + <span lang="ja">ませんでした</span><br>Plain: plain negative with <span lang="ja">ない→なかった</span></td>
+            <td class="example" lang="ja" data-tense="pastNeg"><span class="word">話しませんでした</span><span class="reading">はなしませんでした</span></td>
+            <td>Saying that something was not done</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Te-form (<span lang="ja">て形</span>)</td>
+            <td>Both styles: verb + <span lang="ja">て</span> / <span lang="ja">で</span> (the ending changes with the verb)</td>
+            <td class="example" lang="ja" data-tense="te"><span class="word">話して</span><span class="reading">はなして</span></td>
+            <td>Linking actions in a sequence; the base for many other forms</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Progressive (<span lang="ja">〜ている</span>)</td>
+            <td>Polite: te-form + <span lang="ja">います</span><br>Plain: te-form + <span lang="ja">いる</span></td>
+            <td class="example" lang="ja" data-tense="prog"><span class="word">話しています</span><span class="reading">はなしています</span></td>
+            <td>Actions in progress, ongoing habits, and states that result from a change</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Request (<span lang="ja">〜てください</span>)</td>
+            <td>Polite: te-form + <span lang="ja">ください</span><br>Plain: te-form alone</td>
+            <td class="example" lang="ja" data-tense="request"><span class="word">話してください</span><span class="reading">はなしてください</span></td>
+            <td>Asking someone to do something; the plain te-form is a casual request</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Modality</td>
+            <td>Want to (<span lang="ja">〜たい</span>)</td>
+            <td>Polite: stem + <span lang="ja">たいです</span><br>Plain: stem + <span lang="ja">たい</span></td>
+            <td class="example" lang="ja" data-tense="want"><span class="word">話したいです</span><span class="reading">はなしたいです</span></td>
+            <td>Your own wishes ("I want to ...") and questions to someone ("Do you want to ...?")</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Modality</td>
+            <td>Potential (<span lang="ja">可能形</span>)</td>
+            <td>Plain: last kana changes to its <span lang="ja">え</span>-row sound, then <span lang="ja">る</span> (<span lang="ja">話せる</span>); ichidan: drop <span lang="ja">る</span> + <span lang="ja">られる</span> (<span lang="ja">食べられる</span>)<br>Polite: the plain form with <span lang="ja">る→ます</span></td>
+            <td class="example" lang="ja" data-tense="potential"><span class="word">話せます</span><span class="reading">はなせます</span></td>
+            <td>Being able to do something ("can")</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Voice</td>
+            <td>Passive (<span lang="ja">受身形</span>)</td>
+            <td>Plain: last kana changes to its <span lang="ja">あ</span>-row sound, then <span lang="ja">れる</span> (<span lang="ja">話される</span>); ichidan: drop <span lang="ja">る</span> + <span lang="ja">られる</span> (<span lang="ja">食べられる</span>)<br>Polite: the plain form with <span lang="ja">る→ます</span></td>
+            <td class="example" lang="ja" data-tense="passive"><span class="word">話されます</span><span class="reading">はなされます</span></td>
+            <td>Things done to someone, troublesome events that affect them, and respectful speech</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Voice</td>
+            <td>Causative (<span lang="ja">使役形</span>)</td>
+            <td>Plain: last kana changes to its <span lang="ja">あ</span>-row sound, then <span lang="ja">せる</span> (<span lang="ja">話させる</span>); ichidan: drop <span lang="ja">る</span> + <span lang="ja">させる</span> (<span lang="ja">食べさせる</span>)<br>Polite: the plain form with <span lang="ja">る→ます</span></td>
+            <td class="example" lang="ja" data-tense="causative"><span class="word">話させます</span><span class="reading">はなさせます</span></td>
+            <td>Making or letting someone do something</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Volitional</td>
+            <td>Volitional (<span lang="ja">意向形</span>)</td>
+            <td>Polite: stem + <span lang="ja">ましょう</span><br>Plain: last kana changes to its <span lang="ja">お</span>-row sound, then <span lang="ja">う</span> (<span lang="ja">話そう</span>); ichidan: drop <span lang="ja">る</span> + <span lang="ja">よう</span> (<span lang="ja">食べよう</span>)</td>
+            <td class="example" lang="ja" data-tense="volitional"><span class="word">話しましょう</span><span class="reading">はなしましょう</span></td>
+            <td>"Let's ..." and "I will ..." (invitations and intentions)</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Conditional -tara (<span lang="ja">〜たら</span>)</td>
+            <td>Polite: stem + <span lang="ja">ましたら</span><br>Plain: plain past + <span lang="ja">ら</span> (<span lang="ja">話したら</span>)</td>
+            <td class="example" lang="ja" data-tense="condTara"><span class="word">話しましたら</span><span class="reading">はなしましたら</span></td>
+            <td>"If" or "when" something happens; <span lang="ja">ましたら</span> is formal</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Conditional -ba (<span lang="ja">〜ば</span>)</td>
+            <td>Polite: not used<br>Plain: last kana changes to its <span lang="ja">え</span>-row sound, then <span lang="ja">ば</span> (<span lang="ja">話せば</span>); ichidan: drop <span lang="ja">る</span> + <span lang="ja">れば</span> (<span lang="ja">食べれば</span>)</td>
+            <td class="example na" lang="ja" title="This form is not used in this style." data-tense="condBa"><span>—</span></td>
+            <td>"If" for general conditions, rules and advice; plain style only</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Imperative (<span lang="ja">命令形</span>)</td>
+            <td>Polite: stem + <span lang="ja">なさい</span><br>Plain: last kana changes to its <span lang="ja">え</span>-row sound (<span lang="ja">話せ</span>); ichidan: drop <span lang="ja">る</span> + <span lang="ja">ろ</span> (<span lang="ja">食べろ</span>)</td>
+            <td class="example" lang="ja" data-tense="imperative"><span class="word">話しなさい</span><span class="reading">はなしなさい</span></td>
+            <td>Direct commands; the plain form is blunt, <span lang="ja">なさい</span> is a firm order from a parent or teacher</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Prohibitive (<span lang="ja">禁止形</span>)</td>
+            <td>Polite: negative form + <span lang="ja">でください</span> (<span lang="ja">話さないでください</span>)<br>Plain: dictionary form + <span lang="ja">な</span> (<span lang="ja">話すな</span>)</td>
+            <td class="example" lang="ja" data-tense="prohibitive"><span class="word">話さないでください</span><span class="reading">はなさないでください</span></td>
+            <td>Telling someone not to do something ("Don't ...")</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show 13 more forms</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="patterns.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

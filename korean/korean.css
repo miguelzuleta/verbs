@@ -1,0 +1,4 @@
+/* Hangul in the system's Korean fonts. */
+.word, td.example, .chip, .persons span, .translation strong {
+  font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif;
+}

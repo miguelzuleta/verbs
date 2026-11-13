@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>German Verb Tenses</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+  <main>
+    <h1>German Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb to see its German translation and every conjugation in the table.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show conjugation for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span lang="de">ich</span></label>
+        <label><input type="radio" name="person" value="1"><span lang="de">du</span></label>
+        <label><input type="radio" name="person" value="2"><span lang="de">er / sie / es</span></label>
+        <label><input type="radio" name="person" value="3"><span lang="de">wir</span></label>
+        <label><input type="radio" name="person" value="4"><span lang="de">ihr</span></label>
+        <label><input type="radio" name="person" value="5"><span lang="de">sie / Sie</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense (English / German)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (sprechen)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Indicative -->
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (Präsens)</td>
+            <td>Simple</td>
+            <td class="example" lang="de" data-tense="pres">spreche</td>
+            <td>Current actions, habits, general truths; with a time word it also refers to the future</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Perfect (Perfekt)</td>
+            <td><span lang="de">haben</span> or <span lang="de">sein</span> (pres.) + participle</td>
+            <td class="example" lang="de" data-tense="perfekt">habe gesprochen</td>
+            <td>The everyday past in speech: completed actions and past events connected to the present</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Simple Past (Präteritum)</td>
+            <td>Simple</td>
+            <td class="example" lang="de" data-tense="praet">sprach</td>
+            <td>The written and narrative past (stories, news, reports); in speech mostly for <span lang="de">sein</span>, <span lang="de">haben</span> and modal verbs</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Perfect (Plusquamperfekt)</td>
+            <td><span lang="de">haben</span> or <span lang="de">sein</span> (simple past) + participle</td>
+            <td class="example" lang="de" data-tense="plusq">hatte gesprochen</td>
+            <td>An action completed before another past action</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (Futur I)</td>
+            <td><span lang="de">werden</span> (pres.) + infinitive</td>
+            <td class="example" lang="de" data-tense="fut1">werde sprechen</td>
+            <td>Predictions, promises and plans; also a guess about the present. Everyday speech often uses the present instead</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future Perfect (Futur II)</td>
+            <td><span lang="de">werden</span> (pres.) + participle + <span lang="de">haben</span> or <span lang="de">sein</span></td>
+            <td class="example" lang="de" data-tense="fut2">werde gesprochen haben</td>
+            <td>An action that will be finished by a future moment; also a guess about the past</td>
+          </tr>
+          <!-- Subjunctive -->
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Subjunctive I (Konjunktiv I)</td>
+            <td>Simple</td>
+            <td class="example" lang="de" data-tense="konj1">spreche</td>
+            <td>Reported (indirect) speech, mainly in writing and news: what someone else said</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Subjunctive I Perfect (Konjunktiv I Perfekt)</td>
+            <td><span lang="de">haben</span> or <span lang="de">sein</span> (subj. I) + participle</td>
+            <td class="example" lang="de" data-tense="konj1Perf">habe gesprochen</td>
+            <td>Reported speech about something that happened earlier</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Subjunctive II (Konjunktiv II)</td>
+            <td>Simple</td>
+            <td class="example" lang="de" data-tense="konj2">spräche</td>
+            <td>Unreal wishes and conditions ("if I were..."), polite requests; also reported speech when Subjunctive I looks like the indicative</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Subjunctive II Pluperfect (Konjunktiv II Plusquamperfekt)</td>
+            <td><span lang="de">haben</span> or <span lang="de">sein</span> (subj. II) + participle</td>
+            <td class="example" lang="de" data-tense="konj2Plusq">hätte gesprochen</td>
+            <td>Unreal past situations ("if I had known..."), regrets</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Conditional (Konditional I)</td>
+            <td><span lang="de">würde</span> + infinitive</td>
+            <td class="example" lang="de" data-tense="wuerde">würde sprechen</td>
+            <td>The everyday "would": unreal wishes, conditions and polite requests; in speech it replaces Subjunctive II for most verbs</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Conditional Perfect (Konditional II)</td>
+            <td><span lang="de">würde</span> + participle + <span lang="de">haben</span> or <span lang="de">sein</span></td>
+            <td class="example" lang="de" data-tense="wuerdePerf">würde gesprochen haben</td>
+            <td>Unreal past actions ("would have"); rare, usually replaced by Subjunctive II Pluperfect</td>
+          </tr>
+          <!-- Imperative -->
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Imperative (Imperativ)</td>
+            <td>Simple</td>
+            <td class="example" lang="de" data-tense="imp">sprich (du)</td>
+            <td>Telling someone to do something (only <span lang="de">du</span>, <span lang="de">wir</span>, <span lang="de">ihr</span> and <span lang="de">Sie</span>)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show 10 more tenses</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="conjugate.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+/* Japanese text: Hiragino on macOS, then the usual Japanese fonts elsewhere */
+.word, td.example, .chip, .persons span, .translation strong {
+  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+}

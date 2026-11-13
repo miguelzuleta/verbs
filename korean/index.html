@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Korean Verb Forms</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="../shared/reading.css">
+  <link rel="stylesheet" href="korean.css">
+</head>
+<body>
+  <main>
+    <h1>Korean Verb Forms</h1>
+    <p class="subtitle">Look up an English verb to see its Korean translation and how to say it in each form.</p>
+    <p class="hint">Korean verbs have no grammatical person: the same form serves for I, you, he and they. The three buttons pick the speech level instead: <span lang="ko">해요체</span> (polite, everyday), <span lang="ko">합쇼체</span> (formal) and <span lang="ko">해체</span> (casual). Every cell shows the Hangul with its romanization underneath. The Structure column lists the endings in that order, separated by dots; forms that link clauses or describe a noun are the same at every level.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show forms in</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span><bdi lang="ko">해요체</bdi> (polite)</span></label>
+        <label><input type="radio" name="person" value="1"><span><bdi lang="ko">합쇼체</bdi> (formal)</span></label>
+        <label><input type="radio" name="person" value="2"><span><bdi lang="ko">해체</bdi> (casual)</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Form (English / Korean)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (말하다 malhada)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (<span lang="ko">현재</span>)</td>
+            <td>Stem + <span lang="ko">아/어요</span> · <span lang="ko">ㅂ니다/습니다</span> · <span lang="ko">아/어</span></td>
+            <td class="example" lang="ko" data-tense="pres"><span class="word">말해요</span><span class="reading">malhaeyo</span></td>
+            <td>Current actions, habits and general truths</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past (<span lang="ko">과거</span>)</td>
+            <td>Stem + <span lang="ko">았/었어요</span> · <span lang="ko">았/었습니다</span> · <span lang="ko">았/었어</span></td>
+            <td class="example" lang="ko" data-tense="past"><span class="word">말했어요</span><span class="reading">malhaesseoyo</span></td>
+            <td>Completed actions and past events</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (<span lang="ko">미래</span>)</td>
+            <td>Stem + <span lang="ko">(으)ㄹ 거예요</span> · <span lang="ko">(으)ㄹ 겁니다</span> · <span lang="ko">(으)ㄹ 거야</span></td>
+            <td class="example" lang="ko" data-tense="fut"><span class="word">말할 거예요</span><span class="reading">malhal geoyeyo</span></td>
+            <td>Plans, predictions and what will happen</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Negative (<span lang="ko">부정</span>)</td>
+            <td>Stem + <span lang="ko">지 않아요</span> · <span lang="ko">지 않습니다</span> · <span lang="ko">지 않아</span></td>
+            <td class="example" lang="ko" data-tense="neg"><span class="word">말하지 않아요</span><span class="reading">malhaji anayo</span></td>
+            <td>Saying that something is not done or is not true</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Negative (<span lang="ko">과거 부정</span>)</td>
+            <td>Stem + <span lang="ko">지 않았어요</span> · <span lang="ko">지 않았습니다</span> · <span lang="ko">지 않았어</span></td>
+            <td class="example" lang="ko" data-tense="pastNeg"><span class="word">말하지 않았어요</span><span class="reading">malhaji anasseoyo</span></td>
+            <td>Saying that something did not happen</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Progressive (<span lang="ko">〜고 있다</span>)</td>
+            <td>Stem + <span lang="ko">고 있어요</span> · <span lang="ko">고 있습니다</span> · <span lang="ko">고 있어</span></td>
+            <td class="example" lang="ko" data-tense="prog"><span class="word">말하고 있어요</span><span class="reading">malhago isseoyo</span></td>
+            <td>Actions in progress now or over a period of time</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Modality</td>
+            <td>Want to (<span lang="ko">〜고 싶다</span>)</td>
+            <td>Stem + <span lang="ko">고 싶어요</span> · <span lang="ko">고 싶습니다</span> · <span lang="ko">고 싶어</span></td>
+            <td class="example" lang="ko" data-tense="want"><span class="word">말하고 싶어요</span><span class="reading">malhago sipeoyo</span></td>
+            <td>Your own wish to do something (for someone else, use <span lang="ko">〜고 싶어 하다</span>)</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Modality</td>
+            <td>Can (<span lang="ko">〜(으)ㄹ 수 있다</span>)</td>
+            <td>Stem + <span lang="ko">(으)ㄹ 수 있어요</span> · <span lang="ko">(으)ㄹ 수 있습니다</span> · <span lang="ko">(으)ㄹ 수 있어</span></td>
+            <td class="example" lang="ko" data-tense="can"><span class="word">말할 수 있어요</span><span class="reading">malhal su isseoyo</span></td>
+            <td>Ability or possibility; the opposite is <span lang="ko">〜(으)ㄹ 수 없다</span></td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Request (<span lang="ko">〜아/어 주세요</span>)</td>
+            <td>Stem + <span lang="ko">아/어</span> + <span lang="ko">주세요</span> · <span lang="ko">주십시오</span> · <span lang="ko">줘</span></td>
+            <td class="example" lang="ko" data-tense="request"><span class="word">말해 주세요</span><span class="reading">malhae juseyo</span></td>
+            <td>Politely asking someone to do something for you</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Suggestion</td>
+            <td>Let's (<span lang="ko">청유형</span>)</td>
+            <td>Stem + <span lang="ko">아/어요</span> · <span lang="ko">(으)ㅂ시다</span> · <span lang="ko">자</span></td>
+            <td class="example" lang="ko" data-tense="suggest"><span class="word">말해요</span><span class="reading">malhaeyo</span></td>
+            <td>Suggesting doing something together; the polite form looks like the present</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Imperative (<span lang="ko">명령형</span>)</td>
+            <td>Stem + <span lang="ko">(으)세요</span> · <span lang="ko">(으)십시오</span> · <span lang="ko">아/어</span></td>
+            <td class="example" lang="ko" data-tense="imperative"><span class="word">말하세요</span><span class="reading">malhaseyo</span></td>
+            <td>Telling someone to do something; <span lang="ko">〜(으)세요</span> is the polite, honorific command</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Linking</td>
+            <td>And / then (<span lang="ko">〜고</span>)</td>
+            <td>Stem + <span lang="ko">고</span></td>
+            <td class="example" lang="ko" data-tense="and"><span class="word">말하고</span><span class="reading">malhago</span></td>
+            <td>Joining actions in order, or descriptions side by side</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Linking</td>
+            <td>Because / so (<span lang="ko">〜아서/어서</span>)</td>
+            <td>Stem + <span lang="ko">아/어서</span></td>
+            <td class="example" lang="ko" data-tense="because"><span class="word">말해서</span><span class="reading">malhaeseo</span></td>
+            <td>Giving a reason; it cannot be followed by a command or a suggestion</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Linking</td>
+            <td>If (<span lang="ko">〜(으)면</span>)</td>
+            <td>Stem + <span lang="ko">(으)면</span></td>
+            <td class="example" lang="ko" data-tense="if"><span class="word">말하면</span><span class="reading">malhamyeon</span></td>
+            <td>Conditions: if or when</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Linking</td>
+            <td>But (<span lang="ko">〜지만</span>)</td>
+            <td>Stem + <span lang="ko">지만</span></td>
+            <td class="example" lang="ko" data-tense="but"><span class="word">말하지만</span><span class="reading">malhajiman</span></td>
+            <td>Contrast: but, although</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Modifier</td>
+            <td>Present modifier (<span lang="ko">〜는</span>)</td>
+            <td>Stem + <span lang="ko">는</span></td>
+            <td class="example" lang="ko" data-tense="modPres"><span class="word">말하는</span><span class="reading">malhaneun</span></td>
+            <td>Describes a noun by what it does now or usually (the person who speaks)</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Modifier</td>
+            <td>Past modifier (<span lang="ko">〜(으)ㄴ</span>)</td>
+            <td>Stem + <span lang="ko">(으)ㄴ</span></td>
+            <td class="example" lang="ko" data-tense="modPast"><span class="word">말한</span><span class="reading">malhan</span></td>
+            <td>Describes a noun by what it did (the person who spoke); <span lang="ko">있다</span> and <span lang="ko">없다</span> use <span lang="ko">〜었던</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show 14 more forms</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="patterns.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

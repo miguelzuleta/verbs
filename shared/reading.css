@@ -1,0 +1,15 @@
+/*
+ * Two-line example cells for languages written in a non-Latin script: the word on
+ * top, its reading underneath (Japanese kana, Korean romanization). Load this
+ * after styles.css; each language adds its own font stack in a small file of its
+ * own, e.g.
+ *
+ *   .word, td.example, .chip, .persons span, .translation strong { font-family: ...; }
+ */
+tr.modality { background: #f0eafa; }
+
+td.example .word { display: block; font-size: 1.1rem; }
+td.example .reading { display: block; font-size: 0.8rem; font-weight: 400; color: var(--muted); }
+td.example.na { color: var(--muted); font-weight: 400; }
+.translation .reading { margin-left: 0.6rem; font-size: 0.95rem; color: var(--muted); }
+.hint { margin: 0 0 1rem; font-size: 0.9rem; color: var(--muted); }
