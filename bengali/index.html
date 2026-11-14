@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bengali Verb Tenses</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="../shared/reading.css">
+  <link rel="stylesheet" href="bengali.css">
+</head>
+<body>
+  <main>
+    <h1>Bengali Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb to see its Bengali translation and how to say it in every tense.</p>
+    <p class="hint">Bengali verbs do not change for gender or number. They change for person and for how respectful you are, so each button covers the singular and the plural (<span lang="bn">আমি</span> / <span lang="bn">আমরা</span>): <span lang="bn">তুই</span> is intimate (for close friends and children), <span lang="bn">তুমি</span> is familiar, <span lang="bn">আপনি</span> is respectful, and <span lang="bn">সে</span> / <span lang="bn">তিনি</span> are the ordinary and the respectful "he / she". Every cell shows the Bengali script with a simplified phonetic romanization underneath: the inherent vowel is written o (<span lang="bn">করা</span> <i>kora</i>), <span lang="bn">ছ</span> is chh, and a spoken final o is written (<span lang="bn">করল</span> <i>korlo</i>). The spelling follows the short style used in West Bengal (<span lang="bn">করল</span>, <span lang="bn">করব</span>); in Bangladesh <span lang="bn">করলো</span>, <span lang="bn">করবো</span> is common. Compound verbs such as <span lang="bn">কাজ করা</span> (to work) conjugate on the last word only. The negative past in <span lang="bn">-নি</span> (<span lang="bn">করিনি</span>) covers both "did not" and "have not". The imperative has no <span lang="bn">আমি</span> form, and the negative imperative no ordinary <span lang="bn">সে</span> form (those buttons show —). Possession, need, obligation and many feelings put the person in the genitive (<span lang="bn">আমার গাড়ি আছে</span> "I have a car", <span lang="bn">আমার ভয় লাগে</span> "I am afraid", <span lang="bn">আমার করা উচিত</span> "I should"); this table always shows the person as the subject. For verbs like <span lang="bn">যাওয়া</span> and <span lang="bn">খাওয়া</span> the <span lang="bn">তুমি</span> negative imperative (<span lang="bn">যাও না</span>) can sound like urging; the usual prohibition is <span lang="bn">যেয়ো না</span>, <span lang="bn">খেয়ো না</span>, which this table does not generate.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show forms for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span><bdi lang="bn">আমি / আমরা</bdi> ami / amra</span></label>
+        <label><input type="radio" name="person" value="1"><span><bdi lang="bn">তুই</bdi> tui</span></label>
+        <label><input type="radio" name="person" value="2"><span><bdi lang="bn">তুমি / তোমরা</bdi> tumi / tomra</span></label>
+        <label><input type="radio" name="person" value="3"><span><bdi lang="bn">আপনি / আপনারা</bdi> apni / apnara</span></label>
+        <label><input type="radio" name="person" value="4"><span><bdi lang="bn">সে / তারা</bdi> she / tara</span></label>
+        <label><input type="radio" name="person" value="5"><span><bdi lang="bn">তিনি / তাঁরা</bdi> tini / tanra</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense (English / Bengali)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (বলা bola)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Indicative -->
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (<span lang="bn">সাধারণ বর্তমান</span>)</td>
+            <td>Stem + <span lang="bn">-ি / -িস / -ো / -েন / -ে</span> (-i, -is, -o, -en, -e)</td>
+            <td class="example" lang="bn" data-tense="pres"><span class="word">বলি</span><span class="reading">boli</span></td>
+            <td>Habits, routines, general facts and what is true now. In everyday speech it is also used for the near future.</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present Continuous (<span lang="bn">ঘটমান বর্তমান</span>)</td>
+            <td>Stem + <span lang="bn">-ছ-</span> (-chh-) + person ending</td>
+            <td class="example" lang="bn" data-tense="presCont"><span class="word">বলছি</span><span class="reading">bolchhi</span></td>
+            <td>Actions happening right now or around now.</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Simple Past (<span lang="bn">সাধারণ অতীত</span>)</td>
+            <td>Stem + <span lang="bn">-লাম / -লি / -লে / -লেন / -ল</span> (-lam, -li, -le, -len, -lo)</td>
+            <td class="example" lang="bn" data-tense="past"><span class="word">বললাম</span><span class="reading">bollam</span></td>
+            <td>Completed past actions.</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Continuous (<span lang="bn">ঘটমান অতীত</span>)</td>
+            <td>Stem + <span lang="bn">-ছিল-</span> (-chhil-) + person ending</td>
+            <td class="example" lang="bn" data-tense="pastCont"><span class="word">বলছিলাম</span><span class="reading">bolchhilam</span></td>
+            <td>An action that was in progress at a past moment.</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Habitual (<span lang="bn">নিত্যবৃত্ত অতীত</span>)</td>
+            <td>Stem + <span lang="bn">-ত-</span> (-t-) + person ending</td>
+            <td class="example" lang="bn" data-tense="pastHab"><span class="word">বলতাম</span><span class="reading">boltam</span></td>
+            <td>What used to happen regularly; also the "would" of unreal conditions (<span lang="bn">জানলে যেতাম</span> "if I had known, I would have gone").</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present Perfect (<span lang="bn">পুরাঘটিত বর্তমান</span>)</td>
+            <td>Stem + <span lang="bn">-েছ-</span> (-echh-) + person ending</td>
+            <td class="example" lang="bn" data-tense="presPerf"><span class="word">বলেছি</span><span class="reading">bolechhi</span></td>
+            <td>Actions completed with a result that still matters now ("I have done it").</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Perfect (<span lang="bn">পুরাঘটিত অতীত</span>)</td>
+            <td>Stem + <span lang="bn">-েছিল-</span> (-echhil-) + person ending</td>
+            <td class="example" lang="bn" data-tense="pastPerf"><span class="word">বলেছিলাম</span><span class="reading">bolechhilam</span></td>
+            <td>An action completed before another past action ("I had done it").</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (<span lang="bn">সাধারণ ভবিষ্যৎ</span>)</td>
+            <td>Stem + <span lang="bn">-ব / -বি / -বে / -বেন</span> (-bo, -bi, -be, -ben)</td>
+            <td class="example" lang="bn" data-tense="fut"><span class="word">বলব</span><span class="reading">bolbo</span></td>
+            <td>Actions that will happen later; also polite requests and promises.</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Negative Present (<span lang="bn">নেতিবাচক বর্তমান</span>)</td>
+            <td>Present form + <span lang="bn">না</span> (na) after the verb</td>
+            <td class="example" lang="bn" data-tense="negPres"><span class="word">বলি না</span><span class="reading">boli na</span></td>
+            <td>Saying that something does not happen or is not happening.</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Negative Past (<span lang="bn">নেতিবাচক অতীত</span>)</td>
+            <td>Present form + <span lang="bn">নি</span> (ni)</td>
+            <td class="example" lang="bn" data-tense="negPast"><span class="word">বলিনি</span><span class="reading">bolini</span></td>
+            <td>Saying that something did not happen or has not happened ("I did not / have not").</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Negative Future (<span lang="bn">নেতিবাচক ভবিষ্যৎ</span>)</td>
+            <td>Future form + <span lang="bn">না</span> (na)</td>
+            <td class="example" lang="bn" data-tense="negFut"><span class="word">বলব না</span><span class="reading">bolbo na</span></td>
+            <td>Saying that something will not happen.</td>
+          </tr>
+          <!-- Imperative -->
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Imperative (<span lang="bn">অনুজ্ঞা</span>)</td>
+            <td><span lang="bn">তুই</span>: bare stem; <span lang="bn">তুমি</span>: <span lang="bn">-ো</span>; <span lang="bn">আপনি</span>: <span lang="bn">-ুন</span>; <span lang="bn">সে</span>: <span lang="bn">-ুক</span></td>
+            <td class="example na" lang="bn" data-tense="imp" title="This verb has no such form for this person."><span>—</span></td>
+            <td>Telling someone to do something; the 3rd-person form means "let him/her/them do it".</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Negative Imperative (<span lang="bn">নিষেধাজ্ঞা</span>)</td>
+            <td><span lang="bn">তুই</span>, <span lang="bn">তুমি</span>: present form + <span lang="bn">না</span>; <span lang="bn">আপনি</span>: future form + <span lang="bn">না</span></td>
+            <td class="example na" lang="bn" data-tense="impNeg" title="This verb has no such form for this person."><span>—</span></td>
+            <td>Telling someone not to do something.</td>
+          </tr>
+          <!-- Conditional -->
+          <tr class="subjunctive">
+            <td class="mood">Conditional</td>
+            <td>If / When (<span lang="bn">শর্তসূচক</span>)</td>
+            <td>Stem + <span lang="bn">-লে</span> (-le)</td>
+            <td class="example" lang="bn" data-tense="cond"><span class="word">বললে</span><span class="reading">bolle</span></td>
+            <td>The conditional participle: "if / when I do ...". The same form for every person.</td>
+          </tr>
+          <!-- Verbal forms -->
+          <tr class="modality">
+            <td class="mood">Verbal forms</td>
+            <td>Verbal Noun (<span lang="bn">ক্রিয়াবাচক বিশেষ্য</span>)</td>
+            <td>Stem + <span lang="bn">-া</span> (-a) for most verbs</td>
+            <td class="example" lang="bn" data-tense="noun"><span class="word">বলা</span><span class="reading">bola</span></td>
+            <td>The dictionary form and the "-ing" of the verb ("doing", "to do" as a noun).</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Verbal forms</td>
+            <td>Infinitive (<span lang="bn">অসমাপিকা -তে</span>)</td>
+            <td>Stem + <span lang="bn">-তে</span> (-te)</td>
+            <td class="example" lang="bn" data-tense="inf"><span class="word">বলতে</span><span class="reading">bolte</span></td>
+            <td>"To do", "in order to do"; the same form for every person.</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Verbal forms</td>
+            <td>Conjunctive (<span lang="bn">অসমাপিকা -ে</span>)</td>
+            <td>Stem + <span lang="bn">-ে</span> (-e) for most verbs; a few change the stem (<span lang="bn">ডেকে</span>, <span lang="bn">গিয়ে</span>, <span lang="bn">খেয়ে</span>)</td>
+            <td class="example" lang="bn" data-tense="conj"><span class="word">বলে</span><span class="reading">bole</span></td>
+            <td>"Having done", "and then": links an earlier action to the next one.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show more tenses</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="patterns.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

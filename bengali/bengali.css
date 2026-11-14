@@ -1,0 +1,4 @@
+/* Bengali script in the system's Bengali fonts: Kohinoor Bangla on macOS, then the usual Bengali fonts elsewhere */
+.word, td.example, .chip, .persons span, .translation strong {
+  font-family: "Kohinoor Bangla", "Bangla Sangam MN", "Noto Sans Bengali", "Nirmala UI", "Vrinda", system-ui, sans-serif;
+}
