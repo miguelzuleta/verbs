@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Polish Verb Tenses</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="../shared/reading.css">
+</head>
+<body>
+  <main>
+    <h1>Polish Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb to see its Polish translation and every conjugation in the table.</p>
+    <p class="hint">Every Polish verb has an aspect: imperfective (the process of an action, or its repetition) or perfective (a completed result). Most English verbs have one of each, so look at the translation buttons, each marked (impf.) or (pf.). A perfective verb has no present tense (its cells show —) and its simple future uses the present endings. The past tense changes with gender and number, so those forms are shown together as masculine / feminine (and neuter). Reflexive verbs keep <span lang="pl">się</span> after the verb. Negative commands normally use the imperfective.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show conjugation for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span lang="pl">ja</span></label>
+        <label><input type="radio" name="person" value="1"><span lang="pl">ty</span></label>
+        <label><input type="radio" name="person" value="2"><span lang="pl">on / ona / ono</span></label>
+        <label><input type="radio" name="person" value="3"><span lang="pl">my</span></label>
+        <label><input type="radio" name="person" value="4"><span lang="pl">wy</span></label>
+        <label><input type="radio" name="person" value="5"><span lang="pl">oni / one</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense (English / Polish)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (mówić, impf.)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (<span lang="pl">Czas teraźniejszy</span>)</td>
+            <td>Present stem + personal endings: <span lang="pl">-ę, -esz, -e, -emy, -ecie, -ą</span> (e-verbs; <span lang="pl">-ować</span> verbs: <span lang="pl">-uję, -ujesz, -uje, -ujemy, -ujecie, -ują</span>); <span lang="pl">-ę/-ię, -isz/-ysz, -i/-y, -imy/-ymy, -icie/-ycie, -ą/-ią</span> (i/y-verbs); <span lang="pl">-am, -asz, -a, -amy, -acie, -ają</span> (a-verbs). Some verbs are irregular (<span lang="pl">być, jeść, wiedzieć</span>). Imperfective verbs only</td>
+            <td class="example" lang="pl" data-tense="pres">mówię</td>
+            <td>Actions happening now, habits, general truths. A perfective verb has no present tense</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past (<span lang="pl">Czas przeszły</span>)</td>
+            <td>Past stem + a gender and number ending (<span lang="pl">-ł</span> masculine, <span lang="pl">-ła</span> feminine, <span lang="pl">-ło</span> neuter, <span lang="pl">-li</span> men or a mixed group, <span lang="pl">-ły</span> other plurals) + a personal ending (<span lang="pl">ja</span> <span lang="pl">-em/-m</span>, <span lang="pl">ty</span> <span lang="pl">-eś/-ś</span>, <span lang="pl">my</span> <span lang="pl">-śmy</span>, <span lang="pl">wy</span> <span lang="pl">-ście</span>; none for the 3rd person)</td>
+            <td class="example" lang="pl" data-tense="past">mówiłem / mówiłam</td>
+            <td>Past actions; imperfective: the process or a repeated action, perfective: a completed result. The verb agrees with the subject in gender and number, so the forms are shown together (masculine / feminine, with neuter for the 3rd person singular; in the plural, men or a mixed group / women or things)</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (<span lang="pl">Czas przyszły</span>)</td>
+            <td>Imperfective: <span lang="pl">będę, będziesz, będzie, będziemy, będziecie, będą</span> + infinitive. Perfective: the present endings on the perfective verb (the simple future). <span lang="pl">być</span> uses the same forms without an infinitive</td>
+            <td class="example" lang="pl" data-tense="fut">będę mówić</td>
+            <td>Actions that will happen; imperfective: ongoing or repeated, perfective: a single completed action</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Conditional (<span lang="pl">Tryb przypuszczający</span>)</td>
+            <td>Past form (<span lang="pl">-ł, -ła, -ło, -li, -ły</span>) + <span lang="pl">by</span> + personal ending (<span lang="pl">ja</span> <span lang="pl">-m</span>, <span lang="pl">ty</span> <span lang="pl">-ś</span>, <span lang="pl">my</span> <span lang="pl">-śmy</span>, <span lang="pl">wy</span> <span lang="pl">-ście</span>; none for the 3rd person)</td>
+            <td class="example" lang="pl" data-tense="cond">mówiłbym / mówiłabym</td>
+            <td>Hypothetical actions ("would do"), wishes, polite requests. Shown with the same gender and number forms as the past</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Imperative (<span lang="pl">Tryb rozkazujący</span>)</td>
+            <td><span lang="pl">ty</span>: the present stem, bare or with <span lang="pl">-j</span> (<span lang="pl">mów, pisz, czytaj, pij</span>), sometimes with a sound change (<span lang="pl">nieś, rób</span>); <span lang="pl">my</span>: <span lang="pl">ty</span> form + <span lang="pl">-my</span>; <span lang="pl">wy</span>: <span lang="pl">ty</span> form + <span lang="pl">-cie</span>; <span lang="pl">on / ona / ono</span> and <span lang="pl">oni / one</span>: <span lang="pl">niech</span> + the 3rd person</td>
+            <td class="example" lang="pl" data-tense="imp">—</td>
+            <td>Telling someone to do something; the <span lang="pl">my</span> form means "let's", and <span lang="pl">niech</span> + 3rd person means "let him / her / them". There is no imperative for <span lang="pl">ja</span>, so that pill shows —</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Negative Imperative (<span lang="pl">Zakaz</span>)</td>
+            <td><span lang="pl">nie</span> + imperative; <span lang="pl">niech nie</span> + 3rd person for <span lang="pl">on / ona / ono</span> and <span lang="pl">oni / one</span>. Imperfective verbs only</td>
+            <td class="example" lang="pl" data-tense="impNeg">—</td>
+            <td>Telling someone not to do something. Normally imperfective, so a perfective verb shows —</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Verbal forms</td>
+            <td>Adverbial Participle (<span lang="pl">Imiesłów przysłówkowy</span>)</td>
+            <td>Imperfective: 3rd person plural present + <span lang="pl">-c</span> (<span lang="pl">mówiąc</span>). Perfective: past stem + <span lang="pl">-wszy</span> (<span lang="pl">powiedziawszy</span>), or the masculine past form + <span lang="pl">-szy</span> after a consonant (<span lang="pl">przyniósłszy</span>). The perfective form is mostly written</td>
+            <td class="example" lang="pl" data-tense="ger">mówiąc</td>
+            <td>An action that accompanies the main verb ("while speaking", "having said"), done by the subject of that verb. Does not change for person, number or gender</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Verbal forms</td>
+            <td>Active Participle (<span lang="pl">Imiesłów przymiotnikowy czynny</span>)</td>
+            <td>3rd person plural present + <span lang="pl">-cy</span> (<span lang="pl">mówiący</span>). Imperfective verbs only</td>
+            <td class="example" lang="pl" data-tense="part">mówiący</td>
+            <td>Describes a noun by what it does ("the person who is speaking"). Agrees with the noun like an adjective; the masculine singular is shown. A perfective verb has none</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show 5 more tenses</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="conjugate.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

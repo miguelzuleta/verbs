@@ -1,0 +1,7 @@
+/* extra row groups (shared/styles.css defines indicative, subjunctive and imperative) */
+tr.negation { background: #fbeaea; }
+tr.modality { background: #f0eafa; }
+tr.question { background: #e3f4f4; }
+
+td.example.na { color: var(--muted); font-weight: 400; }
+.hint { margin: 0 0 1rem; font-size: 0.9rem; color: var(--muted); }

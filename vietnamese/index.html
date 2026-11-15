@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vietnamese Verb Patterns</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="vietnamese.css">
+</head>
+<body>
+  <main>
+    <h1>Vietnamese Verb Patterns</h1>
+    <p class="subtitle">Look up an English verb to see its Vietnamese translation and how to express each tense, aspect and mood with it.</p>
+    <p class="hint">Vietnamese verbs never change form. The person only changes the pronoun, and tense comes from particles such as <span lang="vi">đã</span> (past), <span lang="vi">đang</span> (in progress), <span lang="vi">sẽ</span> (future), <span lang="vi">rồi</span> (already), <span lang="vi">chưa</span> (not yet) and <span lang="vi">không</span> (no) placed around the verb. Each row shows one way of expressing a tense or mood. There is no romanization because Vietnamese is already written in the Latin alphabet. The pronouns chosen are the neutral ones (<span lang="vi">tôi</span>, <span lang="vi">bạn</span> ...), but real Vietnamese pronouns depend on age and relationship (<span lang="vi">anh</span>, <span lang="vi">chị</span>, <span lang="vi">em</span>, ...). The button <span lang="vi">anh ấy / cô ấy</span> uses <span lang="vi">anh ấy</span> in the sentences, which stands for "he" or "she". In commands, "we" is the inclusive <span lang="vi">chúng ta</span> (you and I), not <span lang="vi">chúng tôi</span>. Weather verbs such as <span lang="vi">mưa</span> have no personal subject, so every button shows <span lang="vi">trời</span> ("the sky"): <span lang="vi">trời mưa</span>. Where a pattern does not suit a verb the cell shows —.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show sentences for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span lang="vi">tôi</span></label>
+        <label><input type="radio" name="person" value="1"><span lang="vi">bạn</span></label>
+        <label><input type="radio" name="person" value="2"><span lang="vi">anh ấy / cô ấy</span></label>
+        <label><input type="radio" name="person" value="3"><span lang="vi">chúng tôi</span></label>
+        <label><input type="radio" name="person" value="4"><span lang="vi">các bạn</span></label>
+        <label><input type="radio" name="person" value="5"><span lang="vi">họ</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense / Aspect (English / Vietnamese)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head" lang="vi">Example (nói)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Indicative -->
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (<span lang="vi">Hiện tại</span>)</td>
+            <td>Subject + verb</td>
+            <td class="example" lang="vi" data-tense="pres"><span class="vi">tôi nói</span></td>
+            <td>Current actions, habits, general truths; no particle is needed</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>In Progress (<span lang="vi">Đang</span>)</td>
+            <td>Subject + <span lang="vi">đang</span> + verb</td>
+            <td class="example" lang="vi" data-tense="prog"><span class="vi">tôi đang nói</span></td>
+            <td>Actions happening right now</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Completed (<span lang="vi">Đã</span>)</td>
+            <td>Subject + <span lang="vi">đã</span> + verb</td>
+            <td class="example" lang="vi" data-tense="completed"><span class="vi">tôi đã nói</span></td>
+            <td>Past or completed actions (often left out when a time word such as <span lang="vi">hôm qua</span> &quot;yesterday&quot; already shows it is past)</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Ever Done (<span lang="vi">Đã từng</span>)</td>
+            <td>Subject + <span lang="vi">đã từng</span> + verb</td>
+            <td class="example" lang="vi" data-tense="exper"><span class="vi">tôi đã từng nói</span></td>
+            <td>Having done something at least once in life</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Already (<span lang="vi">Rồi</span>)</td>
+            <td>Subject + <span lang="vi">đã</span> + verb + <span lang="vi">rồi</span></td>
+            <td class="example" lang="vi" data-tense="perfect"><span class="vi">tôi đã nói rồi</span></td>
+            <td>Something already done, with a link to the present</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Just Now (<span lang="vi">Vừa</span>)</td>
+            <td>Subject + <span lang="vi">vừa</span> + verb</td>
+            <td class="example" lang="vi" data-tense="recent"><span class="vi">tôi vừa nói</span></td>
+            <td>Something that has just happened</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past In Progress (<span lang="vi">Lúc đó … đang</span>)</td>
+            <td><span lang="vi">Lúc đó</span> + subject + <span lang="vi">đang</span> + verb</td>
+            <td class="example" lang="vi" data-tense="pastprog"><span class="vi">lúc đó tôi đang nói</span></td>
+            <td>What was happening at a moment in the past</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Perfect (<span lang="vi">Trước đó … đã … rồi</span>)</td>
+            <td><span lang="vi">Trước đó</span> + subject + <span lang="vi">đã</span> + verb + <span lang="vi">rồi</span></td>
+            <td class="example" lang="vi" data-tense="pluperf"><span class="vi">trước đó tôi đã nói rồi</span></td>
+            <td>An action completed before another moment in the past</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (<span lang="vi">Sẽ</span>)</td>
+            <td>Subject + <span lang="vi">sẽ</span> + verb</td>
+            <td class="example" lang="vi" data-tense="fut"><span class="vi">tôi sẽ nói</span></td>
+            <td>Planned or predicted future actions, promises</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>About To (<span lang="vi">Sắp</span>)</td>
+            <td>Subject + <span lang="vi">sắp</span> + verb</td>
+            <td class="example" lang="vi" data-tense="nearfut"><span class="vi">tôi sắp nói</span></td>
+            <td>Something about to happen very soon</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future Perfect (<span lang="vi">Đến lúc đó … sẽ … xong</span>)</td>
+            <td><span lang="vi">Đến lúc đó</span> + subject + <span lang="vi">sẽ</span> + verb + <span lang="vi">xong</span></td>
+            <td class="example" lang="vi" data-tense="futperf"><span class="vi">đến lúc đó tôi sẽ nói xong</span></td>
+            <td>What will be finished by a future moment (a state or instant verb, or one already ending in <span lang="vi">xong</span> or <span lang="vi">hết</span>, uses <span lang="vi">đã</span> … <span lang="vi">rồi</span> instead)</td>
+          </tr>
+          <!-- Hypothetical -->
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Conditional (<span lang="vi">Nếu … sẽ</span>)</td>
+            <td><span lang="vi">Nếu</span> …, subject + <span lang="vi">sẽ</span> + verb</td>
+            <td class="example" lang="vi" data-tense="cond"><span class="vi">nếu …, tôi sẽ nói</span></td>
+            <td>What &quot;would&quot; happen if a condition held</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Conditional Perfect (<span lang="vi">Nếu lúc đó … đã … rồi</span>)</td>
+            <td><span lang="vi">Nếu lúc đó</span> …, subject + <span lang="vi">đã</span> + verb + <span lang="vi">rồi</span></td>
+            <td class="example" lang="vi" data-tense="condperf"><span class="vi">nếu lúc đó …, tôi đã nói rồi</span></td>
+            <td>What &quot;would have&quot; happened</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Hypothetical (<span lang="vi">Nếu</span>)</td>
+            <td><span lang="vi">Nếu</span> + subject + verb</td>
+            <td class="example" lang="vi" data-tense="hyp"><span class="vi">nếu tôi nói</span></td>
+            <td>The &quot;if&quot; clause of a condition (&quot;If I ...&quot;)</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Counterfactual Past (<span lang="vi">Giá mà … đã</span>)</td>
+            <td><span lang="vi">Giá mà</span> + <span lang="vi">lúc đó</span> + subject + <span lang="vi">đã</span> + verb</td>
+            <td class="example" lang="vi" data-tense="hypperf"><span class="vi">giá mà lúc đó tôi đã nói</span></td>
+            <td>Past regrets or impossible conditions (&quot;If only I had ...&quot;)</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Wish (<span lang="vi">Ước gì</span>)</td>
+            <td><span lang="vi">Ước gì</span> + subject + verb</td>
+            <td class="example" lang="vi" data-tense="wish"><span class="vi">ước gì tôi nói</span></td>
+            <td>Wishes (&quot;I wish ...&quot; / &quot;If only ...&quot;)</td>
+          </tr>
+          <!-- Imperative -->
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Affirmative Imperative (<span lang="vi">Hãy</span>)</td>
+            <td>subject + <span lang="vi">hãy</span> + verb! (you, we) / <span lang="vi">để</span> + subject + verb! (I, he/she, they)</td>
+            <td class="example" lang="vi" data-tense="impAff"><span class="vi">để tôi nói!</span></td>
+            <td>Telling someone to do something; <span lang="vi">để</span> means &quot;let (me, him, them) ...&quot;; for &quot;we&quot; the command uses the inclusive <span lang="vi">chúng ta</span> (you and I)</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Negative Imperative (<span lang="vi">Đừng</span>)</td>
+            <td>subject + <span lang="vi">đừng</span> + verb! (you, we) / <span lang="vi">đừng để</span> + subject + verb! (I, he/she, they)</td>
+            <td class="example" lang="vi" data-tense="impNeg"><span class="vi">đừng để tôi nói!</span></td>
+            <td>Telling someone not to do something; <span lang="vi">đừng để</span> means &quot;don't let ...&quot;</td>
+          </tr>
+          <!-- Negation -->
+          <tr class="negation">
+            <td class="mood">Negation</td>
+            <td>Not (<span lang="vi">Không</span>)</td>
+            <td>Subject + <span lang="vi">không</span> + verb</td>
+            <td class="example" lang="vi" data-tense="negPres"><span class="vi">tôi không nói</span></td>
+            <td>Present, habitual or future negation</td>
+          </tr>
+          <tr class="negation">
+            <td class="mood">Negation</td>
+            <td>Not Yet (<span lang="vi">Chưa</span>)</td>
+            <td>Subject + <span lang="vi">chưa</span> + verb</td>
+            <td class="example" lang="vi" data-tense="negPast"><span class="vi">tôi chưa nói</span></td>
+            <td>Something that has not happened yet</td>
+          </tr>
+          <tr class="negation">
+            <td class="mood">Negation</td>
+            <td>Never (<span lang="vi">Chưa từng</span>)</td>
+            <td>Subject + <span lang="vi">chưa từng</span> + verb</td>
+            <td class="example" lang="vi" data-tense="negExper"><span class="vi">tôi chưa từng nói</span></td>
+            <td>Having never done something</td>
+          </tr>
+          <tr class="negation">
+            <td class="mood">Negation</td>
+            <td>Did Not (<span lang="vi">Đã không</span>)</td>
+            <td>Subject + <span lang="vi">đã không</span> + verb</td>
+            <td class="example" lang="vi" data-tense="negDid"><span class="vi">tôi đã không nói</span></td>
+            <td>Not doing something in the past (a plain fact or a choice, not &quot;not yet&quot;)</td>
+          </tr>
+          <!-- Modality -->
+          <tr class="modality">
+            <td class="mood">Modality</td>
+            <td>Can / Able To (<span lang="vi">Có thể</span>)</td>
+            <td>Subject + <span lang="vi">có thể</span> + verb</td>
+            <td class="example" lang="vi" data-tense="can"><span class="vi">tôi có thể nói</span></td>
+            <td>Ability or possibility</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Modality</td>
+            <td>Should (<span lang="vi">Nên</span>)</td>
+            <td>Subject + <span lang="vi">nên</span> + verb</td>
+            <td class="example" lang="vi" data-tense="should"><span class="vi">tôi nên nói</span></td>
+            <td>Advice or obligation</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Modality</td>
+            <td>Want To (<span lang="vi">Muốn</span>)</td>
+            <td>Subject + <span lang="vi">muốn</span> + verb</td>
+            <td class="example" lang="vi" data-tense="want"><span class="vi">tôi muốn nói</span></td>
+            <td>Desire or intention</td>
+          </tr>
+          <!-- Question -->
+          <tr class="question">
+            <td class="mood">Question</td>
+            <td>Yes/No Question (<span lang="vi">Có … không?</span>)</td>
+            <td>Subject + <span lang="vi">có</span> + verb + <span lang="vi">không</span>?</td>
+            <td class="example" lang="vi" data-tense="qCo"><span class="vi">tôi có nói không?</span></td>
+            <td>Asking a yes/no question (a verb that already begins with <span lang="vi">có</span> does not take a second one)</td>
+          </tr>
+          <tr class="question">
+            <td class="mood">Question</td>
+            <td>Done Yet? (<span lang="vi">Đã … chưa?</span>)</td>
+            <td>Subject + <span lang="vi">đã</span> + verb + <span lang="vi">chưa</span>?</td>
+            <td class="example" lang="vi" data-tense="qRoi"><span class="vi">tôi đã nói chưa?</span></td>
+            <td>Asking whether something has happened yet; the answers are <span lang="vi">rồi</span> &quot;already&quot; and <span lang="vi">chưa</span> &quot;not yet&quot;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show more patterns</button>
+  </main>
+  <script src="../shared/verb-kit.js"></script>
+  <script src="patterns.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

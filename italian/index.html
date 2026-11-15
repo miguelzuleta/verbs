@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Italian Verb Tenses</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="italian.css">
+</head>
+<body>
+  <main>
+    <h1>Italian Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb to see its Italian translation and every conjugation in the table.</p>
+    <p class="hint">Compound tenses use <span lang="it">avere</span> or <span lang="it">essere</span> as the auxiliary (<span lang="it">ho parlato</span>, <span lang="it">sono andato</span>). With <span lang="it">essere</span> the participle agrees with the subject, so both endings are shown (<span lang="it">andato/a</span>, <span lang="it">andati/e</span>). The <span lang="it">passato prossimo</span> is the everyday past in speech; the <span lang="it">passato remoto</span> is used in writing and storytelling, and in everyday speech mainly in the South and in Tuscany. <span lang="it">Lei</span> is the formal "you" and takes the 3rd-person singular form, so it shares the <span lang="it">lui / lei / Lei</span> button. The imperative has no <span lang="it">io</span> form (that button shows the <span lang="it">tu</span> form), and its <span lang="it">Lei</span> and <span lang="it">Loro</span> forms are the polite ones. A dash (—) marks a form that does not exist: weather verbs such as <span lang="it">piovere</span> only have the <span lang="it">lui / lei / Lei</span> form.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show conjugation for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span lang="it">io</span></label>
+        <label><input type="radio" name="person" value="1"><span lang="it">tu</span></label>
+        <label><input type="radio" name="person" value="2"><span lang="it">lui / lei / Lei</span></label>
+        <label><input type="radio" name="person" value="3"><span lang="it">noi</span></label>
+        <label><input type="radio" name="person" value="4"><span lang="it">voi</span></label>
+        <label><input type="radio" name="person" value="5"><span lang="it">loro</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense (English / Italian)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (Parlare)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Indicative -->
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (Presente)</td>
+            <td>Simple</td>
+            <td class="example" lang="it" data-tense="pres">parlo</td>
+            <td>Current actions, habits, general truths</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present Perfect (Passato prossimo)</td>
+            <td><span lang="it">avere</span> or <span lang="it">essere</span> (pres.) + participle</td>
+            <td class="example" lang="it" data-tense="passProx">ho parlato</td>
+            <td>The everyday past: completed actions and past events, often connected to the present</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Imperfect (Imperfetto)</td>
+            <td>Simple</td>
+            <td class="example" lang="it" data-tense="imperf">parlavo</td>
+            <td>Ongoing/habitual past actions, descriptions</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Perfect (Trapassato prossimo)</td>
+            <td><span lang="it">avere</span> or <span lang="it">essere</span> (imp.) + participle</td>
+            <td class="example" lang="it" data-tense="trapProx">avevo parlato</td>
+            <td>An action completed before another past action</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Remote Past (Passato remoto)</td>
+            <td>Simple</td>
+            <td class="example" lang="it" data-tense="passRem">parlai</td>
+            <td>Literary; completed actions cut off from the present (also spoken in southern Italy)</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Anterior (Trapassato remoto)</td>
+            <td><span lang="it">avere</span> or <span lang="it">essere</span> (remote past) + participle</td>
+            <td class="example" lang="it" data-tense="trapRem">ebbi parlato</td>
+            <td>Literary; an action finished just before another in the <span lang="it">passato remoto</span></td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (Futuro semplice)</td>
+            <td>Simple</td>
+            <td class="example" lang="it" data-tense="futSem">parlerò</td>
+            <td>Actions that will happen later; also guesses about the present</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future Perfect (Futuro anteriore)</td>
+            <td><span lang="it">avere</span> or <span lang="it">essere</span> (fut.) + participle</td>
+            <td class="example" lang="it" data-tense="futAnt">avrò parlato</td>
+            <td>An action that will be finished before another point in the future</td>
+          </tr>
+
+          <!-- Conditional -->
+          <tr class="indicative">
+            <td class="mood">Conditional</td>
+            <td>Conditional (Condizionale presente)</td>
+            <td>Simple</td>
+            <td class="example" lang="it" data-tense="condPres">parlerei</td>
+            <td>Hypothetical actions ("would" do something), polite requests</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Conditional</td>
+            <td>Past Conditional (Condizionale passato)</td>
+            <td><span lang="it">avere</span> or <span lang="it">essere</span> (cond.) + participle</td>
+            <td class="example" lang="it" data-tense="condPass">avrei parlato</td>
+            <td>Hypothetical past actions ("would have" done), regrets</td>
+          </tr>
+
+          <!-- Subjunctive -->
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Present Subjunctive (Congiuntivo presente)</td>
+            <td>Simple</td>
+            <td class="example" lang="it" data-tense="congPres">parli</td>
+            <td>Doubt, wishes, emotions or opinions (after <span lang="it">che</span>)</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Past Subjunctive (Congiuntivo passato)</td>
+            <td><span lang="it">avere</span> or <span lang="it">essere</span> (pres. subj.) + participle</td>
+            <td class="example" lang="it" data-tense="congPass">abbia parlato</td>
+            <td>Doubt or emotion about a completed action</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Imperfect Subjunctive (Congiuntivo imperfetto)</td>
+            <td>Simple</td>
+            <td class="example" lang="it" data-tense="congImperf">parlassi</td>
+            <td>Past doubts or wishes; unlikely "if" clauses ("If I were...")</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Pluperfect Subjunctive (Congiuntivo trapassato)</td>
+            <td><span lang="it">avere</span> or <span lang="it">essere</span> (imp. subj.) + participle</td>
+            <td class="example" lang="it" data-tense="congTrap">avessi parlato</td>
+            <td>Past regrets or impossible past conditions ("If I had...")</td>
+          </tr>
+
+          <!-- Imperative -->
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Imperative (Imperativo)</td>
+            <td>Simple (<span lang="it">Lei</span> and <span lang="it">Loro</span> use subj. forms)</td>
+            <td class="example" lang="it" data-tense="impAff">parla (tu)</td>
+            <td>Telling someone to do something (no <span lang="it">io</span> form)</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Negative Imperative (Imperativo negativo)</td>
+            <td><span lang="it">non</span> + infinitive (<span lang="it">tu</span>); <span lang="it">non</span> + imperative (other persons)</td>
+            <td class="example" lang="it" data-tense="impNeg">non parlare (tu)</td>
+            <td>Telling someone not to do something</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show 13 more tenses</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="conjugate.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
