@@ -13,7 +13,7 @@
 
 body {
   margin: 0;
-  padding: 2rem 1rem;
+  padding: 1rem;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color: var(--text);
   background: #f7f8fa;
@@ -192,7 +192,10 @@ tr.indicative  { background: var(--indicative); }
 tr.subjunctive { background: var(--subjunctive); }
 tr.imperative  { background: var(--imperative); }
 
-tbody tr:hover { filter: brightness(0.96); }
+/* Only where there is a real pointer; on a touch screen :hover sticks after a tap. */
+@media (hover: hover) {
+  tbody tr:hover { filter: brightness(0.96); }
+}
 
 td.mood { font-weight: 600; }
 td.example { font-weight: 600; white-space: nowrap; }
@@ -218,8 +221,110 @@ td.example { font-weight: 600; white-space: nowrap; }
 body:not(.ready) .table-wrap,
 body:not(.ready) .toggle { display: none; }
 
-@media (max-width: 700px) {
-  body { padding: 1rem 0.5rem; }
-  table { font-size: 0.85rem; }
-  th, td { padding: 0.5rem 0.6rem; }
+/*
+ * Narrow screens (phones, small tablets in portrait): the same markup, laid out
+ * as one card per tense instead of a five-column table. Five columns do not fit
+ * a phone: the example column, the one that matters, ended up off-screen behind
+ * a sideways scroll. The rows are restyled, not rebuilt, so page.js, the "show
+ * more" button and all sixteen index.html files work unchanged. Every row has
+ * the same five cells, in this order, which is what the :nth-child rules below
+ * rely on:
+ *
+ *   1 mood  2 tense  3 structure  4 example  5 primary use
+ *
+ *   +----------------------------------+
+ *   | Present (Presente)    Indicative |   tense, mood badge
+ *   | hablo                            |   example
+ *   | Current actions, habits...       |   primary use
+ *   | Structure: Simple                |   structure
+ *   +----------------------------------+
+ *
+ * The header row is not needed (each card says what it is) so it is hidden from
+ * sight but stays for screen readers. page.js gives the table, rows and cells
+ * explicit roles, because some browsers drop the table semantics once a table's
+ * display is changed.
+ */
+@media (max-width: 760px) {
+  .table-wrap {
+    overflow: visible;
+    background: none;
+    border: none;
+    border-radius: 0;
+  }
+
+  table, tbody { display: block; }
+
+  thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "tense   mood"
+      "example example"
+      "use     use"
+      "struct  struct";
+    column-gap: 0.75rem;
+    row-gap: 0.2rem;
+    margin-bottom: 0.6rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  /* display: grid above would otherwise win over the hidden attribute */
+  tbody tr[hidden] { display: none; }
+
+  tbody tr td {
+    display: block;
+    min-width: 0;
+    padding: 0;
+    border-top: none;
+  }
+
+  tbody tr td:nth-child(1) {          /* mood: a small badge in the corner */
+    grid-area: mood;
+    align-self: start;
+    padding: 0.1rem 0.55rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 999px;
+  }
+
+  tbody tr td:nth-child(2) {          /* tense: the card's title */
+    grid-area: tense;
+    font-weight: 600;
+  }
+
+  tbody tr td.example {               /* example: the thing being looked up */
+    grid-area: example;
+    margin: 0.2rem 0;
+    font-size: 1.1rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  tbody tr td:nth-child(5) {          /* primary use */
+    grid-area: use;
+    font-size: 0.9rem;
+  }
+
+  tbody tr td:nth-child(3) {          /* structure: small print */
+    grid-area: struct;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  tbody tr td:nth-child(3)::before {
+    content: "Structure: ";
+    font-weight: 600;
+  }
 }

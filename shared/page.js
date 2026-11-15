@@ -6,7 +6,8 @@
  * buttons, the person selector, the table of examples and the "show more"
  * button. It expects the markup every index.html shares (#verb-input,
  * #verb-list, #message, #result, #example-head, #toggle-tenses, the
- * input[name="person"] radios and td[data-tense] example cells). The table and
+ * input[name="person"] radios, the #tense-table table with its five cells per row,
+ * and td[data-tense] example cells). The table and
  * its button are hidden by styles.css until this file adds `ready` to <body>,
  * which it does once the table is filled in and collapsed.
  *
@@ -60,6 +61,15 @@
     const extraRows = [...exampleCells]
       .filter(cell => !core.has(cell.dataset.tense))
       .map(cell => cell.closest('tr'));
+
+    // On narrow screens styles.css lays the rows out as cards, and some browsers
+    // stop treating a table as a table once its display is changed. Saying what
+    // each part is keeps it a table for screen readers in both layouts.
+    const table = document.getElementById('tense-table');
+    const roles = { table: 'table', thead: 'rowgroup', tbody: 'rowgroup', tr: 'row', th: 'columnheader', td: 'cell' };
+    for (const part of [table, ...table.querySelectorAll('thead, tbody, tr, th, td')]) {
+      part.setAttribute('role', roles[part.localName]);
+    }
 
     const englishVerbs = Object.keys(verbs).sort();
     const state = { english: initialVerb, choice: 0, person: 0, expanded: false };
