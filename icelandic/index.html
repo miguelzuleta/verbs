@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Icelandic Verb Tenses</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="../shared/reading.css">
+</head>
+<body>
+  <main>
+    <h1>Icelandic Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb to see its Icelandic translation and every conjugation in the table.</p>
+    <p class="hint">Icelandic verbs agree with their subject in person and number; the six buttons show the verb without the pronoun. Strong verbs change their vowel (<span lang="is">taka, tók, tekið</span>) and weak verbs add a dental ending (<span lang="is">heyra, heyrði, heyrt</span>). A vowel change called u-umlaut turns <i>a</i> into <i>ö</i> before <span lang="is">-um</span> (<span lang="is">tölum</span>, <span lang="is">töluðum</span>). Every compound tense uses <span lang="is">hafa</span> with the supine (<span lang="is">hef talað</span>); the future is <span lang="is">munu</span> + infinitive. The imperative has no <span lang="is">ég</span>, <span lang="is">hann / hún / það</span> or <span lang="is">þeir / þær / þau</span> form (those buttons show —), and its 2nd person singular ends in <span lang="is">-ðu / -du / -tu</span> (<span lang="is">talaðu</span>, <span lang="is">sendu</span>, <span lang="is">taktu</span>). Some verbs take an object-like subject in the dative or accusative instead of the nominative (<span lang="is">mig langar</span> "I want", <span lang="is">mér finnst</span> "I think"); this table does not show that. A dash (—) marks a form that does not exist: weather verbs such as <span lang="is">rigna</span> only have the <span lang="is">hann / hún / það</span> form, and modal verbs such as <span lang="is">mega</span> have no imperative.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show conjugation for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span lang="is">ég</span></label>
+        <label><input type="radio" name="person" value="1"><span lang="is">þú</span></label>
+        <label><input type="radio" name="person" value="2"><span lang="is">hann / hún / það</span></label>
+        <label><input type="radio" name="person" value="3"><span lang="is">við</span></label>
+        <label><input type="radio" name="person" value="4"><span lang="is">þið</span></label>
+        <label><input type="radio" name="person" value="5"><span lang="is">þeir / þær / þau</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense (English / Icelandic)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (tala)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Indicative -->
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (<span lang="is">Nútíð</span>)</td>
+            <td>Simple</td>
+            <td class="example" lang="is" data-tense="pres">tala</td>
+            <td>Current actions, habits and general truths; with a time word it also refers to the future (<span lang="is">Ég fer á morgun</span>)</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past (<span lang="is">Þátíð</span>)</td>
+            <td>Simple: weak verbs add a dental ending (<span lang="is">-aði, -ði, -di, -ti</span>), strong verbs change their stem vowel</td>
+            <td class="example" lang="is" data-tense="past">talaði</td>
+            <td>Completed past actions and the narrative past (stories, news, everyday speech); there is no separate imperfect, so it also covers "was speaking" and "used to speak"</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Perfect (<span lang="is">Núliðin tíð</span>)</td>
+            <td><span lang="is">hafa</span> (pres.) + supine</td>
+            <td class="example" lang="is" data-tense="perf">hef talað</td>
+            <td>A past action that still matters now, or experience up to now ("I have spoken"); with a stated past time (yesterday, in 2010) Icelandic uses the simple past instead</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Perfect (<span lang="is">Þáliðin tíð</span>)</td>
+            <td><span lang="is">hafa</span> (past) + supine</td>
+            <td class="example" lang="is" data-tense="plup">hafði talað</td>
+            <td>An action completed before another moment in the past ("I had spoken")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (<span lang="is">Framtíð</span>)</td>
+            <td><span lang="is">munu</span> (pres.) + infinitive</td>
+            <td class="example" lang="is" data-tense="fut">mun tala</td>
+            <td>Predictions, promises and plans; also a likely guess about the present. Everyday speech often uses the present with a time word instead</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future Perfect</td>
+            <td><span lang="is">munu</span> (pres.) + <span lang="is">hafa</span> + supine</td>
+            <td class="example" lang="is" data-tense="futPerf">mun hafa talað</td>
+            <td>An action that will be finished by a future moment; also a likely guess about the past ("he will have left")</td>
+          </tr>
+          <!-- Subjunctive -->
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Present Subjunctive (<span lang="is">Viðtengingarháttur nútíðar</span>)</td>
+            <td>Simple</td>
+            <td class="example" lang="is" data-tense="subjPres">tali</td>
+            <td>Wishes and blessings in set phrases (<span lang="is">Guð blessi Ísland</span>); reported speech and wishes in subordinate clauses after a present-tense main verb (<span lang="is">Hún segir að hann sé veikur</span>, <span lang="is">Ég vil að hann komi</span>)</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Past Subjunctive (<span lang="is">Viðtengingarháttur þátíðar</span>)</td>
+            <td>Simple: weak verbs usually look like the past indicative; strong verbs use the past plural stem with i-umlaut and <span lang="is">-i</span> (<span lang="is">tókum</span> &gt; <span lang="is">tæki</span>)</td>
+            <td class="example" lang="is" data-tense="subjPast">talaði</td>
+            <td>Unreal wishes and conditions (<span lang="is">Ef ég væri ríkur</span> "if I were rich"); reported speech after a past-tense main verb (<span lang="is">Hún sagði að hann væri veikur</span>)</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Perfect Subjunctive</td>
+            <td><span lang="is">hafa</span> (pres. subj.) + supine</td>
+            <td class="example" lang="is" data-tense="subjPerf">hafi talað</td>
+            <td>Reported speech or doubt about something already done, after a present-tense main verb (<span lang="is">Hún segir að hann hafi farið</span>)</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Past Perfect Subjunctive</td>
+            <td><span lang="is">hafa</span> (past subj.) + supine</td>
+            <td class="example" lang="is" data-tense="subjPlup">hefði talað</td>
+            <td>Unreal past situations (<span lang="is">Ef ég hefði vitað það</span> "if I had known it") and regrets; reported speech after a past-tense main verb</td>
+          </tr>
+          <!-- Conditional -->
+          <tr class="indicative">
+            <td class="mood">Conditional</td>
+            <td>Conditional</td>
+            <td><span lang="is">myndi</span> + infinitive</td>
+            <td class="example" lang="is" data-tense="cond">myndi tala</td>
+            <td>What would happen under a condition ("I would speak if ..."), and polite or tentative statements; the past subjunctive can do the same job</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Conditional</td>
+            <td>Conditional Perfect</td>
+            <td><span lang="is">myndi</span> + <span lang="is">hafa</span> + supine</td>
+            <td class="example" lang="is" data-tense="condPerf">myndi hafa talað</td>
+            <td>What would have happened if things had been different ("I would have spoken"); the past perfect subjunctive (<span lang="is">hefði talað</span>) can do the same job</td>
+          </tr>
+          <!-- Imperative -->
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Imperative (<span lang="is">Boðháttur</span>)</td>
+            <td>Simple: the <span lang="is">þú</span> form ends in <span lang="is">-ðu / -du / -tu</span>; <span lang="is">við</span> and <span lang="is">þið</span> use the present forms</td>
+            <td class="example" lang="is" data-tense="impAff">—</td>
+            <td>Telling someone to do something (only <span lang="is">þú</span>, <span lang="is">við</span> and <span lang="is">þið</span>; <span lang="is">við</span> means "let's")</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show 10 more tenses</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="conjugate.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arabic Verb Tenses</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="../shared/reading.css">
+  <link rel="stylesheet" href="arabic.css">
+</head>
+<body>
+  <main>
+    <h1>Arabic Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb to see its Arabic translation and how to say it in every tense.</p>
+    <p class="hint">Arabic is written right to left. Everyday Arabic leaves out the short vowels, but this page writes every verb form fully vowelled, and every form comes with a transliteration underneath (ʾ is the hamza, ʿ is the letter <bdi lang="ar" dir="rtl">ع</bdi> ʿayn, ā ī ū are long vowels, and a doubled letter such as ll marks a shadda: <bdi lang="ar" dir="rtl">كَلَّمَ</bdi> kallama). Arabic verbs change for person, for gender (<bdi lang="ar" dir="rtl">أنتَ</bdi> you, m. / <bdi lang="ar" dir="rtl">أنتِ</bdi> you, f.; <bdi lang="ar" dir="rtl">هو</bdi> he / <bdi lang="ar" dir="rtl">هي</bdi> she) and for number, including the DUAL (exactly two people: <bdi lang="ar" dir="rtl">أنتما</bdi> "you two", <bdi lang="ar" dir="rtl">هما</bdi> "they two"), which is why there are thirteen buttons, not six; the two <bdi lang="ar" dir="rtl">هما</bdi> buttons have the same pronoun, but the verb shows the gender (<bdi lang="ar" dir="rtl">كَتَبَا</bdi> (katabā) m., <bdi lang="ar" dir="rtl">كَتَبَتَا</bdi> (katabatā) f.). Each verb is built from a root (three or four consonants that carry the basic meaning) and a form (I to X) that changes the meaning: II intensive or causative, III does something to someone, IV causative, V reflexive of II, VI reciprocal, VII passive-like, VIII reflexive, IX colours and defects, X asks for or considers. The present tense (the imperfect) has three moods: indicative, subjunctive and jussive. The imperative only exists for you (<bdi lang="ar" dir="rtl">أنتَ</bdi> <bdi lang="ar" dir="rtl">أنتِ</bdi> <bdi lang="ar" dir="rtl">أنتما</bdi> <bdi lang="ar" dir="rtl">أنتم</bdi> <bdi lang="ar" dir="rtl">أنتنّ</bdi>); the other buttons show —. The participles do not change with the person: they are shown in the masculine singular.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show forms for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span><bdi lang="ar" dir="rtl">أنا</bdi> ana</span></label>
+        <label><input type="radio" name="person" value="1"><span><bdi lang="ar" dir="rtl">أنتَ</bdi> anta</span></label>
+        <label><input type="radio" name="person" value="2"><span><bdi lang="ar" dir="rtl">أنتِ</bdi> anti</span></label>
+        <label><input type="radio" name="person" value="3"><span><bdi lang="ar" dir="rtl">هو</bdi> huwa</span></label>
+        <label><input type="radio" name="person" value="4"><span><bdi lang="ar" dir="rtl">هي</bdi> hiya</span></label>
+        <label><input type="radio" name="person" value="5"><span><bdi lang="ar" dir="rtl">نحن</bdi> naḥnu</span></label>
+        <label><input type="radio" name="person" value="6"><span><bdi lang="ar" dir="rtl">أنتما</bdi> antumā</span></label>
+        <label><input type="radio" name="person" value="7"><span><bdi lang="ar" dir="rtl">أنتم</bdi> antum</span></label>
+        <label><input type="radio" name="person" value="8"><span><bdi lang="ar" dir="rtl">أنتنّ</bdi> antunna</span></label>
+        <label><input type="radio" name="person" value="9"><span><bdi lang="ar" dir="rtl">هما</bdi> (m.) humā</span></label>
+        <label><input type="radio" name="person" value="10"><span><bdi lang="ar" dir="rtl">هما</bdi> (f.) humā</span></label>
+        <label><input type="radio" name="person" value="11"><span><bdi lang="ar" dir="rtl">هم</bdi> hum</span></label>
+        <label><input type="radio" name="person" value="12"><span><bdi lang="ar" dir="rtl">هنّ</bdi> hunna</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense (English / Arabic)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (⁧تَكَلَّمَ⁩ takallama)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Indicative -->
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past (<bdi lang="ar" dir="rtl">الماضي</bdi>)</td>
+            <td>Past stem + ending for the person: -tu (I), -ta / -ti (you, m. / f.), -tumā (you two), -tum / -tunna (you, m. / f. pl.), -nā (we); he: -a, she: -at; they two: -ā (m.) / -atā (f.); they: -ū (m.) / -na (f.)</td>
+            <td class="example" data-tense="past"><span class="word"><bdi lang="ar" dir="rtl">تَكَلَّمْتُ</bdi></span><span class="reading">takallamtu</span></td>
+            <td>Completed actions in the past ("spoke", "has spoken"). The he-form (<bdi lang="ar" dir="rtl">كَتَبَ</bdi> (kataba)) is the dictionary form of the verb</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (<bdi lang="ar" dir="rtl">المضارع</bdi>)</td>
+            <td>Prefix (<bdi lang="ar" dir="rtl">أَ</bdi> a-, <bdi lang="ar" dir="rtl">تَ</bdi> ta-, <bdi lang="ar" dir="rtl">يَ</bdi> ya-, <bdi lang="ar" dir="rtl">نَ</bdi> na-; u- instead of a- in forms II, III, IV and Q1) + stem + ending: -u (singular), -īna (you, f.), -āni (dual), -ūna (m. pl.), -na (f. pl.): <bdi lang="ar" dir="rtl">يَكْتُبُ</bdi> (yaktubu)</td>
+            <td class="example" data-tense="pres"><span class="word"><bdi lang="ar" dir="rtl">أَتَكَلَّمُ</bdi></span><span class="reading">atakallamu</span></td>
+            <td>Actions happening now, habits and general truths ("speaks", "is speaking"); with a time word it can also mean the future</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (<bdi lang="ar" dir="rtl">المستقبل</bdi>)</td>
+            <td><bdi lang="ar" dir="rtl">سَ</bdi> (sa-) + present, written joined to the verb: <bdi lang="ar" dir="rtl">سَيَكْتُبُ</bdi> (sa-yaktubu)</td>
+            <td class="example" data-tense="fut"><span class="word"><bdi lang="ar" dir="rtl">سَأَتَكَلَّمُ</bdi></span><span class="reading">sa-atakallamu</span></td>
+            <td>Actions that will happen later ("will speak"). <bdi lang="ar" dir="rtl">سَوْفَ</bdi> (sawfa) + present is another way to say it</td>
+          </tr>
+          <!-- Subjunctive and jussive -->
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Subjunctive (<bdi lang="ar" dir="rtl">المضارع المنصوب</bdi>)</td>
+            <td>Present with -u replaced by -a (<bdi lang="ar" dir="rtl">يَكْتُبُ</bdi> (yaktubu) → <bdi lang="ar" dir="rtl">يَكْتُبَ</bdi> (yaktuba)); -ūna, -āni and -īna lose their final -na (<bdi lang="ar" dir="rtl">تَكْتُبُونَ</bdi> (taktubūna) → <bdi lang="ar" dir="rtl">تَكْتُبُوا</bdi> (taktubū)); the f. pl. keeps -na</td>
+            <td class="example" data-tense="subj"><span class="word"><bdi lang="ar" dir="rtl">أَتَكَلَّمَ</bdi></span><span class="reading">atakallama</span></td>
+            <td>After a particle (not shown here): <bdi lang="ar" dir="rtl">أَنْ</bdi> (an, "to", "that"), <bdi lang="ar" dir="rtl">لِ</bdi> (li-, "in order to"), <bdi lang="ar" dir="rtl">كَيْ</bdi> (kay, "so that"), <bdi lang="ar" dir="rtl">حَتَّى</bdi> (ḥattā, "until"); also after "want", "must", "try": <bdi lang="ar" dir="rtl">أُرِيدُ أَنْ أَتَكَلَّمَ</bdi> (urīdu an atakallama, "I want to speak")</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Jussive</td>
+            <td>Jussive (<bdi lang="ar" dir="rtl">المضارع المجزوم</bdi>)</td>
+            <td>Present with the final vowel dropped (sukūn): <bdi lang="ar" dir="rtl">يَكْتُبُ</bdi> (yaktubu) → <bdi lang="ar" dir="rtl">يَكْتُبْ</bdi> (yaktub); -ūna, -āni and -īna lose their final -na; the f. pl. keeps -na; hollow and defective verbs shorten the last vowel (<bdi lang="ar" dir="rtl">يَقُولُ</bdi> (yaqūlu) → <bdi lang="ar" dir="rtl">يَقُلْ</bdi> (yaqul); <bdi lang="ar" dir="rtl">يَرْمِي</bdi> (yarmī) → <bdi lang="ar" dir="rtl">يَرْمِ</bdi> (yarmi))</td>
+            <td class="example" data-tense="juss"><span class="word"><bdi lang="ar" dir="rtl">أَتَكَلَّمْ</bdi></span><span class="reading">atakallam</span></td>
+            <td>After <bdi lang="ar" dir="rtl">لَمْ</bdi> (lam, "did not"); after <bdi lang="ar" dir="rtl">لَا</bdi> (lā) for "do not ...!"; after <bdi lang="ar" dir="rtl">لِ</bdi> (li-) for "let him / let us ..."; in conditions (<bdi lang="ar" dir="rtl">إِنْ</bdi> in, "if"; <bdi lang="ar" dir="rtl">مَنْ</bdi> man, "whoever"). The particle is not shown here</td>
+          </tr>
+          <!-- Imperative -->
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Imperative (<bdi lang="ar" dir="rtl">الأمر</bdi>)</td>
+            <td>The jussive of you without its prefix (<bdi lang="ar" dir="rtl">تَكْتُبْ</bdi> (taktub) → <bdi lang="ar" dir="rtl">اُكْتُبْ</bdi> (uktub)); a helping alif (hamzat al-waṣl, <bdi lang="ar" dir="rtl">اِ</bdi> / <bdi lang="ar" dir="rtl">اُ</bdi>) is added when the word would begin with two consonants, and form IV begins with a spoken hamza (<bdi lang="ar" dir="rtl">أَكْرِمْ</bdi> akrim); endings: -ī (you, f.), -ā (you two), -ū (you, m. pl.), -na (you, f. pl.)</td>
+            <td class="example na" data-tense="imp" title="This verb has no such form for this person."><span>—</span></td>
+            <td>Telling someone to do something; only for you (<bdi lang="ar" dir="rtl">أنتَ</bdi> <bdi lang="ar" dir="rtl">أنتِ</bdi> <bdi lang="ar" dir="rtl">أنتما</bdi> <bdi lang="ar" dir="rtl">أنتم</bdi> <bdi lang="ar" dir="rtl">أنتنّ</bdi>), so the other buttons show —. A negative command is <bdi lang="ar" dir="rtl">لَا</bdi> + jussive (<bdi lang="ar" dir="rtl">لَا تَكْتُبْ</bdi> (lā taktub), "do not write")</td>
+          </tr>
+          <!-- Negative -->
+          <tr class="indicative">
+            <td class="mood">Negative</td>
+            <td>Negative Past (<bdi lang="ar" dir="rtl">لم + المجزوم</bdi>)</td>
+            <td><bdi lang="ar" dir="rtl">لَمْ</bdi> (lam) + jussive: <bdi lang="ar" dir="rtl">لَمْ يَكْتُبْ</bdi> (lam yaktub)</td>
+            <td class="example" data-tense="negPast"><span class="word"><bdi lang="ar" dir="rtl">لَمْ أَتَكَلَّمْ</bdi></span><span class="reading">lam atakallam</span></td>
+            <td>Actions that did not happen ("did not speak", "has not spoken"). The jussive looks like a present form, but the meaning is past</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Negative</td>
+            <td>Negative Present (<bdi lang="ar" dir="rtl">لا + المضارع</bdi>)</td>
+            <td><bdi lang="ar" dir="rtl">لَا</bdi> (lā) + present: <bdi lang="ar" dir="rtl">لَا يَكْتُبُ</bdi> (lā yaktubu)</td>
+            <td class="example" data-tense="negPres"><span class="word"><bdi lang="ar" dir="rtl">لَا أَتَكَلَّمُ</bdi></span><span class="reading">lā atakallamu</span></td>
+            <td>Actions that are not happening or do not usually happen ("does not speak", "is not speaking")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Negative</td>
+            <td>Negative Future (<bdi lang="ar" dir="rtl">لن + المنصوب</bdi>)</td>
+            <td><bdi lang="ar" dir="rtl">لَنْ</bdi> (lan) + subjunctive: <bdi lang="ar" dir="rtl">لَنْ يَكْتُبَ</bdi> (lan yaktuba)</td>
+            <td class="example" data-tense="negFut"><span class="word"><bdi lang="ar" dir="rtl">لَنْ أَتَكَلَّمَ</bdi></span><span class="reading">lan atakallama</span></td>
+            <td>Actions that will not happen ("will not speak")</td>
+          </tr>
+          <!-- Passive voice -->
+          <tr class="modality">
+            <td class="mood">Passive voice</td>
+            <td>Past Passive (<bdi lang="ar" dir="rtl">الماضي المبني للمجهول</bdi>)</td>
+            <td>Past with the vowels changed: the vowel before the last root letter becomes i, the ones before it become u (<bdi lang="ar" dir="rtl">كَتَبَ</bdi> (kataba) → <bdi lang="ar" dir="rtl">كُتِبَ</bdi> (kutiba)); same endings as the active past</td>
+            <td class="example" data-tense="pastPass"><span class="word"><bdi lang="ar" dir="rtl">تُكُلِّمْتُ</bdi></span><span class="reading">tukullimtu</span></td>
+            <td>What was done to someone or something, without saying who did it ("was written", "was said"). Verbs with no passive (forms VII and IX, and <bdi lang="ar" dir="rtl">كان</bdi>) show —</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Passive voice</td>
+            <td>Present Passive (<bdi lang="ar" dir="rtl">المضارع المبني للمجهول</bdi>)</td>
+            <td>Present with the prefix vowel changed to u and the vowel before the last root letter to a: <bdi lang="ar" dir="rtl">يَكْتُبُ</bdi> (yaktubu) → <bdi lang="ar" dir="rtl">يُكْتَبُ</bdi> (yuktabu)</td>
+            <td class="example" data-tense="presPass"><span class="word"><bdi lang="ar" dir="rtl">أُتَكَلَّمُ</bdi></span><span class="reading">utakallamu</span></td>
+            <td>What is being done to someone or something, without saying who does it ("is being written"); also general facts ("Arabic is spoken here")</td>
+          </tr>
+          <!-- Participles -->
+          <tr class="modality">
+            <td class="mood">Participles</td>
+            <td>Active Participle (<bdi lang="ar" dir="rtl">اسم الفاعل</bdi>)</td>
+            <td>Form I: the pattern <bdi lang="ar" dir="rtl">فَاعِلٌ</bdi> (fāʿilun): <bdi lang="ar" dir="rtl">كَاتِبٌ</bdi> (kātibun); other forms: mu- in place of the present prefix, with a kasra before the last root letter: <bdi lang="ar" dir="rtl">مُكَلِّمٌ</bdi> (mukallimun); masculine singular, ending -un</td>
+            <td class="example" data-tense="actPart"><span class="word"><bdi lang="ar" dir="rtl">مُتَكَلِّمٌ</bdi></span><span class="reading">mutakallimun</span></td>
+            <td>The doer of the action, used as a noun or an adjective ("writer", "speaking"); often describes a state or something happening now</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Participles</td>
+            <td>Passive Participle (<bdi lang="ar" dir="rtl">اسم المفعول</bdi>)</td>
+            <td>Form I: the pattern <bdi lang="ar" dir="rtl">مَفْعُولٌ</bdi> (mafʿūlun): <bdi lang="ar" dir="rtl">مَكْتُوبٌ</bdi> (maktūbun); other forms: mu- in place of the present prefix, with a fatḥa before the last root letter: <bdi lang="ar" dir="rtl">مُكَلَّمٌ</bdi> (mukallamun); masculine singular, ending -un</td>
+            <td class="example" data-tense="passPart"><span class="word"><bdi lang="ar" dir="rtl">مُتَكَلَّمٌ</bdi></span><span class="reading">mutakallamun</span></td>
+            <td>The thing or person that undergoes the action, used as an adjective or a noun ("written", "spoken"). Forms VII and IX show —</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show 10 more tenses</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="patterns.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thai Verb Patterns</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="../shared/reading.css">
+  <link rel="stylesheet" href="thai.css">
+</head>
+<body>
+  <main>
+    <h1>Thai Verb Patterns</h1>
+    <p class="subtitle">Look up an English verb to see its Thai translation and how to express each tense, aspect and mood with it.</p>
+    <p class="hint">Thai verbs never change form. The person only changes the pronoun, and tense and aspect come from particles such as <span lang="th">แล้ว</span> (already / now), <span lang="th">กำลัง ... อยู่</span> (in progress), <span lang="th">จะ</span> (will), <span lang="th">เคย</span> (has ever), <span lang="th">ไม่</span> (not), <span lang="th">ยัง ... ไม่</span> (not yet) and <span lang="th">อย่า</span> (don't) placed around the verb. Each row shows one way of expressing a tense or mood. Every sentence shows the Thai script with a romanization underneath (the Royal Thai General System, which does not mark tones). Thai is normally written without spaces between words; here the words are separated by spaces for readability. The pronouns chosen are neutral ones (<span lang="th">ฉัน</span>, <span lang="th">คุณ</span>, <span lang="th">เขา</span> ...), but real Thai pronouns depend on gender, age and politeness (a man usually says <span lang="th">ผม</span> for &quot;I&quot;), and the polite particles (<span lang="th">ครับ</span> / <span lang="th">ค่ะ</span>) are left out. <span lang="th">เขา</span> stands for &quot;he&quot; or &quot;she&quot;; the plural pronouns are written as two words (<span lang="th">พวก คุณ</span>, <span lang="th">พวก เขา</span>). Weather verbs such as <span lang="th">ฝน ตก</span> (it rains) have their own subject, so most rows read the same for every pronoun (&quot;hope&quot; and &quot;want&quot; keep it). Where a pattern does not suit a verb the cell shows —.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show sentences for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span><bdi lang="th">ฉัน</bdi> chan</span></label>
+        <label><input type="radio" name="person" value="1"><span><bdi lang="th">คุณ</bdi> khun</span></label>
+        <label><input type="radio" name="person" value="2"><span><bdi lang="th">เขา</bdi> khao</span></label>
+        <label><input type="radio" name="person" value="3"><span><bdi lang="th">เรา</bdi> rao</span></label>
+        <label><input type="radio" name="person" value="4"><span><bdi lang="th">พวกคุณ</bdi> phuak khun</span></label>
+        <label><input type="radio" name="person" value="5"><span><bdi lang="th">พวกเขา</bdi> phuak khao</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense / Aspect (English / Thai)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head" lang="th">Example (พูด phut)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Indicative -->
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (<span lang="th">ปัจจุบัน</span>)</td>
+            <td>Subject + verb</td>
+            <td class="example" lang="th" data-tense="pres"><span class="word">ฉัน พูด</span><span class="reading">chan phut</span></td>
+            <td>Current actions, habits and general truths; a Thai verb has no tense of its own, so context or a time word shows when</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>In Progress (<span lang="th">กำลัง ... อยู่</span>)</td>
+            <td>Subject + <span lang="th">กำลัง</span> + verb + <span lang="th">อยู่</span></td>
+            <td class="example" lang="th" data-tense="prog"><span class="word">ฉัน กำลัง พูด อยู่</span><span class="reading">chan kamlang phut yu</span></td>
+            <td>Actions happening right now; either <span lang="th">กำลัง</span> or <span lang="th">อยู่</span> can also be used alone</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Completed (<span lang="th">แล้ว</span>)</td>
+            <td>Subject + verb + <span lang="th">แล้ว</span></td>
+            <td class="example" lang="th" data-tense="completed"><span class="word">ฉัน พูด แล้ว</span><span class="reading">chan phut laeo</span></td>
+            <td>Actions already done, or a state that has now begun; <span lang="th">แล้ว</span> means &quot;already&quot; or &quot;now&quot;</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Ever Done (<span lang="th">เคย</span>)</td>
+            <td>Subject + <span lang="th">เคย</span> + verb</td>
+            <td class="example" lang="th" data-tense="exper"><span class="word">ฉัน เคย พูด</span><span class="reading">chan khoei phut</span></td>
+            <td>Having done something at least once in life; also &quot;used to&quot; (a past habit)</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Already Done (<span lang="th">... ไป แล้ว</span>)</td>
+            <td>Subject + verb + <span lang="th">ไป แล้ว</span> (a state takes <span lang="th">อยู่ แล้ว</span>; verbs of motion and a few others take <span lang="th">แล้ว</span> alone)</td>
+            <td class="example" lang="th" data-tense="perfect"><span class="word">ฉัน พูด ไป แล้ว</span><span class="reading">chan phut pai laeo</span></td>
+            <td>Something already done, with a link to the present; <span lang="th">ไป แล้ว</span> stresses that it is done, <span lang="th">อยู่ แล้ว</span> means &quot;already so&quot;</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Just Now (<span lang="th">เพิ่ง</span>)</td>
+            <td>Subject + <span lang="th">เพิ่ง</span> + verb</td>
+            <td class="example" lang="th" data-tense="recent"><span class="word">ฉัน เพิ่ง พูด</span><span class="reading">chan phoeng phut</span></td>
+            <td>Something that has just happened</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past In Progress (<span lang="th">ตอน นั้น ... กำลัง ... อยู่</span>)</td>
+            <td><span lang="th">ตอน นั้น</span> + subject + <span lang="th">กำลัง</span> + verb + <span lang="th">อยู่</span></td>
+            <td class="example" lang="th" data-tense="pastprog"><span class="word">ตอน นั้น ฉัน กำลัง พูด อยู่</span><span class="reading">ton nan chan kamlang phut yu</span></td>
+            <td>What was happening at a moment in the past (<span lang="th">ตอน นั้น</span> means &quot;at that time&quot;)</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Perfect (<span lang="th">ก่อน หน้า นั้น ... แล้ว</span>)</td>
+            <td><span lang="th">ก่อน หน้า นั้น</span> + subject + verb + <span lang="th">ไป แล้ว</span> (or <span lang="th">อยู่ แล้ว</span> or <span lang="th">แล้ว</span>, as in &quot;Already Done&quot;)</td>
+            <td class="example" lang="th" data-tense="pluperf"><span class="word">ก่อน หน้า นั้น ฉัน พูด ไป แล้ว</span><span class="reading">kon na nan chan phut pai laeo</span></td>
+            <td>An action completed before another moment in the past (<span lang="th">ก่อน หน้า นั้น</span> means &quot;before that&quot;)</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (<span lang="th">จะ</span>)</td>
+            <td>Subject + <span lang="th">จะ</span> + verb</td>
+            <td class="example" lang="th" data-tense="fut"><span class="word">ฉัน จะ พูด</span><span class="reading">chan cha phut</span></td>
+            <td>Planned or predicted future actions, intentions and promises</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>About To (<span lang="th">กำลัง จะ</span>)</td>
+            <td>Subject + <span lang="th">กำลัง จะ</span> + verb</td>
+            <td class="example" lang="th" data-tense="nearfut"><span class="word">ฉัน กำลัง จะ พูด</span><span class="reading">chan kamlang cha phut</span></td>
+            <td>Something about to happen very soon</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future Perfect (<span lang="th">ถึง ตอน นั้น ... จะ ... เสร็จ แล้ว</span>)</td>
+            <td><span lang="th">ถึง ตอน นั้น</span> + subject + <span lang="th">จะ</span> + verb + <span lang="th">เสร็จ แล้ว</span></td>
+            <td class="example" lang="th" data-tense="futperf"><span class="word">ถึง ตอน นั้น ฉัน จะ พูด เสร็จ แล้ว</span><span class="reading">thueng ton nan chan cha phut set laeo</span></td>
+            <td>What will be finished by a future moment (<span lang="th">ถึง ตอน นั้น</span> means &quot;by then&quot;); a state, an instant verb, a verb of motion, or a verb that already ends in <span lang="th">เสร็จ</span> takes <span lang="th">แล้ว</span> alone</td>
+          </tr>
+          <!-- Hypothetical -->
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Conditional (<span lang="th">ถ้า ... ก็ จะ</span>)</td>
+            <td><span lang="th">ถ้า</span> …, subject + <span lang="th">ก็ จะ</span> + verb</td>
+            <td class="example" lang="th" data-tense="cond"><span class="word">ถ้า … ฉัน ก็ จะ พูด</span><span class="reading">tha … chan ko cha phut</span></td>
+            <td>What &quot;will&quot; or &quot;would&quot; happen if a condition holds</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Conditional Perfect (<span lang="th">ถ้า ตอน นั้น ... ก็ คง ... แล้ว</span>)</td>
+            <td><span lang="th">ถ้า ตอน นั้น</span> …, subject + <span lang="th">ก็ คง</span> + verb + <span lang="th">ไป แล้ว</span> (or <span lang="th">แล้ว</span> alone)</td>
+            <td class="example" lang="th" data-tense="condperf"><span class="word">ถ้า ตอน นั้น … ฉัน ก็ คง พูด ไป แล้ว</span><span class="reading">tha ton nan … chan ko khong phut pai laeo</span></td>
+            <td>What &quot;would have&quot; happened (<span lang="th">คง</span> means &quot;surely, probably&quot;)</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Hypothetical (<span lang="th">ถ้า</span>)</td>
+            <td><span lang="th">ถ้า</span> + subject + verb</td>
+            <td class="example" lang="th" data-tense="hyp"><span class="word">ถ้า ฉัน พูด</span><span class="reading">tha chan phut</span></td>
+            <td>The &quot;if&quot; clause of a condition (&quot;If I ...&quot;)</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Counterfactual Past (<span lang="th">ถ้า ตอน นั้น ... ได้</span>)</td>
+            <td><span lang="th">ถ้า ตอน นั้น</span> + subject + <span lang="th">ได้</span> + verb</td>
+            <td class="example" lang="th" data-tense="hypperf"><span class="word">ถ้า ตอน นั้น ฉัน ได้ พูด</span><span class="reading">tha ton nan chan dai phut</span></td>
+            <td>Past regrets or impossible conditions (&quot;If I had ...&quot;); a state, an instant verb or a verb that already holds <span lang="th">ได้</span> stands without it</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Hypothetical</td>
+            <td>Hope (<span lang="th">หวัง ว่า</span>)</td>
+            <td>Subject + <span lang="th">หวัง ว่า</span> + subject + <span lang="th">จะ</span> + verb</td>
+            <td class="example" lang="th" data-tense="wish"><span class="word">ฉัน หวัง ว่า ฉัน จะ พูด</span><span class="reading">chan wang wa chan cha phut</span></td>
+            <td>Hopes about the future (&quot;I hope that I will ...&quot;)</td>
+          </tr>
+          <!-- Imperative -->
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Affirmative Imperative (<span lang="th">สิ / เถอะ / ให้</span>)</td>
+            <td>you: subject + verb + <span lang="th">สิ</span>! / we: <span lang="th">เรา</span> + verb + <span lang="th">กัน เถอะ</span>! / I, he/she, they: <span lang="th">ให้</span> + subject + verb!</td>
+            <td class="example" lang="th" data-tense="impAff"><span class="word">ให้ ฉัน พูด!</span><span class="reading">hai chan phut!</span></td>
+            <td>Telling someone to do something; <span lang="th">สิ</span> urges, <span lang="th">กัน เถอะ</span> means &quot;let us&quot;, <span lang="th">ให้</span> means &quot;let (me, him, them) ...&quot;</td>
+          </tr>
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Negative Imperative (<span lang="th">อย่า</span>)</td>
+            <td>you: subject + <span lang="th">อย่า</span> + verb! / we: <span lang="th">เรา อย่า</span> + verb + <span lang="th">กัน เลย</span>! / I, he/she, they: <span lang="th">อย่า ให้</span> + subject + verb!</td>
+            <td class="example" lang="th" data-tense="impNeg"><span class="word">อย่า ให้ ฉัน พูด!</span><span class="reading">ya hai chan phut!</span></td>
+            <td>Telling someone not to do something; <span lang="th">กัน เลย</span> means &quot;let us not&quot;, <span lang="th">อย่า ให้</span> means &quot;do not let ...&quot;</td>
+          </tr>
+          <!-- Negation -->
+          <tr>
+            <td class="mood">Negation</td>
+            <td>Not (<span lang="th">ไม่</span>)</td>
+            <td>Subject + <span lang="th">ไม่</span> + verb</td>
+            <td class="example" lang="th" data-tense="negPres"><span class="word">ฉัน ไม่ พูด</span><span class="reading">chan mai phut</span></td>
+            <td>Present, habitual or future negation; &quot;to be&quot; (<span lang="th">เป็น</span>) uses <span lang="th">ไม่ ใช่</span> instead</td>
+          </tr>
+          <tr>
+            <td class="mood">Negation</td>
+            <td>Did Not (<span lang="th">ไม่ ได้</span>)</td>
+            <td>Subject + <span lang="th">ไม่ ได้</span> + verb</td>
+            <td class="example" lang="th" data-tense="negPast"><span class="word">ฉัน ไม่ ได้ พูด</span><span class="reading">chan mai dai phut</span></td>
+            <td>Not doing something in the past (a plain fact, not &quot;not yet&quot;); a verb that already holds <span lang="th">ได้</span> does not take a second one</td>
+          </tr>
+          <tr>
+            <td class="mood">Negation</td>
+            <td>Never (<span lang="th">ไม่ เคย</span>)</td>
+            <td>Subject + <span lang="th">ไม่ เคย</span> + verb</td>
+            <td class="example" lang="th" data-tense="negExper"><span class="word">ฉัน ไม่ เคย พูด</span><span class="reading">chan mai khoei phut</span></td>
+            <td>Having never done something</td>
+          </tr>
+          <tr>
+            <td class="mood">Negation</td>
+            <td>Not Yet (<span lang="th">ยัง ... ไม่</span>)</td>
+            <td>Subject + <span lang="th">ยัง ไม่ ได้</span> + verb (<span lang="th">ยัง ไม่</span> + verb for <span lang="th">มี</span>, for state and mental verbs such as <span lang="th">รู้</span> and <span lang="th">ชอบ</span>, for modal verbs and for verbs that already hold <span lang="th">ได้</span>)</td>
+            <td class="example" lang="th" data-tense="negNotYet"><span class="word">ฉัน ยัง ไม่ ได้ พูด</span><span class="reading">chan yang mai dai phut</span></td>
+            <td>Something that has not happened yet</td>
+          </tr>
+          <!-- Modality -->
+          <tr class="modality">
+            <td class="mood">Modality</td>
+            <td>Can / Able To (<span lang="th">สามารถ ... ได้</span>)</td>
+            <td>Subject + <span lang="th">สามารถ</span> + verb + <span lang="th">ได้</span></td>
+            <td class="example" lang="th" data-tense="can"><span class="word">ฉัน สามารถ พูด ได้</span><span class="reading">chan samat phut dai</span></td>
+            <td>Ability or possibility; verb + <span lang="th">ได้</span> on its own is the everyday way to say &quot;can&quot;</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Modality</td>
+            <td>Should (<span lang="th">ควร</span>)</td>
+            <td>Subject + <span lang="th">ควร</span> + verb</td>
+            <td class="example" lang="th" data-tense="should"><span class="word">ฉัน ควร พูด</span><span class="reading">chan khuan phut</span></td>
+            <td>Advice or a recommendation; <span lang="th">ต้อง</span> (&quot;must&quot;) is stronger</td>
+          </tr>
+          <tr class="modality">
+            <td class="mood">Modality</td>
+            <td>Want To (<span lang="th">อยาก</span>)</td>
+            <td>Subject + <span lang="th">อยาก</span> + verb</td>
+            <td class="example" lang="th" data-tense="want"><span class="word">ฉัน อยาก พูด</span><span class="reading">chan yak phut</span></td>
+            <td>Desire or wishes (for a weather verb: subject + <span lang="th">อยาก ให้</span> + weather verb)</td>
+          </tr>
+          <!-- Question -->
+          <tr>
+            <td class="mood">Question</td>
+            <td>Yes/No Question (<span lang="th">... ไหม</span>)</td>
+            <td>Subject + verb + <span lang="th">ไหม</span>?</td>
+            <td class="example" lang="th" data-tense="qMai"><span class="word">ฉัน พูด ไหม?</span><span class="reading">chan phut mai?</span></td>
+            <td>Asking a yes/no question</td>
+          </tr>
+          <tr>
+            <td class="mood">Question</td>
+            <td>Done Yet? (<span lang="th">... แล้ว หรือ ยัง</span>)</td>
+            <td>Subject + verb + <span lang="th">แล้ว หรือ ยัง</span>?</td>
+            <td class="example" lang="th" data-tense="qYet"><span class="word">ฉัน พูด แล้ว หรือ ยัง?</span><span class="reading">chan phut laeo rue yang?</span></td>
+            <td>Asking whether something has happened yet; the answers are <span lang="th">แล้ว</span> &quot;already&quot; and <span lang="th">ยัง</span> &quot;not yet&quot;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show 24 more patterns</button>
+  </main>
+  <script src="../shared/verb-kit.js"></script>
+  <script src="patterns.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

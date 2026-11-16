@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swahili Verb Tenses</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="../shared/reading.css">
+</head>
+<body>
+  <main>
+    <h1>Swahili Verb Tenses</h1>
+    <p class="subtitle">Look up an English verb to see its Swahili translation and every conjugation in the table.</p>
+    <p class="hint">A Swahili verb is one word built from a subject prefix (<span lang="sw">ni-</span>, <span lang="sw">u-</span>, <span lang="sw">a-</span>, <span lang="sw">tu-</span>, <span lang="sw">m-</span>, <span lang="sw">wa-</span>), a tense marker (<span lang="sw">-na-</span>, <span lang="sw">-li-</span>, <span lang="sw">-me-</span>, <span lang="sw">-ta-</span>, <span lang="sw">-ki-</span>, <span lang="sw">-nge-</span>, <span lang="sw">-ngali-</span>, <span lang="sw">-ja-</span>, <span lang="sw">-ku-</span>), the root and a final vowel. The pronoun (<span lang="sw">mimi</span>, <span lang="sw">wewe</span> ...) is only used for emphasis, so each cell shows just the verb. Verbs whose root has one syllable (<span lang="sw">kula</span>, <span lang="sw">kunywa</span>, <span lang="sw">kuja</span>) keep <span lang="sw">ku-</span> after <span lang="sw">-na-</span>, <span lang="sw">-li-</span>, <span lang="sw">-me-</span>, <span lang="sw">-ta-</span>, <span lang="sw">-nge-</span> and <span lang="sw">-ngali-</span> (<span lang="sw">ninakula</span>, <span lang="sw">nitakula</span>) but drop it in the habitual, the subjunctive, <span lang="sw">-ki-</span>, <span lang="sw">-ja-</span> and the negative present (<span lang="sw">hula</span>, <span lang="sw">nile</span>, <span lang="sw">nikila</span>, <span lang="sw">sijala</span>, <span lang="sw">sili</span>). The negative uses a different subject prefix (<span lang="sw">si-</span>, <span lang="sw">hu-</span>, <span lang="sw">ha-</span>, <span lang="sw">hatu-</span>, <span lang="sw">ham-</span>, <span lang="sw">hawa-</span>), and the final -a changes in some tenses: to -i in the negative present (<span lang="sw">sizungumzi</span>) and to -e in the subjunctive (<span lang="sw">nizungumze</span>). Verbs borrowed from Arabic that end in -i, -u or -e (<span lang="sw">kujibu</span>, <span lang="sw">kukubali</span>, <span lang="sw">kusamehe</span>) keep that vowel in the negative present and the subjunctive (<span lang="sw">sijibu</span>, <span lang="sw">nijibu</span>). The habitual (<span lang="sw">hu-</span>) has no subject prefix, so every button shows the same word. The imperative has only <span lang="sw">wewe</span> and <span lang="sw">ninyi</span> forms (the other buttons show —). The verb forms shown are for people (the human noun class); other noun classes use other prefixes.</p>
+
+    <section class="lookup">
+      <label for="verb-input">English verb</label>
+      <input id="verb-input" type="search" list="verb-list" placeholder="Type or pick a verb, e.g. speak" autocomplete="off" spellcheck="false">
+      <datalist id="verb-list"></datalist>
+      <p class="message" id="message" aria-live="polite"></p>
+      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <fieldset class="persons">
+      <legend>Show conjugation for</legend>
+      <div class="options">
+        <label><input type="radio" name="person" value="0" checked><span lang="sw">mimi</span></label>
+        <label><input type="radio" name="person" value="1"><span lang="sw">wewe</span></label>
+        <label><input type="radio" name="person" value="2"><span lang="sw">yeye</span></label>
+        <label><input type="radio" name="person" value="3"><span lang="sw">sisi</span></label>
+        <label><input type="radio" name="person" value="4"><span lang="sw">ninyi</span></label>
+        <label><input type="radio" name="person" value="5"><span lang="sw">wao</span></label>
+      </div>
+    </fieldset>
+
+    <div class="table-wrap">
+      <table id="tense-table">
+        <thead>
+          <tr>
+            <th scope="col">Mood</th>
+            <th scope="col">Tense (English / Swahili)</th>
+            <th scope="col">Structure</th>
+            <th scope="col" id="example-head">Example (Kuzungumza)</th>
+            <th scope="col">Primary Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Indicative -->
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Present (-na-)</td>
+            <td>Subject prefix + <span lang="sw">-na-</span> + root</td>
+            <td class="example" lang="sw" data-tense="pres">ninazungumza</td>
+            <td>Actions happening now or still in progress</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past (-li-)</td>
+            <td>Subject prefix + <span lang="sw">-li-</span> + root</td>
+            <td class="example" lang="sw" data-tense="past">nilizungumza</td>
+            <td>Completed actions in the past</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Perfect (-me-)</td>
+            <td>Subject prefix + <span lang="sw">-me-</span> + root</td>
+            <td class="example" lang="sw" data-tense="perf">nimezungumza</td>
+            <td>Actions that are done, with a result that still holds now ("has spoken")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future (-ta-)</td>
+            <td>Subject prefix + <span lang="sw">-ta-</span> + root</td>
+            <td class="example" lang="sw" data-tense="fut">nitazungumza</td>
+            <td>Actions that will happen later, plans and promises</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Habitual (hu-)</td>
+            <td><span lang="sw">hu-</span> + root (the same for every person)</td>
+            <td class="example" lang="sw" data-tense="hab">huzungumza</td>
+            <td>Habits, regular actions and general truths ("usually speaks")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Past Progressive (-likuwa + -na-)</td>
+            <td>Past of <span lang="sw">kuwa</span> (subject prefix + <span lang="sw">-li-</span> + <span lang="sw">kuwa</span>) + present form (<span lang="sw">-na-</span>)</td>
+            <td class="example" lang="sw" data-tense="pastProg">nilikuwa ninazungumza</td>
+            <td>An action that was in progress at a past time ("was speaking")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Indicative</td>
+            <td>Future Progressive (-takuwa + -na-)</td>
+            <td>Future of <span lang="sw">kuwa</span> (subject prefix + <span lang="sw">-ta-</span> + <span lang="sw">kuwa</span>) + present form (<span lang="sw">-na-</span>)</td>
+            <td class="example" lang="sw" data-tense="futProg">nitakuwa ninazungumza</td>
+            <td>An action that will be in progress at a future time ("will be speaking")</td>
+          </tr>
+
+          <!-- Subjunctive -->
+          <tr class="subjunctive">
+            <td class="mood">Conditional</td>
+            <td>Subjunctive (-e)</td>
+            <td>Subject prefix + root, final -a becomes -e (no tense marker)</td>
+            <td class="example" lang="sw" data-tense="subj">nizungumze</td>
+            <td>Wishes, purposes and suggestions ("that I speak", "let us speak"); used after <span lang="sw">kutaka</span> (to want), <span lang="sw">ili</span> (so that) and <span lang="sw">acha</span> (let)</td>
+          </tr>
+
+          <!-- Imperative -->
+          <tr class="imperative">
+            <td class="mood">Imperative</td>
+            <td>Imperative</td>
+            <td>Root with its final vowel (<span lang="sw">wewe</span>); root with final -e + <span lang="sw">-ni</span> (<span lang="sw">ninyi</span>)</td>
+            <td class="example" lang="sw" data-tense="imp">—</td>
+            <td>Telling someone to do something</td>
+          </tr>
+
+          <!-- Subjunctive -->
+          <tr class="subjunctive">
+            <td class="mood">Conditional</td>
+            <td>If / When (-ki-)</td>
+            <td>Subject prefix + <span lang="sw">-ki-</span> + root</td>
+            <td class="example" lang="sw" data-tense="cond">nikizungumza</td>
+            <td>Possible conditions ("if / when I speak") and an action going on at the same time as another ("while speaking")</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Conditional</td>
+            <td>Would (-nge-)</td>
+            <td>Subject prefix + <span lang="sw">-nge-</span> + root</td>
+            <td class="example" lang="sw" data-tense="hyp">ningezungumza</td>
+            <td>Unreal or unlikely conditions and their results ("would speak", "if I were to speak")</td>
+          </tr>
+          <tr class="subjunctive">
+            <td class="mood">Subjunctive</td>
+            <td>Would Have (-ngali-)</td>
+            <td>Subject prefix + <span lang="sw">-ngali-</span> + root</td>
+            <td class="example" lang="sw" data-tense="hypPast">ningalizungumza</td>
+            <td>Unreal past conditions and their results ("would have spoken", "if I had spoken")</td>
+          </tr>
+
+          <!-- Negative -->
+          <tr class="indicative">
+            <td class="mood">Negative</td>
+            <td>Negative Present</td>
+            <td>Negative subject prefix + root, final -a becomes -i</td>
+            <td class="example" lang="sw" data-tense="negPres">sizungumzi</td>
+            <td>Things that are not happening or do not happen ("does not speak")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Negative</td>
+            <td>Negative Past (-ku-)</td>
+            <td>Negative subject prefix + <span lang="sw">-ku-</span> + root</td>
+            <td class="example" lang="sw" data-tense="negPast">sikuzungumza</td>
+            <td>Things that did not happen ("did not speak")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Negative</td>
+            <td>Negative Future (-ta-)</td>
+            <td>Negative subject prefix + <span lang="sw">-ta-</span> + root</td>
+            <td class="example" lang="sw" data-tense="negFut">sitazungumza</td>
+            <td>Things that will not happen ("will not speak")</td>
+          </tr>
+          <tr class="indicative">
+            <td class="mood">Negative</td>
+            <td>Negative Perfect (-ja-, not yet)</td>
+            <td>Negative subject prefix + <span lang="sw">-ja-</span> + root</td>
+            <td class="example" lang="sw" data-tense="negPerf">sijazungumza</td>
+            <td>Things that have not happened yet ("has not spoken yet"); often used with <span lang="sw">bado</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="toggle" id="toggle-tenses" aria-controls="tense-table" aria-expanded="false">Show 13 more tenses</button>
+  </main>
+
+  <script src="../shared/verb-kit.js"></script>
+  <script src="conjugate.js"></script>
+  <script src="verbs.js"></script>
+  <script src="../shared/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

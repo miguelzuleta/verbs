@@ -1,0 +1,18 @@
+/* Arabic script. Everything marked lang="ar" (the translation, its buttons, the table cells' <bdi>
+   runs) gets an Arabic-capable naskh font. Geeza Pro (macOS, iOS) and Noto Naskh / Amiri /
+   Traditional Arabic / Tahoma (elsewhere) place the vowel signs and the shadda cleanly. */
+:lang(ar) {
+  font-family: "Geeza Pro", "Noto Naskh Arabic", "Amiri", "Traditional Arabic", "Tahoma", system-ui, sans-serif;
+}
+
+/* Arabic looks small next to Latin at the same size, and its vowel signs sit far above and below
+   the letters, so the line height is generous to keep them clear of the neighbouring lines. */
+bdi[lang="ar"] {
+  font-size: 1.25em;
+  line-height: 1.9;
+}
+
+.chip:lang(ar),
+.translation strong:lang(ar) {
+  line-height: 1.9;
+}

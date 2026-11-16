@@ -1,0 +1,4 @@
+/* Thai text: Thonburi on macOS, Sukhumvit Set on iOS, then the usual Thai fonts elsewhere */
+.word, td.example, .chip, .persons span, .translation strong {
+  font-family: "Thonburi", "Sukhumvit Set", "Noto Sans Thai", "Tahoma", system-ui, sans-serif;
+}
